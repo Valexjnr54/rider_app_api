@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/models"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id            Int      @id @default(autoincrement())
+  fullname      String
+  username      String   @unique
+  email         String   @unique
+  role          Role     @default(Admin)
+  profile_image String
+  password      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model User {
+  id            Int        @id @default(autoincrement())
+  fullname      String
+  username      String     @unique
+  email         String     @unique
+  phone_number  String
+  role          Role       @default(User)
+  profile_image String
+  password      String
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  delivery      Delivery[]
+}
+
+model Rider {
+  id              Int        @id @default(autoincrement())
+  fullname        String
+  username        String     @unique
+  email           String     @unique
+  phone_number    String
+  operating_areas Json
+  role            Role       @default(Rider)
+  profile_image   String
+  avg_rating      Int        @default(0)
+  password        String
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  delivery        Delivery[]
+  proposal        Proposal[]
+}
+
+model Delivery {
+  id                       Int        @id @default(autoincrement())
+  user                     User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id                  Int
+  package_name             String
+  phone_number             String
+  pickup_location          String
+  delivery_location        String
+  estimated_delivery_price String
+  package_image            String
+  landmark                 String
+  rider                    Rider?     @relation(fields: [rider_id], references: [id], onDelete: Cascade)
+  rider_id                 Int?
+  is_pickedup              Boolean    @default(false)
+  is_delivered             Boolean    @default(false)
+  status                   Status     @default(Available)
+  createdAt                DateTime   @default(now())
+  updatedAt                DateTime   @updatedAt
+  proposal                 Proposal[]
+}
+
+model Proposal {
+  id          Int      @id @default(autoincrement())
+  rider       Rider    @relation(fields: [rider_id], references: [id], onDelete: Cascade)
+  rider_id    Int
+  deliver     Delivery @relation(fields: [delivery_id], references: [id])
+  delivery_id Int
+  status      Status   @default(Pending)
+}
+
+model Operating_areas {
+  id        Int      @id @default(autoincrement())
+  name      String
+  status    Status   @default(Available)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Status {
+  Available
+  Pending
+  Delivered
+  Rejected
+  Approved
+}
+
+enum Role {
+  User
+  Rider
+  Admin
+}
