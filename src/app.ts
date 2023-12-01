@@ -14,10 +14,18 @@ import { userProposalRouter } from './routes/Users/userProposalRoutes';
 import { riderDeliveryRouter } from './routes/Riders/deliverRoutes';
 import { adminOperatingRouter } from './routes/Admin/operatingRoute';
 import { router } from './routes/route';
+import { userProfileRouter } from './routes/Users/userProfileRoutes';
+import { riderProfileRouter } from './routes/Riders/riderProfileRoutes';
+import { userRatingRouter } from './routes/Users/userRatingRoute';
 
 const app = express();
 
 app.use(express.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 
 app.use(rateLimiter);
 app.use(cors({ origin: Config.corsAllowedOrigin }));
@@ -44,12 +52,15 @@ app.use(route+"/auth",adminAuthRouter)
 
 // User Routes Starts
 app.use(route+"/user",userDeliveryRouter)
+app.use(route+"/user",userProfileRouter)
 app.use(route+"/user",userProposalRouter)
+app.use(route+"/user",userRatingRouter)
 // User Routes Starts
 
 // Rider Routes Starts
 app.use(route+"/rider",riderProposalRouter)
 app.use(route+"/rider",riderDeliveryRouter)
+app.use(route+"/rider",riderProfileRouter)
 // Rider Routes Starts
 
 // Admin Routes Starts

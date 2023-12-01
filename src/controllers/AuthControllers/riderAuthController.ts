@@ -9,6 +9,7 @@ import uploadImage from '../../utils/cloudinary';
 import fs from "fs"
 import { sendWelcomeEmail } from '../../utils/emailSender';
 import { sendWelcomeSMS } from '../../utils/smsSender';
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -40,10 +41,7 @@ export async function registerRider(request: Request, res: Response) {
     }
 
     // Hash the password before storing it
-    const salt = crypto.randomBytes(16).toString('hex'); // Generate a random salt
-    const hashedPassword = crypto
-      .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
-      .toString('hex');
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     //Uploading Image to Cloudinary
     let imageUrl = "https://res.cloudinary.com/dx2gbcwhp/image/upload/v1699044872/noimage/uyifdentpdqjeyjnmowa.png"; // Default URL
@@ -78,7 +76,7 @@ export async function registerRider(request: Request, res: Response) {
         phone_number,
         profile_image: imageUrl,
         operating_areas: operating_areas.filter((area: undefined) => area !== undefined),
-        password: `${hashedPassword}:${salt}`, // Store the salt along with the hash
+        password: hashedPassword // Store the salt along with the hash
       },
     });
 
@@ -110,13 +108,11 @@ export async function loginRider(req: Request, res: Response) {
     }
 
     // Verify the password
-    const [storedHash, storedSalt] = rider.password.split(':');
-    const inputHash = crypto
-      .pbkdf2Sync(password, storedSalt, 10000, 64, 'sha512')
-      .toString('hex');
+    const passwordMatch = await bcrypt.compare(password, rider.password);
 
-    if (storedHash !== inputHash) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+    if (!passwordMatch) {
+      res.status(401).json({ error: 'Invalid email or password' });
+      return;
     }
 
     // Generate a JWT token for the rider

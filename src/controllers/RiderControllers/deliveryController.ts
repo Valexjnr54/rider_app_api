@@ -31,6 +31,8 @@ export async function viewAllDelivery(request: Request, response: Response) {
           delivery_location: true,
           estimated_delivery_price: true,
           package_image: true,
+          is_pickedup:true,
+          is_delivered:true,
           user:{
             select: {
               id:true,
@@ -63,68 +65,70 @@ export async function viewAllDelivery(request: Request, response: Response) {
     }
   }
   
-  export async function viewSingleDelivery(request: Request, response: Response) {
-    const rider_id = request.user.riderId;
-    const id: number = parseInt(request.query.id as string, 10)
+export async function viewSingleDelivery(request: Request, response: Response) {
+  const rider_id = request.user.riderId;
+  const id: number = parseInt(request.query.id as string, 10)
 
-  
-    // Check if rider_id is not present or undefined
-    if (!rider_id) {
+
+  // Check if rider_id is not present or undefined
+  if (!rider_id) {
+    return response.status(403).json({ message: 'Unauthorized User' });
+  }
+
+  try {
+    // Retrieve the rider by rider_id
+    const check_rider = await prisma.rider.findUnique({ where: { id: rider_id } });
+    const role = check_rider?.role;
+
+    // Check if the role is not 'rider'
+    if (role !== 'Rider') {
       return response.status(403).json({ message: 'Unauthorized User' });
     }
-  
-    try {
-      // Retrieve the rider by rider_id
-      const check_rider = await prisma.rider.findUnique({ where: { id: rider_id } });
-      const role = check_rider?.role;
-  
-      // Check if the role is not 'rider'
-      if (role !== 'Rider') {
-        return response.status(403).json({ message: 'Unauthorized User' });
-      }
-  
-      const singleDelivery = await prisma.delivery.findUnique({
-        where: {
-          id: id,
-        },select: {
-          id:true,
-          package_name: true,
-          phone_number: true,
-          pickup_location: true,
-          delivery_location: true,
-          estimated_delivery_price: true,
-          package_image: true,
-          user:{
-            select: {
-              id:true,
-              fullname:true,
-              username:true,
-              email:true,
-              phone_number:true,
-              profile_image:true,
-            }
-          },
-          rider:{
-            select:{
-              id:true,
-              fullname:true,
-              username:true,
-              email:true,
-              phone_number:true,
-              profile_image:true,
-              avg_rating:true,
-            }
+
+    const singleDelivery = await prisma.delivery.findUnique({
+      where: {
+        id: id,
+      },select: {
+        id:true,
+        package_name: true,
+        phone_number: true,
+        pickup_location: true,
+        delivery_location: true,
+        estimated_delivery_price: true,
+        package_image: true,
+        is_pickedup:true,
+        is_delivered:true,
+        user:{
+          select: {
+            id:true,
+            fullname:true,
+            username:true,
+            email:true,
+            phone_number:true,
+            profile_image:true,
           }
         },
-      });
-      if (!singleDelivery) {
-        return response.status(404).json({ message: 'No Delivery Found' });
-      }
-      return response.status(200).json({ data: singleDelivery });
-    } catch (error) {
-      return response.status(500).json({ message: 'Internal Server Error' });
+        rider:{
+          select:{
+            id:true,
+            fullname:true,
+            username:true,
+            email:true,
+            phone_number:true,
+            profile_image:true,
+            avg_rating:true,
+          }
+        }
+      },
+    });
+    if (!singleDelivery) {
+      return response.status(404).json({ message: 'No Delivery Found' });
     }
+    return response.status(200).json({ data: singleDelivery });
+  } catch (error) {
+    return response.status(500).json({ message: 'Internal Server Error' });
   }
+}
 
 export async function pickDelivery(request: Request, response: Response) {
     const rider_id = request.user.riderId;

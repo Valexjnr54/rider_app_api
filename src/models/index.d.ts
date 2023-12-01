@@ -43,6 +43,21 @@ export type Proposal = $Result.DefaultSelection<Prisma.$ProposalPayload>
  * 
  */
 export type Operating_areas = $Result.DefaultSelection<Prisma.$Operating_areasPayload>
+/**
+ * Model Bank_details
+ * 
+ */
+export type Bank_details = $Result.DefaultSelection<Prisma.$Bank_detailsPayload>
+/**
+ * Model Rider_rating
+ * 
+ */
+export type Rider_rating = $Result.DefaultSelection<Prisma.$Rider_ratingPayload>
+/**
+ * Model Rider_credentials
+ * 
+ */
+export type Rider_credentials = $Result.DefaultSelection<Prisma.$Rider_credentialsPayload>
 
 /**
  * Enums
@@ -62,7 +77,10 @@ export const Status: {
   Pending: 'Pending',
   Delivered: 'Delivered',
   Rejected: 'Rejected',
-  Approved: 'Approved'
+  Approved: 'Approved',
+  Inactive: 'Inactive',
+  Active: 'Active',
+  Suspend: 'Suspend'
 };
 
 export type Status = (typeof Status)[keyof typeof Status]
@@ -258,6 +276,36 @@ export class PrismaClient<
     * ```
     */
   get operating_areas(): Prisma.Operating_areasDelegate<ExtArgs>;
+
+  /**
+   * `prisma.bank_details`: Exposes CRUD operations for the **Bank_details** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Bank_details
+    * const bank_details = await prisma.bank_details.findMany()
+    * ```
+    */
+  get bank_details(): Prisma.Bank_detailsDelegate<ExtArgs>;
+
+  /**
+   * `prisma.rider_rating`: Exposes CRUD operations for the **Rider_rating** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Rider_ratings
+    * const rider_ratings = await prisma.rider_rating.findMany()
+    * ```
+    */
+  get rider_rating(): Prisma.Rider_ratingDelegate<ExtArgs>;
+
+  /**
+   * `prisma.rider_credentials`: Exposes CRUD operations for the **Rider_credentials** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Rider_credentials
+    * const rider_credentials = await prisma.rider_credentials.findMany()
+    * ```
+    */
+  get rider_credentials(): Prisma.Rider_credentialsDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -733,7 +781,10 @@ export namespace Prisma {
     Rider: 'Rider',
     Delivery: 'Delivery',
     Proposal: 'Proposal',
-    Operating_areas: 'Operating_areas'
+    Operating_areas: 'Operating_areas',
+    Bank_details: 'Bank_details',
+    Rider_rating: 'Rider_rating',
+    Rider_credentials: 'Rider_credentials'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -750,7 +801,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'admin' | 'user' | 'rider' | 'delivery' | 'proposal' | 'operating_areas'
+      modelProps: 'admin' | 'user' | 'rider' | 'delivery' | 'proposal' | 'operating_areas' | 'bank_details' | 'rider_rating' | 'rider_credentials'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1150,6 +1201,204 @@ export namespace Prisma {
           }
         }
       }
+      Bank_details: {
+        payload: Prisma.$Bank_detailsPayload<ExtArgs>
+        fields: Prisma.Bank_detailsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Bank_detailsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Bank_detailsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload>
+          }
+          findFirst: {
+            args: Prisma.Bank_detailsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Bank_detailsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload>
+          }
+          findMany: {
+            args: Prisma.Bank_detailsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload>[]
+          }
+          create: {
+            args: Prisma.Bank_detailsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload>
+          }
+          createMany: {
+            args: Prisma.Bank_detailsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.Bank_detailsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload>
+          }
+          update: {
+            args: Prisma.Bank_detailsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload>
+          }
+          deleteMany: {
+            args: Prisma.Bank_detailsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Bank_detailsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.Bank_detailsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Bank_detailsPayload>
+          }
+          aggregate: {
+            args: Prisma.Bank_detailsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBank_details>
+          }
+          groupBy: {
+            args: Prisma.Bank_detailsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Bank_detailsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Bank_detailsCountArgs<ExtArgs>,
+            result: $Utils.Optional<Bank_detailsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Rider_rating: {
+        payload: Prisma.$Rider_ratingPayload<ExtArgs>
+        fields: Prisma.Rider_ratingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Rider_ratingFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Rider_ratingFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload>
+          }
+          findFirst: {
+            args: Prisma.Rider_ratingFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Rider_ratingFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload>
+          }
+          findMany: {
+            args: Prisma.Rider_ratingFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload>[]
+          }
+          create: {
+            args: Prisma.Rider_ratingCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload>
+          }
+          createMany: {
+            args: Prisma.Rider_ratingCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.Rider_ratingDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload>
+          }
+          update: {
+            args: Prisma.Rider_ratingUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload>
+          }
+          deleteMany: {
+            args: Prisma.Rider_ratingDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Rider_ratingUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.Rider_ratingUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_ratingPayload>
+          }
+          aggregate: {
+            args: Prisma.Rider_ratingAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateRider_rating>
+          }
+          groupBy: {
+            args: Prisma.Rider_ratingGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Rider_ratingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Rider_ratingCountArgs<ExtArgs>,
+            result: $Utils.Optional<Rider_ratingCountAggregateOutputType> | number
+          }
+        }
+      }
+      Rider_credentials: {
+        payload: Prisma.$Rider_credentialsPayload<ExtArgs>
+        fields: Prisma.Rider_credentialsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Rider_credentialsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Rider_credentialsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload>
+          }
+          findFirst: {
+            args: Prisma.Rider_credentialsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Rider_credentialsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload>
+          }
+          findMany: {
+            args: Prisma.Rider_credentialsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload>[]
+          }
+          create: {
+            args: Prisma.Rider_credentialsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload>
+          }
+          createMany: {
+            args: Prisma.Rider_credentialsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.Rider_credentialsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload>
+          }
+          update: {
+            args: Prisma.Rider_credentialsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload>
+          }
+          deleteMany: {
+            args: Prisma.Rider_credentialsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Rider_credentialsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.Rider_credentialsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$Rider_credentialsPayload>
+          }
+          aggregate: {
+            args: Prisma.Rider_credentialsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateRider_credentials>
+          }
+          groupBy: {
+            args: Prisma.Rider_credentialsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<Rider_credentialsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Rider_credentialsCountArgs<ExtArgs>,
+            result: $Utils.Optional<Rider_credentialsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1300,10 +1549,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     delivery: number
+    rider_rating: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     delivery?: boolean | UserCountOutputTypeCountDeliveryArgs
+    rider_rating?: boolean | UserCountOutputTypeCountRider_ratingArgs
   }
 
   // Custom InputTypes
@@ -1327,6 +1578,14 @@ export namespace Prisma {
   }
 
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRider_ratingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Rider_ratingWhereInput
+  }
+
+
 
   /**
    * Count Type RiderCountOutputType
@@ -1335,11 +1594,17 @@ export namespace Prisma {
   export type RiderCountOutputType = {
     delivery: number
     proposal: number
+    bank_details: number
+    rider_rating: number
+    rider_credentials: number
   }
 
   export type RiderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     delivery?: boolean | RiderCountOutputTypeCountDeliveryArgs
     proposal?: boolean | RiderCountOutputTypeCountProposalArgs
+    bank_details?: boolean | RiderCountOutputTypeCountBank_detailsArgs
+    rider_rating?: boolean | RiderCountOutputTypeCountRider_ratingArgs
+    rider_credentials?: boolean | RiderCountOutputTypeCountRider_credentialsArgs
   }
 
   // Custom InputTypes
@@ -1368,6 +1633,30 @@ export namespace Prisma {
    */
   export type RiderCountOutputTypeCountProposalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProposalWhereInput
+  }
+
+
+  /**
+   * RiderCountOutputType without action
+   */
+  export type RiderCountOutputTypeCountBank_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Bank_detailsWhereInput
+  }
+
+
+  /**
+   * RiderCountOutputType without action
+   */
+  export type RiderCountOutputTypeCountRider_ratingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Rider_ratingWhereInput
+  }
+
+
+  /**
+   * RiderCountOutputType without action
+   */
+  export type RiderCountOutputTypeCountRider_credentialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Rider_credentialsWhereInput
   }
 
 
@@ -2597,6 +2886,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     delivery?: boolean | User$deliveryArgs<ExtArgs>
+    rider_rating?: boolean | User$rider_ratingArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2615,6 +2905,7 @@ export namespace Prisma {
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     delivery?: boolean | User$deliveryArgs<ExtArgs>
+    rider_rating?: boolean | User$rider_ratingArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2623,6 +2914,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       delivery: Prisma.$DeliveryPayload<ExtArgs>[]
+      rider_rating: Prisma.$Rider_ratingPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3002,6 +3294,8 @@ export namespace Prisma {
 
     delivery<T extends User$deliveryArgs<ExtArgs> = {}>(args?: Subset<T, User$deliveryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveryPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    rider_rating<T extends User$rider_ratingArgs<ExtArgs> = {}>(args?: Subset<T, User$rider_ratingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3373,6 +3667,27 @@ export namespace Prisma {
 
 
   /**
+   * User.rider_rating
+   */
+  export type User$rider_ratingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    where?: Rider_ratingWhereInput
+    orderBy?: Rider_ratingOrderByWithRelationInput | Rider_ratingOrderByWithRelationInput[]
+    cursor?: Rider_ratingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Rider_ratingScalarFieldEnum | Rider_ratingScalarFieldEnum[]
+  }
+
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3420,6 +3735,8 @@ export namespace Prisma {
     profile_image: string | null
     avg_rating: number | null
     password: string | null
+    status: $Enums.Status | null
+    is_verified: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3434,6 +3751,8 @@ export namespace Prisma {
     profile_image: string | null
     avg_rating: number | null
     password: string | null
+    status: $Enums.Status | null
+    is_verified: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3449,6 +3768,8 @@ export namespace Prisma {
     profile_image: number
     avg_rating: number
     password: number
+    status: number
+    is_verified: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3475,6 +3796,8 @@ export namespace Prisma {
     profile_image?: true
     avg_rating?: true
     password?: true
+    status?: true
+    is_verified?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3489,6 +3812,8 @@ export namespace Prisma {
     profile_image?: true
     avg_rating?: true
     password?: true
+    status?: true
+    is_verified?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3504,6 +3829,8 @@ export namespace Prisma {
     profile_image?: true
     avg_rating?: true
     password?: true
+    status?: true
+    is_verified?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3606,6 +3933,8 @@ export namespace Prisma {
     profile_image: string
     avg_rating: number
     password: string
+    status: $Enums.Status
+    is_verified: boolean
     createdAt: Date
     updatedAt: Date
     _count: RiderCountAggregateOutputType | null
@@ -3640,10 +3969,15 @@ export namespace Prisma {
     profile_image?: boolean
     avg_rating?: boolean
     password?: boolean
+    status?: boolean
+    is_verified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     delivery?: boolean | Rider$deliveryArgs<ExtArgs>
     proposal?: boolean | Rider$proposalArgs<ExtArgs>
+    bank_details?: boolean | Rider$bank_detailsArgs<ExtArgs>
+    rider_rating?: boolean | Rider$rider_ratingArgs<ExtArgs>
+    rider_credentials?: boolean | Rider$rider_credentialsArgs<ExtArgs>
     _count?: boolean | RiderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["rider"]>
 
@@ -3658,6 +3992,8 @@ export namespace Prisma {
     profile_image?: boolean
     avg_rating?: boolean
     password?: boolean
+    status?: boolean
+    is_verified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -3665,6 +4001,9 @@ export namespace Prisma {
   export type RiderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     delivery?: boolean | Rider$deliveryArgs<ExtArgs>
     proposal?: boolean | Rider$proposalArgs<ExtArgs>
+    bank_details?: boolean | Rider$bank_detailsArgs<ExtArgs>
+    rider_rating?: boolean | Rider$rider_ratingArgs<ExtArgs>
+    rider_credentials?: boolean | Rider$rider_credentialsArgs<ExtArgs>
     _count?: boolean | RiderCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3674,6 +4013,9 @@ export namespace Prisma {
     objects: {
       delivery: Prisma.$DeliveryPayload<ExtArgs>[]
       proposal: Prisma.$ProposalPayload<ExtArgs>[]
+      bank_details: Prisma.$Bank_detailsPayload<ExtArgs>[]
+      rider_rating: Prisma.$Rider_ratingPayload<ExtArgs>[]
+      rider_credentials: Prisma.$Rider_credentialsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3686,6 +4028,8 @@ export namespace Prisma {
       profile_image: string
       avg_rating: number
       password: string
+      status: $Enums.Status
+      is_verified: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["rider"]>
@@ -4057,6 +4401,12 @@ export namespace Prisma {
 
     proposal<T extends Rider$proposalArgs<ExtArgs> = {}>(args?: Subset<T, Rider$proposalArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProposalPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    bank_details<T extends Rider$bank_detailsArgs<ExtArgs> = {}>(args?: Subset<T, Rider$bank_detailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    rider_rating<T extends Rider$rider_ratingArgs<ExtArgs> = {}>(args?: Subset<T, Rider$rider_ratingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    rider_credentials<T extends Rider$rider_credentialsArgs<ExtArgs> = {}>(args?: Subset<T, Rider$rider_credentialsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4093,8 +4443,10 @@ export namespace Prisma {
     readonly operating_areas: FieldRef<"Rider", 'Json'>
     readonly role: FieldRef<"Rider", 'Role'>
     readonly profile_image: FieldRef<"Rider", 'String'>
-    readonly avg_rating: FieldRef<"Rider", 'Int'>
+    readonly avg_rating: FieldRef<"Rider", 'Float'>
     readonly password: FieldRef<"Rider", 'String'>
+    readonly status: FieldRef<"Rider", 'Status'>
+    readonly is_verified: FieldRef<"Rider", 'Boolean'>
     readonly createdAt: FieldRef<"Rider", 'DateTime'>
     readonly updatedAt: FieldRef<"Rider", 'DateTime'>
   }
@@ -4451,6 +4803,69 @@ export namespace Prisma {
 
 
   /**
+   * Rider.bank_details
+   */
+  export type Rider$bank_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    where?: Bank_detailsWhereInput
+    orderBy?: Bank_detailsOrderByWithRelationInput | Bank_detailsOrderByWithRelationInput[]
+    cursor?: Bank_detailsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Bank_detailsScalarFieldEnum | Bank_detailsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider.rider_rating
+   */
+  export type Rider$rider_ratingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    where?: Rider_ratingWhereInput
+    orderBy?: Rider_ratingOrderByWithRelationInput | Rider_ratingOrderByWithRelationInput[]
+    cursor?: Rider_ratingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Rider_ratingScalarFieldEnum | Rider_ratingScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider.rider_credentials
+   */
+  export type Rider$rider_credentialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    where?: Rider_credentialsWhereInput
+    orderBy?: Rider_credentialsOrderByWithRelationInput | Rider_credentialsOrderByWithRelationInput[]
+    cursor?: Rider_credentialsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Rider_credentialsScalarFieldEnum | Rider_credentialsScalarFieldEnum[]
+  }
+
+
+  /**
    * Rider without action
    */
   export type RiderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4482,12 +4897,14 @@ export namespace Prisma {
     id: number | null
     user_id: number | null
     rider_id: number | null
+    delivery_code: number | null
   }
 
   export type DeliverySumAggregateOutputType = {
     id: number | null
     user_id: number | null
     rider_id: number | null
+    delivery_code: number | null
   }
 
   export type DeliveryMinAggregateOutputType = {
@@ -4501,6 +4918,7 @@ export namespace Prisma {
     package_image: string | null
     landmark: string | null
     rider_id: number | null
+    delivery_code: number | null
     is_pickedup: boolean | null
     is_delivered: boolean | null
     status: $Enums.Status | null
@@ -4519,6 +4937,7 @@ export namespace Prisma {
     package_image: string | null
     landmark: string | null
     rider_id: number | null
+    delivery_code: number | null
     is_pickedup: boolean | null
     is_delivered: boolean | null
     status: $Enums.Status | null
@@ -4537,11 +4956,13 @@ export namespace Prisma {
     package_image: number
     landmark: number
     rider_id: number
+    delivery_code: number
     is_pickedup: number
     is_delivered: number
     status: number
     createdAt: number
     updatedAt: number
+    sent_proposal_rider_id: number
     _all: number
   }
 
@@ -4550,12 +4971,14 @@ export namespace Prisma {
     id?: true
     user_id?: true
     rider_id?: true
+    delivery_code?: true
   }
 
   export type DeliverySumAggregateInputType = {
     id?: true
     user_id?: true
     rider_id?: true
+    delivery_code?: true
   }
 
   export type DeliveryMinAggregateInputType = {
@@ -4569,6 +4992,7 @@ export namespace Prisma {
     package_image?: true
     landmark?: true
     rider_id?: true
+    delivery_code?: true
     is_pickedup?: true
     is_delivered?: true
     status?: true
@@ -4587,6 +5011,7 @@ export namespace Prisma {
     package_image?: true
     landmark?: true
     rider_id?: true
+    delivery_code?: true
     is_pickedup?: true
     is_delivered?: true
     status?: true
@@ -4605,11 +5030,13 @@ export namespace Prisma {
     package_image?: true
     landmark?: true
     rider_id?: true
+    delivery_code?: true
     is_pickedup?: true
     is_delivered?: true
     status?: true
     createdAt?: true
     updatedAt?: true
+    sent_proposal_rider_id?: true
     _all?: true
   }
 
@@ -4710,11 +5137,13 @@ export namespace Prisma {
     package_image: string
     landmark: string
     rider_id: number | null
+    delivery_code: number | null
     is_pickedup: boolean
     is_delivered: boolean
     status: $Enums.Status
     createdAt: Date
     updatedAt: Date
+    sent_proposal_rider_id: JsonValue | null
     _count: DeliveryCountAggregateOutputType | null
     _avg: DeliveryAvgAggregateOutputType | null
     _sum: DeliverySumAggregateOutputType | null
@@ -4747,11 +5176,13 @@ export namespace Prisma {
     package_image?: boolean
     landmark?: boolean
     rider_id?: boolean
+    delivery_code?: boolean
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sent_proposal_rider_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     rider?: boolean | Delivery$riderArgs<ExtArgs>
     proposal?: boolean | Delivery$proposalArgs<ExtArgs>
@@ -4769,11 +5200,13 @@ export namespace Prisma {
     package_image?: boolean
     landmark?: boolean
     rider_id?: boolean
+    delivery_code?: boolean
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    sent_proposal_rider_id?: boolean
   }
 
   export type DeliveryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4802,11 +5235,13 @@ export namespace Prisma {
       package_image: string
       landmark: string
       rider_id: number | null
+      delivery_code: number | null
       is_pickedup: boolean
       is_delivered: boolean
       status: $Enums.Status
       createdAt: Date
       updatedAt: Date
+      sent_proposal_rider_id: Prisma.JsonValue | null
     }, ExtArgs["result"]["delivery"]>
     composites: {}
   }
@@ -5216,11 +5651,13 @@ export namespace Prisma {
     readonly package_image: FieldRef<"Delivery", 'String'>
     readonly landmark: FieldRef<"Delivery", 'String'>
     readonly rider_id: FieldRef<"Delivery", 'Int'>
+    readonly delivery_code: FieldRef<"Delivery", 'Int'>
     readonly is_pickedup: FieldRef<"Delivery", 'Boolean'>
     readonly is_delivered: FieldRef<"Delivery", 'Boolean'>
     readonly status: FieldRef<"Delivery", 'Status'>
     readonly createdAt: FieldRef<"Delivery", 'DateTime'>
     readonly updatedAt: FieldRef<"Delivery", 'DateTime'>
+    readonly sent_proposal_rider_id: FieldRef<"Delivery", 'Json'>
   }
     
 
@@ -7444,6 +7881,2997 @@ export namespace Prisma {
 
 
   /**
+   * Model Bank_details
+   */
+
+  export type AggregateBank_details = {
+    _count: Bank_detailsCountAggregateOutputType | null
+    _avg: Bank_detailsAvgAggregateOutputType | null
+    _sum: Bank_detailsSumAggregateOutputType | null
+    _min: Bank_detailsMinAggregateOutputType | null
+    _max: Bank_detailsMaxAggregateOutputType | null
+  }
+
+  export type Bank_detailsAvgAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+  }
+
+  export type Bank_detailsSumAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+  }
+
+  export type Bank_detailsMinAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    bank_name: string | null
+    account_name: string | null
+    account_number: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Bank_detailsMaxAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    bank_name: string | null
+    account_name: string | null
+    account_number: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Bank_detailsCountAggregateOutputType = {
+    id: number
+    rider_id: number
+    bank_name: number
+    account_name: number
+    account_number: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Bank_detailsAvgAggregateInputType = {
+    id?: true
+    rider_id?: true
+  }
+
+  export type Bank_detailsSumAggregateInputType = {
+    id?: true
+    rider_id?: true
+  }
+
+  export type Bank_detailsMinAggregateInputType = {
+    id?: true
+    rider_id?: true
+    bank_name?: true
+    account_name?: true
+    account_number?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Bank_detailsMaxAggregateInputType = {
+    id?: true
+    rider_id?: true
+    bank_name?: true
+    account_name?: true
+    account_number?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Bank_detailsCountAggregateInputType = {
+    id?: true
+    rider_id?: true
+    bank_name?: true
+    account_name?: true
+    account_number?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Bank_detailsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Bank_details to aggregate.
+     */
+    where?: Bank_detailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bank_details to fetch.
+     */
+    orderBy?: Bank_detailsOrderByWithRelationInput | Bank_detailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Bank_detailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bank_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bank_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Bank_details
+    **/
+    _count?: true | Bank_detailsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Bank_detailsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Bank_detailsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Bank_detailsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Bank_detailsMaxAggregateInputType
+  }
+
+  export type GetBank_detailsAggregateType<T extends Bank_detailsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBank_details]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBank_details[P]>
+      : GetScalarType<T[P], AggregateBank_details[P]>
+  }
+
+
+
+
+  export type Bank_detailsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Bank_detailsWhereInput
+    orderBy?: Bank_detailsOrderByWithAggregationInput | Bank_detailsOrderByWithAggregationInput[]
+    by: Bank_detailsScalarFieldEnum[] | Bank_detailsScalarFieldEnum
+    having?: Bank_detailsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Bank_detailsCountAggregateInputType | true
+    _avg?: Bank_detailsAvgAggregateInputType
+    _sum?: Bank_detailsSumAggregateInputType
+    _min?: Bank_detailsMinAggregateInputType
+    _max?: Bank_detailsMaxAggregateInputType
+  }
+
+  export type Bank_detailsGroupByOutputType = {
+    id: number
+    rider_id: number
+    bank_name: string
+    account_name: string
+    account_number: string
+    createdAt: Date
+    updatedAt: Date
+    _count: Bank_detailsCountAggregateOutputType | null
+    _avg: Bank_detailsAvgAggregateOutputType | null
+    _sum: Bank_detailsSumAggregateOutputType | null
+    _min: Bank_detailsMinAggregateOutputType | null
+    _max: Bank_detailsMaxAggregateOutputType | null
+  }
+
+  type GetBank_detailsGroupByPayload<T extends Bank_detailsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Bank_detailsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Bank_detailsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Bank_detailsGroupByOutputType[P]>
+            : GetScalarType<T[P], Bank_detailsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Bank_detailsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rider_id?: boolean
+    bank_name?: boolean
+    account_name?: boolean
+    account_number?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    rider?: boolean | RiderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bank_details"]>
+
+  export type Bank_detailsSelectScalar = {
+    id?: boolean
+    rider_id?: boolean
+    bank_name?: boolean
+    account_name?: boolean
+    account_number?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type Bank_detailsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    rider?: boolean | RiderDefaultArgs<ExtArgs>
+  }
+
+
+  export type $Bank_detailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Bank_details"
+    objects: {
+      rider: Prisma.$RiderPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      rider_id: number
+      bank_name: string
+      account_name: string
+      account_number: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["bank_details"]>
+    composites: {}
+  }
+
+
+  type Bank_detailsGetPayload<S extends boolean | null | undefined | Bank_detailsDefaultArgs> = $Result.GetResult<Prisma.$Bank_detailsPayload, S>
+
+  type Bank_detailsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<Bank_detailsFindManyArgs, 'select' | 'include' | 'distinct' > & {
+      select?: Bank_detailsCountAggregateInputType | true
+    }
+
+  export interface Bank_detailsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Bank_details'], meta: { name: 'Bank_details' } }
+    /**
+     * Find zero or one Bank_details that matches the filter.
+     * @param {Bank_detailsFindUniqueArgs} args - Arguments to find a Bank_details
+     * @example
+     * // Get one Bank_details
+     * const bank_details = await prisma.bank_details.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends Bank_detailsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, Bank_detailsFindUniqueArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Bank_details that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {Bank_detailsFindUniqueOrThrowArgs} args - Arguments to find a Bank_details
+     * @example
+     * // Get one Bank_details
+     * const bank_details = await prisma.bank_details.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends Bank_detailsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, Bank_detailsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Bank_details that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bank_detailsFindFirstArgs} args - Arguments to find a Bank_details
+     * @example
+     * // Get one Bank_details
+     * const bank_details = await prisma.bank_details.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends Bank_detailsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, Bank_detailsFindFirstArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Bank_details that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bank_detailsFindFirstOrThrowArgs} args - Arguments to find a Bank_details
+     * @example
+     * // Get one Bank_details
+     * const bank_details = await prisma.bank_details.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends Bank_detailsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, Bank_detailsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Bank_details that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bank_detailsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Bank_details
+     * const bank_details = await prisma.bank_details.findMany()
+     * 
+     * // Get first 10 Bank_details
+     * const bank_details = await prisma.bank_details.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bank_detailsWithIdOnly = await prisma.bank_details.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends Bank_detailsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Bank_detailsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Bank_details.
+     * @param {Bank_detailsCreateArgs} args - Arguments to create a Bank_details.
+     * @example
+     * // Create one Bank_details
+     * const Bank_details = await prisma.bank_details.create({
+     *   data: {
+     *     // ... data to create a Bank_details
+     *   }
+     * })
+     * 
+    **/
+    create<T extends Bank_detailsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, Bank_detailsCreateArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Bank_details.
+     *     @param {Bank_detailsCreateManyArgs} args - Arguments to create many Bank_details.
+     *     @example
+     *     // Create many Bank_details
+     *     const bank_details = await prisma.bank_details.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends Bank_detailsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Bank_detailsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Bank_details.
+     * @param {Bank_detailsDeleteArgs} args - Arguments to delete one Bank_details.
+     * @example
+     * // Delete one Bank_details
+     * const Bank_details = await prisma.bank_details.delete({
+     *   where: {
+     *     // ... filter to delete one Bank_details
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends Bank_detailsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, Bank_detailsDeleteArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Bank_details.
+     * @param {Bank_detailsUpdateArgs} args - Arguments to update one Bank_details.
+     * @example
+     * // Update one Bank_details
+     * const bank_details = await prisma.bank_details.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends Bank_detailsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, Bank_detailsUpdateArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Bank_details.
+     * @param {Bank_detailsDeleteManyArgs} args - Arguments to filter Bank_details to delete.
+     * @example
+     * // Delete a few Bank_details
+     * const { count } = await prisma.bank_details.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends Bank_detailsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Bank_detailsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Bank_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bank_detailsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Bank_details
+     * const bank_details = await prisma.bank_details.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends Bank_detailsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, Bank_detailsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Bank_details.
+     * @param {Bank_detailsUpsertArgs} args - Arguments to update or create a Bank_details.
+     * @example
+     * // Update or create a Bank_details
+     * const bank_details = await prisma.bank_details.upsert({
+     *   create: {
+     *     // ... data to create a Bank_details
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Bank_details we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends Bank_detailsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, Bank_detailsUpsertArgs<ExtArgs>>
+    ): Prisma__Bank_detailsClient<$Result.GetResult<Prisma.$Bank_detailsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Bank_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bank_detailsCountArgs} args - Arguments to filter Bank_details to count.
+     * @example
+     * // Count the number of Bank_details
+     * const count = await prisma.bank_details.count({
+     *   where: {
+     *     // ... the filter for the Bank_details we want to count
+     *   }
+     * })
+    **/
+    count<T extends Bank_detailsCountArgs>(
+      args?: Subset<T, Bank_detailsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Bank_detailsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Bank_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bank_detailsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Bank_detailsAggregateArgs>(args: Subset<T, Bank_detailsAggregateArgs>): Prisma.PrismaPromise<GetBank_detailsAggregateType<T>>
+
+    /**
+     * Group by Bank_details.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Bank_detailsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Bank_detailsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Bank_detailsGroupByArgs['orderBy'] }
+        : { orderBy?: Bank_detailsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Bank_detailsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBank_detailsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Bank_details model
+   */
+  readonly fields: Bank_detailsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Bank_details.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Bank_detailsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    rider<T extends RiderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RiderDefaultArgs<ExtArgs>>): Prisma__RiderClient<$Result.GetResult<Prisma.$RiderPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Bank_details model
+   */ 
+  interface Bank_detailsFieldRefs {
+    readonly id: FieldRef<"Bank_details", 'Int'>
+    readonly rider_id: FieldRef<"Bank_details", 'Int'>
+    readonly bank_name: FieldRef<"Bank_details", 'String'>
+    readonly account_name: FieldRef<"Bank_details", 'String'>
+    readonly account_number: FieldRef<"Bank_details", 'String'>
+    readonly createdAt: FieldRef<"Bank_details", 'DateTime'>
+    readonly updatedAt: FieldRef<"Bank_details", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Bank_details findUnique
+   */
+  export type Bank_detailsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * Filter, which Bank_details to fetch.
+     */
+    where: Bank_detailsWhereUniqueInput
+  }
+
+
+  /**
+   * Bank_details findUniqueOrThrow
+   */
+  export type Bank_detailsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * Filter, which Bank_details to fetch.
+     */
+    where: Bank_detailsWhereUniqueInput
+  }
+
+
+  /**
+   * Bank_details findFirst
+   */
+  export type Bank_detailsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * Filter, which Bank_details to fetch.
+     */
+    where?: Bank_detailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bank_details to fetch.
+     */
+    orderBy?: Bank_detailsOrderByWithRelationInput | Bank_detailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Bank_details.
+     */
+    cursor?: Bank_detailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bank_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bank_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Bank_details.
+     */
+    distinct?: Bank_detailsScalarFieldEnum | Bank_detailsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Bank_details findFirstOrThrow
+   */
+  export type Bank_detailsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * Filter, which Bank_details to fetch.
+     */
+    where?: Bank_detailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bank_details to fetch.
+     */
+    orderBy?: Bank_detailsOrderByWithRelationInput | Bank_detailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Bank_details.
+     */
+    cursor?: Bank_detailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bank_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bank_details.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Bank_details.
+     */
+    distinct?: Bank_detailsScalarFieldEnum | Bank_detailsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Bank_details findMany
+   */
+  export type Bank_detailsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * Filter, which Bank_details to fetch.
+     */
+    where?: Bank_detailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bank_details to fetch.
+     */
+    orderBy?: Bank_detailsOrderByWithRelationInput | Bank_detailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Bank_details.
+     */
+    cursor?: Bank_detailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bank_details from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bank_details.
+     */
+    skip?: number
+    distinct?: Bank_detailsScalarFieldEnum | Bank_detailsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Bank_details create
+   */
+  export type Bank_detailsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Bank_details.
+     */
+    data: XOR<Bank_detailsCreateInput, Bank_detailsUncheckedCreateInput>
+  }
+
+
+  /**
+   * Bank_details createMany
+   */
+  export type Bank_detailsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Bank_details.
+     */
+    data: Bank_detailsCreateManyInput | Bank_detailsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Bank_details update
+   */
+  export type Bank_detailsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Bank_details.
+     */
+    data: XOR<Bank_detailsUpdateInput, Bank_detailsUncheckedUpdateInput>
+    /**
+     * Choose, which Bank_details to update.
+     */
+    where: Bank_detailsWhereUniqueInput
+  }
+
+
+  /**
+   * Bank_details updateMany
+   */
+  export type Bank_detailsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Bank_details.
+     */
+    data: XOR<Bank_detailsUpdateManyMutationInput, Bank_detailsUncheckedUpdateManyInput>
+    /**
+     * Filter which Bank_details to update
+     */
+    where?: Bank_detailsWhereInput
+  }
+
+
+  /**
+   * Bank_details upsert
+   */
+  export type Bank_detailsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Bank_details to update in case it exists.
+     */
+    where: Bank_detailsWhereUniqueInput
+    /**
+     * In case the Bank_details found by the `where` argument doesn't exist, create a new Bank_details with this data.
+     */
+    create: XOR<Bank_detailsCreateInput, Bank_detailsUncheckedCreateInput>
+    /**
+     * In case the Bank_details was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Bank_detailsUpdateInput, Bank_detailsUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Bank_details delete
+   */
+  export type Bank_detailsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+    /**
+     * Filter which Bank_details to delete.
+     */
+    where: Bank_detailsWhereUniqueInput
+  }
+
+
+  /**
+   * Bank_details deleteMany
+   */
+  export type Bank_detailsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Bank_details to delete
+     */
+    where?: Bank_detailsWhereInput
+  }
+
+
+  /**
+   * Bank_details without action
+   */
+  export type Bank_detailsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank_details
+     */
+    select?: Bank_detailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Bank_detailsInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Rider_rating
+   */
+
+  export type AggregateRider_rating = {
+    _count: Rider_ratingCountAggregateOutputType | null
+    _avg: Rider_ratingAvgAggregateOutputType | null
+    _sum: Rider_ratingSumAggregateOutputType | null
+    _min: Rider_ratingMinAggregateOutputType | null
+    _max: Rider_ratingMaxAggregateOutputType | null
+  }
+
+  export type Rider_ratingAvgAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    user_id: number | null
+    rating: number | null
+  }
+
+  export type Rider_ratingSumAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    user_id: number | null
+    rating: number | null
+  }
+
+  export type Rider_ratingMinAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    user_id: number | null
+    rating: number | null
+    review: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Rider_ratingMaxAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    user_id: number | null
+    rating: number | null
+    review: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Rider_ratingCountAggregateOutputType = {
+    id: number
+    rider_id: number
+    user_id: number
+    rating: number
+    review: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Rider_ratingAvgAggregateInputType = {
+    id?: true
+    rider_id?: true
+    user_id?: true
+    rating?: true
+  }
+
+  export type Rider_ratingSumAggregateInputType = {
+    id?: true
+    rider_id?: true
+    user_id?: true
+    rating?: true
+  }
+
+  export type Rider_ratingMinAggregateInputType = {
+    id?: true
+    rider_id?: true
+    user_id?: true
+    rating?: true
+    review?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Rider_ratingMaxAggregateInputType = {
+    id?: true
+    rider_id?: true
+    user_id?: true
+    rating?: true
+    review?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Rider_ratingCountAggregateInputType = {
+    id?: true
+    rider_id?: true
+    user_id?: true
+    rating?: true
+    review?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Rider_ratingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Rider_rating to aggregate.
+     */
+    where?: Rider_ratingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_ratings to fetch.
+     */
+    orderBy?: Rider_ratingOrderByWithRelationInput | Rider_ratingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Rider_ratingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_ratings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Rider_ratings
+    **/
+    _count?: true | Rider_ratingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Rider_ratingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Rider_ratingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Rider_ratingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Rider_ratingMaxAggregateInputType
+  }
+
+  export type GetRider_ratingAggregateType<T extends Rider_ratingAggregateArgs> = {
+        [P in keyof T & keyof AggregateRider_rating]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRider_rating[P]>
+      : GetScalarType<T[P], AggregateRider_rating[P]>
+  }
+
+
+
+
+  export type Rider_ratingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Rider_ratingWhereInput
+    orderBy?: Rider_ratingOrderByWithAggregationInput | Rider_ratingOrderByWithAggregationInput[]
+    by: Rider_ratingScalarFieldEnum[] | Rider_ratingScalarFieldEnum
+    having?: Rider_ratingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Rider_ratingCountAggregateInputType | true
+    _avg?: Rider_ratingAvgAggregateInputType
+    _sum?: Rider_ratingSumAggregateInputType
+    _min?: Rider_ratingMinAggregateInputType
+    _max?: Rider_ratingMaxAggregateInputType
+  }
+
+  export type Rider_ratingGroupByOutputType = {
+    id: number
+    rider_id: number
+    user_id: number
+    rating: number
+    review: string
+    createdAt: Date
+    updatedAt: Date
+    _count: Rider_ratingCountAggregateOutputType | null
+    _avg: Rider_ratingAvgAggregateOutputType | null
+    _sum: Rider_ratingSumAggregateOutputType | null
+    _min: Rider_ratingMinAggregateOutputType | null
+    _max: Rider_ratingMaxAggregateOutputType | null
+  }
+
+  type GetRider_ratingGroupByPayload<T extends Rider_ratingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Rider_ratingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Rider_ratingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Rider_ratingGroupByOutputType[P]>
+            : GetScalarType<T[P], Rider_ratingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Rider_ratingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rider_id?: boolean
+    user_id?: boolean
+    rating?: boolean
+    review?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    rider?: boolean | RiderDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rider_rating"]>
+
+  export type Rider_ratingSelectScalar = {
+    id?: boolean
+    rider_id?: boolean
+    user_id?: boolean
+    rating?: boolean
+    review?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type Rider_ratingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    rider?: boolean | RiderDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+
+  export type $Rider_ratingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Rider_rating"
+    objects: {
+      rider: Prisma.$RiderPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      rider_id: number
+      user_id: number
+      rating: number
+      review: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["rider_rating"]>
+    composites: {}
+  }
+
+
+  type Rider_ratingGetPayload<S extends boolean | null | undefined | Rider_ratingDefaultArgs> = $Result.GetResult<Prisma.$Rider_ratingPayload, S>
+
+  type Rider_ratingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<Rider_ratingFindManyArgs, 'select' | 'include' | 'distinct' > & {
+      select?: Rider_ratingCountAggregateInputType | true
+    }
+
+  export interface Rider_ratingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Rider_rating'], meta: { name: 'Rider_rating' } }
+    /**
+     * Find zero or one Rider_rating that matches the filter.
+     * @param {Rider_ratingFindUniqueArgs} args - Arguments to find a Rider_rating
+     * @example
+     * // Get one Rider_rating
+     * const rider_rating = await prisma.rider_rating.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends Rider_ratingFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_ratingFindUniqueArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Rider_rating that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {Rider_ratingFindUniqueOrThrowArgs} args - Arguments to find a Rider_rating
+     * @example
+     * // Get one Rider_rating
+     * const rider_rating = await prisma.rider_rating.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends Rider_ratingFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_ratingFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Rider_rating that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_ratingFindFirstArgs} args - Arguments to find a Rider_rating
+     * @example
+     * // Get one Rider_rating
+     * const rider_rating = await prisma.rider_rating.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends Rider_ratingFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_ratingFindFirstArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Rider_rating that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_ratingFindFirstOrThrowArgs} args - Arguments to find a Rider_rating
+     * @example
+     * // Get one Rider_rating
+     * const rider_rating = await prisma.rider_rating.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends Rider_ratingFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_ratingFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Rider_ratings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_ratingFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Rider_ratings
+     * const rider_ratings = await prisma.rider_rating.findMany()
+     * 
+     * // Get first 10 Rider_ratings
+     * const rider_ratings = await prisma.rider_rating.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const rider_ratingWithIdOnly = await prisma.rider_rating.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends Rider_ratingFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_ratingFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Rider_rating.
+     * @param {Rider_ratingCreateArgs} args - Arguments to create a Rider_rating.
+     * @example
+     * // Create one Rider_rating
+     * const Rider_rating = await prisma.rider_rating.create({
+     *   data: {
+     *     // ... data to create a Rider_rating
+     *   }
+     * })
+     * 
+    **/
+    create<T extends Rider_ratingCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_ratingCreateArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Rider_ratings.
+     *     @param {Rider_ratingCreateManyArgs} args - Arguments to create many Rider_ratings.
+     *     @example
+     *     // Create many Rider_ratings
+     *     const rider_rating = await prisma.rider_rating.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends Rider_ratingCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_ratingCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Rider_rating.
+     * @param {Rider_ratingDeleteArgs} args - Arguments to delete one Rider_rating.
+     * @example
+     * // Delete one Rider_rating
+     * const Rider_rating = await prisma.rider_rating.delete({
+     *   where: {
+     *     // ... filter to delete one Rider_rating
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends Rider_ratingDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_ratingDeleteArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Rider_rating.
+     * @param {Rider_ratingUpdateArgs} args - Arguments to update one Rider_rating.
+     * @example
+     * // Update one Rider_rating
+     * const rider_rating = await prisma.rider_rating.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends Rider_ratingUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_ratingUpdateArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Rider_ratings.
+     * @param {Rider_ratingDeleteManyArgs} args - Arguments to filter Rider_ratings to delete.
+     * @example
+     * // Delete a few Rider_ratings
+     * const { count } = await prisma.rider_rating.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends Rider_ratingDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_ratingDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Rider_ratings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_ratingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Rider_ratings
+     * const rider_rating = await prisma.rider_rating.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends Rider_ratingUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_ratingUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Rider_rating.
+     * @param {Rider_ratingUpsertArgs} args - Arguments to update or create a Rider_rating.
+     * @example
+     * // Update or create a Rider_rating
+     * const rider_rating = await prisma.rider_rating.upsert({
+     *   create: {
+     *     // ... data to create a Rider_rating
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Rider_rating we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends Rider_ratingUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_ratingUpsertArgs<ExtArgs>>
+    ): Prisma__Rider_ratingClient<$Result.GetResult<Prisma.$Rider_ratingPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Rider_ratings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_ratingCountArgs} args - Arguments to filter Rider_ratings to count.
+     * @example
+     * // Count the number of Rider_ratings
+     * const count = await prisma.rider_rating.count({
+     *   where: {
+     *     // ... the filter for the Rider_ratings we want to count
+     *   }
+     * })
+    **/
+    count<T extends Rider_ratingCountArgs>(
+      args?: Subset<T, Rider_ratingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Rider_ratingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Rider_rating.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_ratingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Rider_ratingAggregateArgs>(args: Subset<T, Rider_ratingAggregateArgs>): Prisma.PrismaPromise<GetRider_ratingAggregateType<T>>
+
+    /**
+     * Group by Rider_rating.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_ratingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Rider_ratingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Rider_ratingGroupByArgs['orderBy'] }
+        : { orderBy?: Rider_ratingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Rider_ratingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRider_ratingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Rider_rating model
+   */
+  readonly fields: Rider_ratingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Rider_rating.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Rider_ratingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    rider<T extends RiderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RiderDefaultArgs<ExtArgs>>): Prisma__RiderClient<$Result.GetResult<Prisma.$RiderPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Rider_rating model
+   */ 
+  interface Rider_ratingFieldRefs {
+    readonly id: FieldRef<"Rider_rating", 'Int'>
+    readonly rider_id: FieldRef<"Rider_rating", 'Int'>
+    readonly user_id: FieldRef<"Rider_rating", 'Int'>
+    readonly rating: FieldRef<"Rider_rating", 'Int'>
+    readonly review: FieldRef<"Rider_rating", 'String'>
+    readonly createdAt: FieldRef<"Rider_rating", 'DateTime'>
+    readonly updatedAt: FieldRef<"Rider_rating", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Rider_rating findUnique
+   */
+  export type Rider_ratingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_rating to fetch.
+     */
+    where: Rider_ratingWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_rating findUniqueOrThrow
+   */
+  export type Rider_ratingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_rating to fetch.
+     */
+    where: Rider_ratingWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_rating findFirst
+   */
+  export type Rider_ratingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_rating to fetch.
+     */
+    where?: Rider_ratingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_ratings to fetch.
+     */
+    orderBy?: Rider_ratingOrderByWithRelationInput | Rider_ratingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Rider_ratings.
+     */
+    cursor?: Rider_ratingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_ratings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Rider_ratings.
+     */
+    distinct?: Rider_ratingScalarFieldEnum | Rider_ratingScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider_rating findFirstOrThrow
+   */
+  export type Rider_ratingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_rating to fetch.
+     */
+    where?: Rider_ratingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_ratings to fetch.
+     */
+    orderBy?: Rider_ratingOrderByWithRelationInput | Rider_ratingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Rider_ratings.
+     */
+    cursor?: Rider_ratingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_ratings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Rider_ratings.
+     */
+    distinct?: Rider_ratingScalarFieldEnum | Rider_ratingScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider_rating findMany
+   */
+  export type Rider_ratingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_ratings to fetch.
+     */
+    where?: Rider_ratingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_ratings to fetch.
+     */
+    orderBy?: Rider_ratingOrderByWithRelationInput | Rider_ratingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Rider_ratings.
+     */
+    cursor?: Rider_ratingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_ratings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_ratings.
+     */
+    skip?: number
+    distinct?: Rider_ratingScalarFieldEnum | Rider_ratingScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider_rating create
+   */
+  export type Rider_ratingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Rider_rating.
+     */
+    data: XOR<Rider_ratingCreateInput, Rider_ratingUncheckedCreateInput>
+  }
+
+
+  /**
+   * Rider_rating createMany
+   */
+  export type Rider_ratingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Rider_ratings.
+     */
+    data: Rider_ratingCreateManyInput | Rider_ratingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Rider_rating update
+   */
+  export type Rider_ratingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Rider_rating.
+     */
+    data: XOR<Rider_ratingUpdateInput, Rider_ratingUncheckedUpdateInput>
+    /**
+     * Choose, which Rider_rating to update.
+     */
+    where: Rider_ratingWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_rating updateMany
+   */
+  export type Rider_ratingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Rider_ratings.
+     */
+    data: XOR<Rider_ratingUpdateManyMutationInput, Rider_ratingUncheckedUpdateManyInput>
+    /**
+     * Filter which Rider_ratings to update
+     */
+    where?: Rider_ratingWhereInput
+  }
+
+
+  /**
+   * Rider_rating upsert
+   */
+  export type Rider_ratingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Rider_rating to update in case it exists.
+     */
+    where: Rider_ratingWhereUniqueInput
+    /**
+     * In case the Rider_rating found by the `where` argument doesn't exist, create a new Rider_rating with this data.
+     */
+    create: XOR<Rider_ratingCreateInput, Rider_ratingUncheckedCreateInput>
+    /**
+     * In case the Rider_rating was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Rider_ratingUpdateInput, Rider_ratingUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Rider_rating delete
+   */
+  export type Rider_ratingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+    /**
+     * Filter which Rider_rating to delete.
+     */
+    where: Rider_ratingWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_rating deleteMany
+   */
+  export type Rider_ratingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Rider_ratings to delete
+     */
+    where?: Rider_ratingWhereInput
+  }
+
+
+  /**
+   * Rider_rating without action
+   */
+  export type Rider_ratingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_rating
+     */
+    select?: Rider_ratingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_ratingInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Rider_credentials
+   */
+
+  export type AggregateRider_credentials = {
+    _count: Rider_credentialsCountAggregateOutputType | null
+    _avg: Rider_credentialsAvgAggregateOutputType | null
+    _sum: Rider_credentialsSumAggregateOutputType | null
+    _min: Rider_credentialsMinAggregateOutputType | null
+    _max: Rider_credentialsMaxAggregateOutputType | null
+  }
+
+  export type Rider_credentialsAvgAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+  }
+
+  export type Rider_credentialsSumAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+  }
+
+  export type Rider_credentialsMinAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    nin: string | null
+    nin_image: string | null
+    driver_license: string | null
+    driver_license_image: string | null
+    plate_number: string | null
+    vehicle_image: string | null
+    status: $Enums.Status | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Rider_credentialsMaxAggregateOutputType = {
+    id: number | null
+    rider_id: number | null
+    nin: string | null
+    nin_image: string | null
+    driver_license: string | null
+    driver_license_image: string | null
+    plate_number: string | null
+    vehicle_image: string | null
+    status: $Enums.Status | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Rider_credentialsCountAggregateOutputType = {
+    id: number
+    rider_id: number
+    nin: number
+    nin_image: number
+    driver_license: number
+    driver_license_image: number
+    plate_number: number
+    vehicle_image: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Rider_credentialsAvgAggregateInputType = {
+    id?: true
+    rider_id?: true
+  }
+
+  export type Rider_credentialsSumAggregateInputType = {
+    id?: true
+    rider_id?: true
+  }
+
+  export type Rider_credentialsMinAggregateInputType = {
+    id?: true
+    rider_id?: true
+    nin?: true
+    nin_image?: true
+    driver_license?: true
+    driver_license_image?: true
+    plate_number?: true
+    vehicle_image?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Rider_credentialsMaxAggregateInputType = {
+    id?: true
+    rider_id?: true
+    nin?: true
+    nin_image?: true
+    driver_license?: true
+    driver_license_image?: true
+    plate_number?: true
+    vehicle_image?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Rider_credentialsCountAggregateInputType = {
+    id?: true
+    rider_id?: true
+    nin?: true
+    nin_image?: true
+    driver_license?: true
+    driver_license_image?: true
+    plate_number?: true
+    vehicle_image?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Rider_credentialsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Rider_credentials to aggregate.
+     */
+    where?: Rider_credentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_credentials to fetch.
+     */
+    orderBy?: Rider_credentialsOrderByWithRelationInput | Rider_credentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Rider_credentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_credentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Rider_credentials
+    **/
+    _count?: true | Rider_credentialsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Rider_credentialsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Rider_credentialsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Rider_credentialsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Rider_credentialsMaxAggregateInputType
+  }
+
+  export type GetRider_credentialsAggregateType<T extends Rider_credentialsAggregateArgs> = {
+        [P in keyof T & keyof AggregateRider_credentials]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRider_credentials[P]>
+      : GetScalarType<T[P], AggregateRider_credentials[P]>
+  }
+
+
+
+
+  export type Rider_credentialsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Rider_credentialsWhereInput
+    orderBy?: Rider_credentialsOrderByWithAggregationInput | Rider_credentialsOrderByWithAggregationInput[]
+    by: Rider_credentialsScalarFieldEnum[] | Rider_credentialsScalarFieldEnum
+    having?: Rider_credentialsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Rider_credentialsCountAggregateInputType | true
+    _avg?: Rider_credentialsAvgAggregateInputType
+    _sum?: Rider_credentialsSumAggregateInputType
+    _min?: Rider_credentialsMinAggregateInputType
+    _max?: Rider_credentialsMaxAggregateInputType
+  }
+
+  export type Rider_credentialsGroupByOutputType = {
+    id: number
+    rider_id: number
+    nin: string
+    nin_image: string | null
+    driver_license: string
+    driver_license_image: string | null
+    plate_number: string
+    vehicle_image: string | null
+    status: $Enums.Status
+    createdAt: Date
+    updatedAt: Date
+    _count: Rider_credentialsCountAggregateOutputType | null
+    _avg: Rider_credentialsAvgAggregateOutputType | null
+    _sum: Rider_credentialsSumAggregateOutputType | null
+    _min: Rider_credentialsMinAggregateOutputType | null
+    _max: Rider_credentialsMaxAggregateOutputType | null
+  }
+
+  type GetRider_credentialsGroupByPayload<T extends Rider_credentialsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Rider_credentialsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Rider_credentialsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Rider_credentialsGroupByOutputType[P]>
+            : GetScalarType<T[P], Rider_credentialsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Rider_credentialsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rider_id?: boolean
+    nin?: boolean
+    nin_image?: boolean
+    driver_license?: boolean
+    driver_license_image?: boolean
+    plate_number?: boolean
+    vehicle_image?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    rider?: boolean | RiderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rider_credentials"]>
+
+  export type Rider_credentialsSelectScalar = {
+    id?: boolean
+    rider_id?: boolean
+    nin?: boolean
+    nin_image?: boolean
+    driver_license?: boolean
+    driver_license_image?: boolean
+    plate_number?: boolean
+    vehicle_image?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type Rider_credentialsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    rider?: boolean | RiderDefaultArgs<ExtArgs>
+  }
+
+
+  export type $Rider_credentialsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Rider_credentials"
+    objects: {
+      rider: Prisma.$RiderPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      rider_id: number
+      nin: string
+      nin_image: string | null
+      driver_license: string
+      driver_license_image: string | null
+      plate_number: string
+      vehicle_image: string | null
+      status: $Enums.Status
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["rider_credentials"]>
+    composites: {}
+  }
+
+
+  type Rider_credentialsGetPayload<S extends boolean | null | undefined | Rider_credentialsDefaultArgs> = $Result.GetResult<Prisma.$Rider_credentialsPayload, S>
+
+  type Rider_credentialsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<Rider_credentialsFindManyArgs, 'select' | 'include' | 'distinct' > & {
+      select?: Rider_credentialsCountAggregateInputType | true
+    }
+
+  export interface Rider_credentialsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Rider_credentials'], meta: { name: 'Rider_credentials' } }
+    /**
+     * Find zero or one Rider_credentials that matches the filter.
+     * @param {Rider_credentialsFindUniqueArgs} args - Arguments to find a Rider_credentials
+     * @example
+     * // Get one Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends Rider_credentialsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_credentialsFindUniqueArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Rider_credentials that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {Rider_credentialsFindUniqueOrThrowArgs} args - Arguments to find a Rider_credentials
+     * @example
+     * // Get one Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends Rider_credentialsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_credentialsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Rider_credentials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_credentialsFindFirstArgs} args - Arguments to find a Rider_credentials
+     * @example
+     * // Get one Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends Rider_credentialsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_credentialsFindFirstArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Rider_credentials that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_credentialsFindFirstOrThrowArgs} args - Arguments to find a Rider_credentials
+     * @example
+     * // Get one Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends Rider_credentialsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_credentialsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Rider_credentials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_credentialsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.findMany()
+     * 
+     * // Get first 10 Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const rider_credentialsWithIdOnly = await prisma.rider_credentials.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends Rider_credentialsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_credentialsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Rider_credentials.
+     * @param {Rider_credentialsCreateArgs} args - Arguments to create a Rider_credentials.
+     * @example
+     * // Create one Rider_credentials
+     * const Rider_credentials = await prisma.rider_credentials.create({
+     *   data: {
+     *     // ... data to create a Rider_credentials
+     *   }
+     * })
+     * 
+    **/
+    create<T extends Rider_credentialsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_credentialsCreateArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Rider_credentials.
+     *     @param {Rider_credentialsCreateManyArgs} args - Arguments to create many Rider_credentials.
+     *     @example
+     *     // Create many Rider_credentials
+     *     const rider_credentials = await prisma.rider_credentials.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends Rider_credentialsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_credentialsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Rider_credentials.
+     * @param {Rider_credentialsDeleteArgs} args - Arguments to delete one Rider_credentials.
+     * @example
+     * // Delete one Rider_credentials
+     * const Rider_credentials = await prisma.rider_credentials.delete({
+     *   where: {
+     *     // ... filter to delete one Rider_credentials
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends Rider_credentialsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_credentialsDeleteArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Rider_credentials.
+     * @param {Rider_credentialsUpdateArgs} args - Arguments to update one Rider_credentials.
+     * @example
+     * // Update one Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends Rider_credentialsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_credentialsUpdateArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Rider_credentials.
+     * @param {Rider_credentialsDeleteManyArgs} args - Arguments to filter Rider_credentials to delete.
+     * @example
+     * // Delete a few Rider_credentials
+     * const { count } = await prisma.rider_credentials.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends Rider_credentialsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, Rider_credentialsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Rider_credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_credentialsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends Rider_credentialsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_credentialsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Rider_credentials.
+     * @param {Rider_credentialsUpsertArgs} args - Arguments to update or create a Rider_credentials.
+     * @example
+     * // Update or create a Rider_credentials
+     * const rider_credentials = await prisma.rider_credentials.upsert({
+     *   create: {
+     *     // ... data to create a Rider_credentials
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Rider_credentials we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends Rider_credentialsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, Rider_credentialsUpsertArgs<ExtArgs>>
+    ): Prisma__Rider_credentialsClient<$Result.GetResult<Prisma.$Rider_credentialsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Rider_credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_credentialsCountArgs} args - Arguments to filter Rider_credentials to count.
+     * @example
+     * // Count the number of Rider_credentials
+     * const count = await prisma.rider_credentials.count({
+     *   where: {
+     *     // ... the filter for the Rider_credentials we want to count
+     *   }
+     * })
+    **/
+    count<T extends Rider_credentialsCountArgs>(
+      args?: Subset<T, Rider_credentialsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Rider_credentialsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Rider_credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_credentialsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Rider_credentialsAggregateArgs>(args: Subset<T, Rider_credentialsAggregateArgs>): Prisma.PrismaPromise<GetRider_credentialsAggregateType<T>>
+
+    /**
+     * Group by Rider_credentials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Rider_credentialsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Rider_credentialsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Rider_credentialsGroupByArgs['orderBy'] }
+        : { orderBy?: Rider_credentialsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Rider_credentialsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRider_credentialsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Rider_credentials model
+   */
+  readonly fields: Rider_credentialsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Rider_credentials.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Rider_credentialsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    rider<T extends RiderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RiderDefaultArgs<ExtArgs>>): Prisma__RiderClient<$Result.GetResult<Prisma.$RiderPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Rider_credentials model
+   */ 
+  interface Rider_credentialsFieldRefs {
+    readonly id: FieldRef<"Rider_credentials", 'Int'>
+    readonly rider_id: FieldRef<"Rider_credentials", 'Int'>
+    readonly nin: FieldRef<"Rider_credentials", 'String'>
+    readonly nin_image: FieldRef<"Rider_credentials", 'String'>
+    readonly driver_license: FieldRef<"Rider_credentials", 'String'>
+    readonly driver_license_image: FieldRef<"Rider_credentials", 'String'>
+    readonly plate_number: FieldRef<"Rider_credentials", 'String'>
+    readonly vehicle_image: FieldRef<"Rider_credentials", 'String'>
+    readonly status: FieldRef<"Rider_credentials", 'Status'>
+    readonly createdAt: FieldRef<"Rider_credentials", 'DateTime'>
+    readonly updatedAt: FieldRef<"Rider_credentials", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Rider_credentials findUnique
+   */
+  export type Rider_credentialsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_credentials to fetch.
+     */
+    where: Rider_credentialsWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_credentials findUniqueOrThrow
+   */
+  export type Rider_credentialsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_credentials to fetch.
+     */
+    where: Rider_credentialsWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_credentials findFirst
+   */
+  export type Rider_credentialsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_credentials to fetch.
+     */
+    where?: Rider_credentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_credentials to fetch.
+     */
+    orderBy?: Rider_credentialsOrderByWithRelationInput | Rider_credentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Rider_credentials.
+     */
+    cursor?: Rider_credentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_credentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Rider_credentials.
+     */
+    distinct?: Rider_credentialsScalarFieldEnum | Rider_credentialsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider_credentials findFirstOrThrow
+   */
+  export type Rider_credentialsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_credentials to fetch.
+     */
+    where?: Rider_credentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_credentials to fetch.
+     */
+    orderBy?: Rider_credentialsOrderByWithRelationInput | Rider_credentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Rider_credentials.
+     */
+    cursor?: Rider_credentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_credentials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Rider_credentials.
+     */
+    distinct?: Rider_credentialsScalarFieldEnum | Rider_credentialsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider_credentials findMany
+   */
+  export type Rider_credentialsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * Filter, which Rider_credentials to fetch.
+     */
+    where?: Rider_credentialsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Rider_credentials to fetch.
+     */
+    orderBy?: Rider_credentialsOrderByWithRelationInput | Rider_credentialsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Rider_credentials.
+     */
+    cursor?: Rider_credentialsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Rider_credentials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Rider_credentials.
+     */
+    skip?: number
+    distinct?: Rider_credentialsScalarFieldEnum | Rider_credentialsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Rider_credentials create
+   */
+  export type Rider_credentialsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Rider_credentials.
+     */
+    data: XOR<Rider_credentialsCreateInput, Rider_credentialsUncheckedCreateInput>
+  }
+
+
+  /**
+   * Rider_credentials createMany
+   */
+  export type Rider_credentialsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Rider_credentials.
+     */
+    data: Rider_credentialsCreateManyInput | Rider_credentialsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Rider_credentials update
+   */
+  export type Rider_credentialsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Rider_credentials.
+     */
+    data: XOR<Rider_credentialsUpdateInput, Rider_credentialsUncheckedUpdateInput>
+    /**
+     * Choose, which Rider_credentials to update.
+     */
+    where: Rider_credentialsWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_credentials updateMany
+   */
+  export type Rider_credentialsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Rider_credentials.
+     */
+    data: XOR<Rider_credentialsUpdateManyMutationInput, Rider_credentialsUncheckedUpdateManyInput>
+    /**
+     * Filter which Rider_credentials to update
+     */
+    where?: Rider_credentialsWhereInput
+  }
+
+
+  /**
+   * Rider_credentials upsert
+   */
+  export type Rider_credentialsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Rider_credentials to update in case it exists.
+     */
+    where: Rider_credentialsWhereUniqueInput
+    /**
+     * In case the Rider_credentials found by the `where` argument doesn't exist, create a new Rider_credentials with this data.
+     */
+    create: XOR<Rider_credentialsCreateInput, Rider_credentialsUncheckedCreateInput>
+    /**
+     * In case the Rider_credentials was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Rider_credentialsUpdateInput, Rider_credentialsUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Rider_credentials delete
+   */
+  export type Rider_credentialsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+    /**
+     * Filter which Rider_credentials to delete.
+     */
+    where: Rider_credentialsWhereUniqueInput
+  }
+
+
+  /**
+   * Rider_credentials deleteMany
+   */
+  export type Rider_credentialsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Rider_credentials to delete
+     */
+    where?: Rider_credentialsWhereInput
+  }
+
+
+  /**
+   * Rider_credentials without action
+   */
+  export type Rider_credentialsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rider_credentials
+     */
+    select?: Rider_credentialsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: Rider_credentialsInclude<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -7499,6 +10927,8 @@ export namespace Prisma {
     profile_image: 'profile_image',
     avg_rating: 'avg_rating',
     password: 'password',
+    status: 'status',
+    is_verified: 'is_verified',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7517,11 +10947,13 @@ export namespace Prisma {
     package_image: 'package_image',
     landmark: 'landmark',
     rider_id: 'rider_id',
+    delivery_code: 'delivery_code',
     is_pickedup: 'is_pickedup',
     is_delivered: 'is_delivered',
     status: 'status',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    sent_proposal_rider_id: 'sent_proposal_rider_id'
   };
 
   export type DeliveryScalarFieldEnum = (typeof DeliveryScalarFieldEnum)[keyof typeof DeliveryScalarFieldEnum]
@@ -7548,6 +10980,49 @@ export namespace Prisma {
   export type Operating_areasScalarFieldEnum = (typeof Operating_areasScalarFieldEnum)[keyof typeof Operating_areasScalarFieldEnum]
 
 
+  export const Bank_detailsScalarFieldEnum: {
+    id: 'id',
+    rider_id: 'rider_id',
+    bank_name: 'bank_name',
+    account_name: 'account_name',
+    account_number: 'account_number',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Bank_detailsScalarFieldEnum = (typeof Bank_detailsScalarFieldEnum)[keyof typeof Bank_detailsScalarFieldEnum]
+
+
+  export const Rider_ratingScalarFieldEnum: {
+    id: 'id',
+    rider_id: 'rider_id',
+    user_id: 'user_id',
+    rating: 'rating',
+    review: 'review',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Rider_ratingScalarFieldEnum = (typeof Rider_ratingScalarFieldEnum)[keyof typeof Rider_ratingScalarFieldEnum]
+
+
+  export const Rider_credentialsScalarFieldEnum: {
+    id: 'id',
+    rider_id: 'rider_id',
+    nin: 'nin',
+    nin_image: 'nin_image',
+    driver_license: 'driver_license',
+    driver_license_image: 'driver_license_image',
+    plate_number: 'plate_number',
+    vehicle_image: 'vehicle_image',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Rider_credentialsScalarFieldEnum = (typeof Rider_credentialsScalarFieldEnum)[keyof typeof Rider_credentialsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -7561,6 +11036,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -7657,9 +11140,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
+   * Reference to a field of type 'Float'
    */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -7678,16 +11168,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
+   * Reference to a field of type 'Boolean'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -7783,6 +11266,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     delivery?: DeliveryListRelationFilter
+    rider_rating?: Rider_ratingListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7797,6 +11281,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     delivery?: DeliveryOrderByRelationAggregateInput
+    rider_rating?: Rider_ratingOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7814,6 +11299,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     delivery?: DeliveryListRelationFilter
+    rider_rating?: Rider_ratingListRelationFilter
   }, "id" | "username" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7862,12 +11348,17 @@ export namespace Prisma {
     operating_areas?: JsonFilter<"Rider">
     role?: EnumRoleFilter<"Rider"> | $Enums.Role
     profile_image?: StringFilter<"Rider"> | string
-    avg_rating?: IntFilter<"Rider"> | number
+    avg_rating?: FloatFilter<"Rider"> | number
     password?: StringFilter<"Rider"> | string
+    status?: EnumStatusFilter<"Rider"> | $Enums.Status
+    is_verified?: BoolFilter<"Rider"> | boolean
     createdAt?: DateTimeFilter<"Rider"> | Date | string
     updatedAt?: DateTimeFilter<"Rider"> | Date | string
     delivery?: DeliveryListRelationFilter
     proposal?: ProposalListRelationFilter
+    bank_details?: Bank_detailsListRelationFilter
+    rider_rating?: Rider_ratingListRelationFilter
+    rider_credentials?: Rider_credentialsListRelationFilter
   }
 
   export type RiderOrderByWithRelationInput = {
@@ -7881,10 +11372,15 @@ export namespace Prisma {
     profile_image?: SortOrder
     avg_rating?: SortOrder
     password?: SortOrder
+    status?: SortOrder
+    is_verified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     delivery?: DeliveryOrderByRelationAggregateInput
     proposal?: ProposalOrderByRelationAggregateInput
+    bank_details?: Bank_detailsOrderByRelationAggregateInput
+    rider_rating?: Rider_ratingOrderByRelationAggregateInput
+    rider_credentials?: Rider_credentialsOrderByRelationAggregateInput
   }
 
   export type RiderWhereUniqueInput = Prisma.AtLeast<{
@@ -7899,12 +11395,17 @@ export namespace Prisma {
     operating_areas?: JsonFilter<"Rider">
     role?: EnumRoleFilter<"Rider"> | $Enums.Role
     profile_image?: StringFilter<"Rider"> | string
-    avg_rating?: IntFilter<"Rider"> | number
+    avg_rating?: FloatFilter<"Rider"> | number
     password?: StringFilter<"Rider"> | string
+    status?: EnumStatusFilter<"Rider"> | $Enums.Status
+    is_verified?: BoolFilter<"Rider"> | boolean
     createdAt?: DateTimeFilter<"Rider"> | Date | string
     updatedAt?: DateTimeFilter<"Rider"> | Date | string
     delivery?: DeliveryListRelationFilter
     proposal?: ProposalListRelationFilter
+    bank_details?: Bank_detailsListRelationFilter
+    rider_rating?: Rider_ratingListRelationFilter
+    rider_credentials?: Rider_credentialsListRelationFilter
   }, "id" | "username" | "email">
 
   export type RiderOrderByWithAggregationInput = {
@@ -7918,6 +11419,8 @@ export namespace Prisma {
     profile_image?: SortOrder
     avg_rating?: SortOrder
     password?: SortOrder
+    status?: SortOrder
+    is_verified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: RiderCountOrderByAggregateInput
@@ -7939,8 +11442,10 @@ export namespace Prisma {
     operating_areas?: JsonWithAggregatesFilter<"Rider">
     role?: EnumRoleWithAggregatesFilter<"Rider"> | $Enums.Role
     profile_image?: StringWithAggregatesFilter<"Rider"> | string
-    avg_rating?: IntWithAggregatesFilter<"Rider"> | number
+    avg_rating?: FloatWithAggregatesFilter<"Rider"> | number
     password?: StringWithAggregatesFilter<"Rider"> | string
+    status?: EnumStatusWithAggregatesFilter<"Rider"> | $Enums.Status
+    is_verified?: BoolWithAggregatesFilter<"Rider"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Rider"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Rider"> | Date | string
   }
@@ -7959,11 +11464,13 @@ export namespace Prisma {
     package_image?: StringFilter<"Delivery"> | string
     landmark?: StringFilter<"Delivery"> | string
     rider_id?: IntNullableFilter<"Delivery"> | number | null
+    delivery_code?: IntNullableFilter<"Delivery"> | number | null
     is_pickedup?: BoolFilter<"Delivery"> | boolean
     is_delivered?: BoolFilter<"Delivery"> | boolean
     status?: EnumStatusFilter<"Delivery"> | $Enums.Status
     createdAt?: DateTimeFilter<"Delivery"> | Date | string
     updatedAt?: DateTimeFilter<"Delivery"> | Date | string
+    sent_proposal_rider_id?: JsonNullableFilter<"Delivery">
     user?: XOR<UserRelationFilter, UserWhereInput>
     rider?: XOR<RiderNullableRelationFilter, RiderWhereInput> | null
     proposal?: ProposalListRelationFilter
@@ -7980,11 +11487,13 @@ export namespace Prisma {
     package_image?: SortOrder
     landmark?: SortOrder
     rider_id?: SortOrderInput | SortOrder
+    delivery_code?: SortOrderInput | SortOrder
     is_pickedup?: SortOrder
     is_delivered?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sent_proposal_rider_id?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     rider?: RiderOrderByWithRelationInput
     proposal?: ProposalOrderByRelationAggregateInput
@@ -7992,6 +11501,7 @@ export namespace Prisma {
 
   export type DeliveryWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    delivery_code?: number
     AND?: DeliveryWhereInput | DeliveryWhereInput[]
     OR?: DeliveryWhereInput[]
     NOT?: DeliveryWhereInput | DeliveryWhereInput[]
@@ -8009,10 +11519,11 @@ export namespace Prisma {
     status?: EnumStatusFilter<"Delivery"> | $Enums.Status
     createdAt?: DateTimeFilter<"Delivery"> | Date | string
     updatedAt?: DateTimeFilter<"Delivery"> | Date | string
+    sent_proposal_rider_id?: JsonNullableFilter<"Delivery">
     user?: XOR<UserRelationFilter, UserWhereInput>
     rider?: XOR<RiderNullableRelationFilter, RiderWhereInput> | null
     proposal?: ProposalListRelationFilter
-  }, "id">
+  }, "id" | "delivery_code">
 
   export type DeliveryOrderByWithAggregationInput = {
     id?: SortOrder
@@ -8025,11 +11536,13 @@ export namespace Prisma {
     package_image?: SortOrder
     landmark?: SortOrder
     rider_id?: SortOrderInput | SortOrder
+    delivery_code?: SortOrderInput | SortOrder
     is_pickedup?: SortOrder
     is_delivered?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sent_proposal_rider_id?: SortOrderInput | SortOrder
     _count?: DeliveryCountOrderByAggregateInput
     _avg?: DeliveryAvgOrderByAggregateInput
     _max?: DeliveryMaxOrderByAggregateInput
@@ -8051,11 +11564,13 @@ export namespace Prisma {
     package_image?: StringWithAggregatesFilter<"Delivery"> | string
     landmark?: StringWithAggregatesFilter<"Delivery"> | string
     rider_id?: IntNullableWithAggregatesFilter<"Delivery"> | number | null
+    delivery_code?: IntNullableWithAggregatesFilter<"Delivery"> | number | null
     is_pickedup?: BoolWithAggregatesFilter<"Delivery"> | boolean
     is_delivered?: BoolWithAggregatesFilter<"Delivery"> | boolean
     status?: EnumStatusWithAggregatesFilter<"Delivery"> | $Enums.Status
     createdAt?: DateTimeWithAggregatesFilter<"Delivery"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Delivery"> | Date | string
+    sent_proposal_rider_id?: JsonNullableWithAggregatesFilter<"Delivery">
   }
 
   export type ProposalWhereInput = {
@@ -8167,6 +11682,230 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Operating_areas"> | Date | string
   }
 
+  export type Bank_detailsWhereInput = {
+    AND?: Bank_detailsWhereInput | Bank_detailsWhereInput[]
+    OR?: Bank_detailsWhereInput[]
+    NOT?: Bank_detailsWhereInput | Bank_detailsWhereInput[]
+    id?: IntFilter<"Bank_details"> | number
+    rider_id?: IntFilter<"Bank_details"> | number
+    bank_name?: StringFilter<"Bank_details"> | string
+    account_name?: StringFilter<"Bank_details"> | string
+    account_number?: StringFilter<"Bank_details"> | string
+    createdAt?: DateTimeFilter<"Bank_details"> | Date | string
+    updatedAt?: DateTimeFilter<"Bank_details"> | Date | string
+    rider?: XOR<RiderRelationFilter, RiderWhereInput>
+  }
+
+  export type Bank_detailsOrderByWithRelationInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    bank_name?: SortOrder
+    account_name?: SortOrder
+    account_number?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    rider?: RiderOrderByWithRelationInput
+  }
+
+  export type Bank_detailsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    rider_id?: number
+    AND?: Bank_detailsWhereInput | Bank_detailsWhereInput[]
+    OR?: Bank_detailsWhereInput[]
+    NOT?: Bank_detailsWhereInput | Bank_detailsWhereInput[]
+    bank_name?: StringFilter<"Bank_details"> | string
+    account_name?: StringFilter<"Bank_details"> | string
+    account_number?: StringFilter<"Bank_details"> | string
+    createdAt?: DateTimeFilter<"Bank_details"> | Date | string
+    updatedAt?: DateTimeFilter<"Bank_details"> | Date | string
+    rider?: XOR<RiderRelationFilter, RiderWhereInput>
+  }, "id" | "rider_id">
+
+  export type Bank_detailsOrderByWithAggregationInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    bank_name?: SortOrder
+    account_name?: SortOrder
+    account_number?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: Bank_detailsCountOrderByAggregateInput
+    _avg?: Bank_detailsAvgOrderByAggregateInput
+    _max?: Bank_detailsMaxOrderByAggregateInput
+    _min?: Bank_detailsMinOrderByAggregateInput
+    _sum?: Bank_detailsSumOrderByAggregateInput
+  }
+
+  export type Bank_detailsScalarWhereWithAggregatesInput = {
+    AND?: Bank_detailsScalarWhereWithAggregatesInput | Bank_detailsScalarWhereWithAggregatesInput[]
+    OR?: Bank_detailsScalarWhereWithAggregatesInput[]
+    NOT?: Bank_detailsScalarWhereWithAggregatesInput | Bank_detailsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Bank_details"> | number
+    rider_id?: IntWithAggregatesFilter<"Bank_details"> | number
+    bank_name?: StringWithAggregatesFilter<"Bank_details"> | string
+    account_name?: StringWithAggregatesFilter<"Bank_details"> | string
+    account_number?: StringWithAggregatesFilter<"Bank_details"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Bank_details"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Bank_details"> | Date | string
+  }
+
+  export type Rider_ratingWhereInput = {
+    AND?: Rider_ratingWhereInput | Rider_ratingWhereInput[]
+    OR?: Rider_ratingWhereInput[]
+    NOT?: Rider_ratingWhereInput | Rider_ratingWhereInput[]
+    id?: IntFilter<"Rider_rating"> | number
+    rider_id?: IntFilter<"Rider_rating"> | number
+    user_id?: IntFilter<"Rider_rating"> | number
+    rating?: IntFilter<"Rider_rating"> | number
+    review?: StringFilter<"Rider_rating"> | string
+    createdAt?: DateTimeFilter<"Rider_rating"> | Date | string
+    updatedAt?: DateTimeFilter<"Rider_rating"> | Date | string
+    rider?: XOR<RiderRelationFilter, RiderWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type Rider_ratingOrderByWithRelationInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    user_id?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    rider?: RiderOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type Rider_ratingWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: Rider_ratingWhereInput | Rider_ratingWhereInput[]
+    OR?: Rider_ratingWhereInput[]
+    NOT?: Rider_ratingWhereInput | Rider_ratingWhereInput[]
+    rider_id?: IntFilter<"Rider_rating"> | number
+    user_id?: IntFilter<"Rider_rating"> | number
+    rating?: IntFilter<"Rider_rating"> | number
+    review?: StringFilter<"Rider_rating"> | string
+    createdAt?: DateTimeFilter<"Rider_rating"> | Date | string
+    updatedAt?: DateTimeFilter<"Rider_rating"> | Date | string
+    rider?: XOR<RiderRelationFilter, RiderWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type Rider_ratingOrderByWithAggregationInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    user_id?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: Rider_ratingCountOrderByAggregateInput
+    _avg?: Rider_ratingAvgOrderByAggregateInput
+    _max?: Rider_ratingMaxOrderByAggregateInput
+    _min?: Rider_ratingMinOrderByAggregateInput
+    _sum?: Rider_ratingSumOrderByAggregateInput
+  }
+
+  export type Rider_ratingScalarWhereWithAggregatesInput = {
+    AND?: Rider_ratingScalarWhereWithAggregatesInput | Rider_ratingScalarWhereWithAggregatesInput[]
+    OR?: Rider_ratingScalarWhereWithAggregatesInput[]
+    NOT?: Rider_ratingScalarWhereWithAggregatesInput | Rider_ratingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Rider_rating"> | number
+    rider_id?: IntWithAggregatesFilter<"Rider_rating"> | number
+    user_id?: IntWithAggregatesFilter<"Rider_rating"> | number
+    rating?: IntWithAggregatesFilter<"Rider_rating"> | number
+    review?: StringWithAggregatesFilter<"Rider_rating"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Rider_rating"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Rider_rating"> | Date | string
+  }
+
+  export type Rider_credentialsWhereInput = {
+    AND?: Rider_credentialsWhereInput | Rider_credentialsWhereInput[]
+    OR?: Rider_credentialsWhereInput[]
+    NOT?: Rider_credentialsWhereInput | Rider_credentialsWhereInput[]
+    id?: IntFilter<"Rider_credentials"> | number
+    rider_id?: IntFilter<"Rider_credentials"> | number
+    nin?: StringFilter<"Rider_credentials"> | string
+    nin_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    driver_license?: StringFilter<"Rider_credentials"> | string
+    driver_license_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    plate_number?: StringFilter<"Rider_credentials"> | string
+    vehicle_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    status?: EnumStatusFilter<"Rider_credentials"> | $Enums.Status
+    createdAt?: DateTimeFilter<"Rider_credentials"> | Date | string
+    updatedAt?: DateTimeFilter<"Rider_credentials"> | Date | string
+    rider?: XOR<RiderRelationFilter, RiderWhereInput>
+  }
+
+  export type Rider_credentialsOrderByWithRelationInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    nin?: SortOrder
+    nin_image?: SortOrderInput | SortOrder
+    driver_license?: SortOrder
+    driver_license_image?: SortOrderInput | SortOrder
+    plate_number?: SortOrder
+    vehicle_image?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    rider?: RiderOrderByWithRelationInput
+  }
+
+  export type Rider_credentialsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: Rider_credentialsWhereInput | Rider_credentialsWhereInput[]
+    OR?: Rider_credentialsWhereInput[]
+    NOT?: Rider_credentialsWhereInput | Rider_credentialsWhereInput[]
+    rider_id?: IntFilter<"Rider_credentials"> | number
+    nin?: StringFilter<"Rider_credentials"> | string
+    nin_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    driver_license?: StringFilter<"Rider_credentials"> | string
+    driver_license_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    plate_number?: StringFilter<"Rider_credentials"> | string
+    vehicle_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    status?: EnumStatusFilter<"Rider_credentials"> | $Enums.Status
+    createdAt?: DateTimeFilter<"Rider_credentials"> | Date | string
+    updatedAt?: DateTimeFilter<"Rider_credentials"> | Date | string
+    rider?: XOR<RiderRelationFilter, RiderWhereInput>
+  }, "id">
+
+  export type Rider_credentialsOrderByWithAggregationInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    nin?: SortOrder
+    nin_image?: SortOrderInput | SortOrder
+    driver_license?: SortOrder
+    driver_license_image?: SortOrderInput | SortOrder
+    plate_number?: SortOrder
+    vehicle_image?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: Rider_credentialsCountOrderByAggregateInput
+    _avg?: Rider_credentialsAvgOrderByAggregateInput
+    _max?: Rider_credentialsMaxOrderByAggregateInput
+    _min?: Rider_credentialsMinOrderByAggregateInput
+    _sum?: Rider_credentialsSumOrderByAggregateInput
+  }
+
+  export type Rider_credentialsScalarWhereWithAggregatesInput = {
+    AND?: Rider_credentialsScalarWhereWithAggregatesInput | Rider_credentialsScalarWhereWithAggregatesInput[]
+    OR?: Rider_credentialsScalarWhereWithAggregatesInput[]
+    NOT?: Rider_credentialsScalarWhereWithAggregatesInput | Rider_credentialsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Rider_credentials"> | number
+    rider_id?: IntWithAggregatesFilter<"Rider_credentials"> | number
+    nin?: StringWithAggregatesFilter<"Rider_credentials"> | string
+    nin_image?: StringNullableWithAggregatesFilter<"Rider_credentials"> | string | null
+    driver_license?: StringWithAggregatesFilter<"Rider_credentials"> | string
+    driver_license_image?: StringNullableWithAggregatesFilter<"Rider_credentials"> | string | null
+    plate_number?: StringWithAggregatesFilter<"Rider_credentials"> | string
+    vehicle_image?: StringNullableWithAggregatesFilter<"Rider_credentials"> | string | null
+    status?: EnumStatusWithAggregatesFilter<"Rider_credentials"> | $Enums.Status
+    createdAt?: DateTimeWithAggregatesFilter<"Rider_credentials"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Rider_credentials"> | Date | string
+  }
+
   export type AdminCreateInput = {
     fullname: string
     username: string
@@ -8259,6 +11998,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     delivery?: DeliveryCreateNestedManyWithoutUserInput
+    rider_rating?: Rider_ratingCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8273,6 +12013,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     delivery?: DeliveryUncheckedCreateNestedManyWithoutUserInput
+    rider_rating?: Rider_ratingUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8286,6 +12027,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     delivery?: DeliveryUpdateManyWithoutUserNestedInput
+    rider_rating?: Rider_ratingUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8300,6 +12042,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     delivery?: DeliveryUncheckedUpdateManyWithoutUserNestedInput
+    rider_rating?: Rider_ratingUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8350,10 +12093,15 @@ export namespace Prisma {
     profile_image: string
     avg_rating?: number
     password: string
+    status?: $Enums.Status
+    is_verified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     delivery?: DeliveryCreateNestedManyWithoutRiderInput
     proposal?: ProposalCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsCreateNestedManyWithoutRiderInput
   }
 
   export type RiderUncheckedCreateInput = {
@@ -8367,10 +12115,15 @@ export namespace Prisma {
     profile_image: string
     avg_rating?: number
     password: string
+    status?: $Enums.Status
+    is_verified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     delivery?: DeliveryUncheckedCreateNestedManyWithoutRiderInput
     proposal?: ProposalUncheckedCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsUncheckedCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingUncheckedCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsUncheckedCreateNestedManyWithoutRiderInput
   }
 
   export type RiderUpdateInput = {
@@ -8381,12 +12134,17 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     delivery?: DeliveryUpdateManyWithoutRiderNestedInput
     proposal?: ProposalUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUpdateManyWithoutRiderNestedInput
   }
 
   export type RiderUncheckedUpdateInput = {
@@ -8398,12 +12156,17 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     delivery?: DeliveryUncheckedUpdateManyWithoutRiderNestedInput
     proposal?: ProposalUncheckedUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUncheckedUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUncheckedUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUncheckedUpdateManyWithoutRiderNestedInput
   }
 
   export type RiderCreateManyInput = {
@@ -8417,6 +12180,8 @@ export namespace Prisma {
     profile_image: string
     avg_rating?: number
     password: string
+    status?: $Enums.Status
+    is_verified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8429,8 +12194,10 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8444,8 +12211,10 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8458,11 +12227,13 @@ export namespace Prisma {
     estimated_delivery_price: string
     package_image: string
     landmark: string
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutDeliveryInput
     rider?: RiderCreateNestedOneWithoutDeliveryInput
     proposal?: ProposalCreateNestedManyWithoutDeliverInput
@@ -8479,11 +12250,13 @@ export namespace Prisma {
     package_image: string
     landmark: string
     rider_id?: number | null
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     proposal?: ProposalUncheckedCreateNestedManyWithoutDeliverInput
   }
 
@@ -8495,11 +12268,13 @@ export namespace Prisma {
     estimated_delivery_price?: StringFieldUpdateOperationsInput | string
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutDeliveryNestedInput
     rider?: RiderUpdateOneWithoutDeliveryNestedInput
     proposal?: ProposalUpdateManyWithoutDeliverNestedInput
@@ -8516,11 +12291,13 @@ export namespace Prisma {
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
     rider_id?: NullableIntFieldUpdateOperationsInput | number | null
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     proposal?: ProposalUncheckedUpdateManyWithoutDeliverNestedInput
   }
 
@@ -8535,11 +12312,13 @@ export namespace Prisma {
     package_image: string
     landmark: string
     rider_id?: number | null
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type DeliveryUpdateManyMutationInput = {
@@ -8550,11 +12329,13 @@ export namespace Prisma {
     estimated_delivery_price?: StringFieldUpdateOperationsInput | string
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type DeliveryUncheckedUpdateManyInput = {
@@ -8568,11 +12349,13 @@ export namespace Prisma {
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
     rider_id?: NullableIntFieldUpdateOperationsInput | number | null
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ProposalCreateInput = {
@@ -8667,6 +12450,231 @@ export namespace Prisma {
   export type Operating_areasUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Bank_detailsCreateInput = {
+    bank_name: string
+    account_name: string
+    account_number: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rider: RiderCreateNestedOneWithoutBank_detailsInput
+  }
+
+  export type Bank_detailsUncheckedCreateInput = {
+    id?: number
+    rider_id: number
+    bank_name: string
+    account_name: string
+    account_number: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Bank_detailsUpdateInput = {
+    bank_name?: StringFieldUpdateOperationsInput | string
+    account_name?: StringFieldUpdateOperationsInput | string
+    account_number?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rider?: RiderUpdateOneRequiredWithoutBank_detailsNestedInput
+  }
+
+  export type Bank_detailsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
+    account_name?: StringFieldUpdateOperationsInput | string
+    account_number?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Bank_detailsCreateManyInput = {
+    id?: number
+    rider_id: number
+    bank_name: string
+    account_name: string
+    account_number: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Bank_detailsUpdateManyMutationInput = {
+    bank_name?: StringFieldUpdateOperationsInput | string
+    account_name?: StringFieldUpdateOperationsInput | string
+    account_number?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Bank_detailsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
+    account_name?: StringFieldUpdateOperationsInput | string
+    account_number?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_ratingCreateInput = {
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rider: RiderCreateNestedOneWithoutRider_ratingInput
+    user: UserCreateNestedOneWithoutRider_ratingInput
+  }
+
+  export type Rider_ratingUncheckedCreateInput = {
+    id?: number
+    rider_id: number
+    user_id: number
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_ratingUpdateInput = {
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rider?: RiderUpdateOneRequiredWithoutRider_ratingNestedInput
+    user?: UserUpdateOneRequiredWithoutRider_ratingNestedInput
+  }
+
+  export type Rider_ratingUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_ratingCreateManyInput = {
+    id?: number
+    rider_id: number
+    user_id: number
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_ratingUpdateManyMutationInput = {
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_ratingUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_credentialsCreateInput = {
+    nin: string
+    nin_image?: string | null
+    driver_license: string
+    driver_license_image?: string | null
+    plate_number: string
+    vehicle_image?: string | null
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rider: RiderCreateNestedOneWithoutRider_credentialsInput
+  }
+
+  export type Rider_credentialsUncheckedCreateInput = {
+    id?: number
+    rider_id: number
+    nin: string
+    nin_image?: string | null
+    driver_license: string
+    driver_license_image?: string | null
+    plate_number: string
+    vehicle_image?: string | null
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_credentialsUpdateInput = {
+    nin?: StringFieldUpdateOperationsInput | string
+    nin_image?: NullableStringFieldUpdateOperationsInput | string | null
+    driver_license?: StringFieldUpdateOperationsInput | string
+    driver_license_image?: NullableStringFieldUpdateOperationsInput | string | null
+    plate_number?: StringFieldUpdateOperationsInput | string
+    vehicle_image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rider?: RiderUpdateOneRequiredWithoutRider_credentialsNestedInput
+  }
+
+  export type Rider_credentialsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    nin?: StringFieldUpdateOperationsInput | string
+    nin_image?: NullableStringFieldUpdateOperationsInput | string | null
+    driver_license?: StringFieldUpdateOperationsInput | string
+    driver_license_image?: NullableStringFieldUpdateOperationsInput | string | null
+    plate_number?: StringFieldUpdateOperationsInput | string
+    vehicle_image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_credentialsCreateManyInput = {
+    id?: number
+    rider_id: number
+    nin: string
+    nin_image?: string | null
+    driver_license: string
+    driver_license_image?: string | null
+    plate_number: string
+    vehicle_image?: string | null
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_credentialsUpdateManyMutationInput = {
+    nin?: StringFieldUpdateOperationsInput | string
+    nin_image?: NullableStringFieldUpdateOperationsInput | string | null
+    driver_license?: StringFieldUpdateOperationsInput | string
+    driver_license_image?: NullableStringFieldUpdateOperationsInput | string | null
+    plate_number?: StringFieldUpdateOperationsInput | string
+    vehicle_image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_credentialsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    nin?: StringFieldUpdateOperationsInput | string
+    nin_image?: NullableStringFieldUpdateOperationsInput | string | null
+    driver_license?: StringFieldUpdateOperationsInput | string
+    driver_license_image?: NullableStringFieldUpdateOperationsInput | string | null
+    plate_number?: StringFieldUpdateOperationsInput | string
+    vehicle_image?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8824,7 +12832,17 @@ export namespace Prisma {
     none?: DeliveryWhereInput
   }
 
+  export type Rider_ratingListRelationFilter = {
+    every?: Rider_ratingWhereInput
+    some?: Rider_ratingWhereInput
+    none?: Rider_ratingWhereInput
+  }
+
   export type DeliveryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Rider_ratingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8897,13 +12915,56 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type EnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type ProposalListRelationFilter = {
     every?: ProposalWhereInput
     some?: ProposalWhereInput
     none?: ProposalWhereInput
   }
 
+  export type Bank_detailsListRelationFilter = {
+    every?: Bank_detailsWhereInput
+    some?: Bank_detailsWhereInput
+    none?: Bank_detailsWhereInput
+  }
+
+  export type Rider_credentialsListRelationFilter = {
+    every?: Rider_credentialsWhereInput
+    some?: Rider_credentialsWhereInput
+    none?: Rider_credentialsWhereInput
+  }
+
   export type ProposalOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Bank_detailsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type Rider_credentialsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8918,6 +12979,8 @@ export namespace Prisma {
     profile_image?: SortOrder
     avg_rating?: SortOrder
     password?: SortOrder
+    status?: SortOrder
+    is_verified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8937,6 +13000,8 @@ export namespace Prisma {
     profile_image?: SortOrder
     avg_rating?: SortOrder
     password?: SortOrder
+    status?: SortOrder
+    is_verified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8951,6 +13016,8 @@ export namespace Prisma {
     profile_image?: SortOrder
     avg_rating?: SortOrder
     password?: SortOrder
+    status?: SortOrder
+    is_verified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8985,6 +13052,40 @@ export namespace Prisma {
     _max?: NestedJsonFilter<$PrismaModel>
   }
 
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -8995,17 +13096,27 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
+  export type JsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type EnumStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type UserRelationFilter = {
@@ -9034,17 +13145,20 @@ export namespace Prisma {
     package_image?: SortOrder
     landmark?: SortOrder
     rider_id?: SortOrder
+    delivery_code?: SortOrder
     is_pickedup?: SortOrder
     is_delivered?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    sent_proposal_rider_id?: SortOrder
   }
 
   export type DeliveryAvgOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
     rider_id?: SortOrder
+    delivery_code?: SortOrder
   }
 
   export type DeliveryMaxOrderByAggregateInput = {
@@ -9058,6 +13172,7 @@ export namespace Prisma {
     package_image?: SortOrder
     landmark?: SortOrder
     rider_id?: SortOrder
+    delivery_code?: SortOrder
     is_pickedup?: SortOrder
     is_delivered?: SortOrder
     status?: SortOrder
@@ -9076,6 +13191,7 @@ export namespace Prisma {
     package_image?: SortOrder
     landmark?: SortOrder
     rider_id?: SortOrder
+    delivery_code?: SortOrder
     is_pickedup?: SortOrder
     is_delivered?: SortOrder
     status?: SortOrder
@@ -9087,6 +13203,7 @@ export namespace Prisma {
     id?: SortOrder
     user_id?: SortOrder
     rider_id?: SortOrder
+    delivery_code?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9104,23 +13221,30 @@ export namespace Prisma {
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumStatusFilter<$PrismaModel>
-    _max?: NestedEnumStatusFilter<$PrismaModel>
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type RiderRelationFilter = {
@@ -9198,6 +13322,175 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type Bank_detailsCountOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    bank_name?: SortOrder
+    account_name?: SortOrder
+    account_number?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Bank_detailsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+  }
+
+  export type Bank_detailsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    bank_name?: SortOrder
+    account_name?: SortOrder
+    account_number?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Bank_detailsMinOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    bank_name?: SortOrder
+    account_name?: SortOrder
+    account_number?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Bank_detailsSumOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+  }
+
+  export type Rider_ratingCountOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    user_id?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Rider_ratingAvgOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    user_id?: SortOrder
+    rating?: SortOrder
+  }
+
+  export type Rider_ratingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    user_id?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Rider_ratingMinOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    user_id?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Rider_ratingSumOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    user_id?: SortOrder
+    rating?: SortOrder
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type Rider_credentialsCountOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    nin?: SortOrder
+    nin_image?: SortOrder
+    driver_license?: SortOrder
+    driver_license_image?: SortOrder
+    plate_number?: SortOrder
+    vehicle_image?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Rider_credentialsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+  }
+
+  export type Rider_credentialsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    nin?: SortOrder
+    nin_image?: SortOrder
+    driver_license?: SortOrder
+    driver_license_image?: SortOrder
+    plate_number?: SortOrder
+    vehicle_image?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Rider_credentialsMinOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+    nin?: SortOrder
+    nin_image?: SortOrder
+    driver_license?: SortOrder
+    driver_license_image?: SortOrder
+    plate_number?: SortOrder
+    vehicle_image?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Rider_credentialsSumOrderByAggregateInput = {
+    id?: SortOrder
+    rider_id?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -9225,11 +13518,25 @@ export namespace Prisma {
     connect?: DeliveryWhereUniqueInput | DeliveryWhereUniqueInput[]
   }
 
+  export type Rider_ratingCreateNestedManyWithoutUserInput = {
+    create?: XOR<Rider_ratingCreateWithoutUserInput, Rider_ratingUncheckedCreateWithoutUserInput> | Rider_ratingCreateWithoutUserInput[] | Rider_ratingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutUserInput | Rider_ratingCreateOrConnectWithoutUserInput[]
+    createMany?: Rider_ratingCreateManyUserInputEnvelope
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+  }
+
   export type DeliveryUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<DeliveryCreateWithoutUserInput, DeliveryUncheckedCreateWithoutUserInput> | DeliveryCreateWithoutUserInput[] | DeliveryUncheckedCreateWithoutUserInput[]
     connectOrCreate?: DeliveryCreateOrConnectWithoutUserInput | DeliveryCreateOrConnectWithoutUserInput[]
     createMany?: DeliveryCreateManyUserInputEnvelope
     connect?: DeliveryWhereUniqueInput | DeliveryWhereUniqueInput[]
+  }
+
+  export type Rider_ratingUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<Rider_ratingCreateWithoutUserInput, Rider_ratingUncheckedCreateWithoutUserInput> | Rider_ratingCreateWithoutUserInput[] | Rider_ratingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutUserInput | Rider_ratingCreateOrConnectWithoutUserInput[]
+    createMany?: Rider_ratingCreateManyUserInputEnvelope
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
   }
 
   export type DeliveryUpdateManyWithoutUserNestedInput = {
@@ -9246,6 +13553,20 @@ export namespace Prisma {
     deleteMany?: DeliveryScalarWhereInput | DeliveryScalarWhereInput[]
   }
 
+  export type Rider_ratingUpdateManyWithoutUserNestedInput = {
+    create?: XOR<Rider_ratingCreateWithoutUserInput, Rider_ratingUncheckedCreateWithoutUserInput> | Rider_ratingCreateWithoutUserInput[] | Rider_ratingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutUserInput | Rider_ratingCreateOrConnectWithoutUserInput[]
+    upsert?: Rider_ratingUpsertWithWhereUniqueWithoutUserInput | Rider_ratingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: Rider_ratingCreateManyUserInputEnvelope
+    set?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    disconnect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    delete?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    update?: Rider_ratingUpdateWithWhereUniqueWithoutUserInput | Rider_ratingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: Rider_ratingUpdateManyWithWhereWithoutUserInput | Rider_ratingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: Rider_ratingScalarWhereInput | Rider_ratingScalarWhereInput[]
+  }
+
   export type DeliveryUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<DeliveryCreateWithoutUserInput, DeliveryUncheckedCreateWithoutUserInput> | DeliveryCreateWithoutUserInput[] | DeliveryUncheckedCreateWithoutUserInput[]
     connectOrCreate?: DeliveryCreateOrConnectWithoutUserInput | DeliveryCreateOrConnectWithoutUserInput[]
@@ -9258,6 +13579,20 @@ export namespace Prisma {
     update?: DeliveryUpdateWithWhereUniqueWithoutUserInput | DeliveryUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: DeliveryUpdateManyWithWhereWithoutUserInput | DeliveryUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: DeliveryScalarWhereInput | DeliveryScalarWhereInput[]
+  }
+
+  export type Rider_ratingUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<Rider_ratingCreateWithoutUserInput, Rider_ratingUncheckedCreateWithoutUserInput> | Rider_ratingCreateWithoutUserInput[] | Rider_ratingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutUserInput | Rider_ratingCreateOrConnectWithoutUserInput[]
+    upsert?: Rider_ratingUpsertWithWhereUniqueWithoutUserInput | Rider_ratingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: Rider_ratingCreateManyUserInputEnvelope
+    set?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    disconnect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    delete?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    update?: Rider_ratingUpdateWithWhereUniqueWithoutUserInput | Rider_ratingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: Rider_ratingUpdateManyWithWhereWithoutUserInput | Rider_ratingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: Rider_ratingScalarWhereInput | Rider_ratingScalarWhereInput[]
   }
 
   export type DeliveryCreateNestedManyWithoutRiderInput = {
@@ -9274,6 +13609,27 @@ export namespace Prisma {
     connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
   }
 
+  export type Bank_detailsCreateNestedManyWithoutRiderInput = {
+    create?: XOR<Bank_detailsCreateWithoutRiderInput, Bank_detailsUncheckedCreateWithoutRiderInput> | Bank_detailsCreateWithoutRiderInput[] | Bank_detailsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Bank_detailsCreateOrConnectWithoutRiderInput | Bank_detailsCreateOrConnectWithoutRiderInput[]
+    createMany?: Bank_detailsCreateManyRiderInputEnvelope
+    connect?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+  }
+
+  export type Rider_ratingCreateNestedManyWithoutRiderInput = {
+    create?: XOR<Rider_ratingCreateWithoutRiderInput, Rider_ratingUncheckedCreateWithoutRiderInput> | Rider_ratingCreateWithoutRiderInput[] | Rider_ratingUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutRiderInput | Rider_ratingCreateOrConnectWithoutRiderInput[]
+    createMany?: Rider_ratingCreateManyRiderInputEnvelope
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+  }
+
+  export type Rider_credentialsCreateNestedManyWithoutRiderInput = {
+    create?: XOR<Rider_credentialsCreateWithoutRiderInput, Rider_credentialsUncheckedCreateWithoutRiderInput> | Rider_credentialsCreateWithoutRiderInput[] | Rider_credentialsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_credentialsCreateOrConnectWithoutRiderInput | Rider_credentialsCreateOrConnectWithoutRiderInput[]
+    createMany?: Rider_credentialsCreateManyRiderInputEnvelope
+    connect?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+  }
+
   export type DeliveryUncheckedCreateNestedManyWithoutRiderInput = {
     create?: XOR<DeliveryCreateWithoutRiderInput, DeliveryUncheckedCreateWithoutRiderInput> | DeliveryCreateWithoutRiderInput[] | DeliveryUncheckedCreateWithoutRiderInput[]
     connectOrCreate?: DeliveryCreateOrConnectWithoutRiderInput | DeliveryCreateOrConnectWithoutRiderInput[]
@@ -9286,6 +13642,43 @@ export namespace Prisma {
     connectOrCreate?: ProposalCreateOrConnectWithoutRiderInput | ProposalCreateOrConnectWithoutRiderInput[]
     createMany?: ProposalCreateManyRiderInputEnvelope
     connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
+  }
+
+  export type Bank_detailsUncheckedCreateNestedManyWithoutRiderInput = {
+    create?: XOR<Bank_detailsCreateWithoutRiderInput, Bank_detailsUncheckedCreateWithoutRiderInput> | Bank_detailsCreateWithoutRiderInput[] | Bank_detailsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Bank_detailsCreateOrConnectWithoutRiderInput | Bank_detailsCreateOrConnectWithoutRiderInput[]
+    createMany?: Bank_detailsCreateManyRiderInputEnvelope
+    connect?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+  }
+
+  export type Rider_ratingUncheckedCreateNestedManyWithoutRiderInput = {
+    create?: XOR<Rider_ratingCreateWithoutRiderInput, Rider_ratingUncheckedCreateWithoutRiderInput> | Rider_ratingCreateWithoutRiderInput[] | Rider_ratingUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutRiderInput | Rider_ratingCreateOrConnectWithoutRiderInput[]
+    createMany?: Rider_ratingCreateManyRiderInputEnvelope
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+  }
+
+  export type Rider_credentialsUncheckedCreateNestedManyWithoutRiderInput = {
+    create?: XOR<Rider_credentialsCreateWithoutRiderInput, Rider_credentialsUncheckedCreateWithoutRiderInput> | Rider_credentialsCreateWithoutRiderInput[] | Rider_credentialsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_credentialsCreateOrConnectWithoutRiderInput | Rider_credentialsCreateOrConnectWithoutRiderInput[]
+    createMany?: Rider_credentialsCreateManyRiderInputEnvelope
+    connect?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type DeliveryUpdateManyWithoutRiderNestedInput = {
@@ -9316,6 +13709,48 @@ export namespace Prisma {
     deleteMany?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
   }
 
+  export type Bank_detailsUpdateManyWithoutRiderNestedInput = {
+    create?: XOR<Bank_detailsCreateWithoutRiderInput, Bank_detailsUncheckedCreateWithoutRiderInput> | Bank_detailsCreateWithoutRiderInput[] | Bank_detailsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Bank_detailsCreateOrConnectWithoutRiderInput | Bank_detailsCreateOrConnectWithoutRiderInput[]
+    upsert?: Bank_detailsUpsertWithWhereUniqueWithoutRiderInput | Bank_detailsUpsertWithWhereUniqueWithoutRiderInput[]
+    createMany?: Bank_detailsCreateManyRiderInputEnvelope
+    set?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    disconnect?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    delete?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    connect?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    update?: Bank_detailsUpdateWithWhereUniqueWithoutRiderInput | Bank_detailsUpdateWithWhereUniqueWithoutRiderInput[]
+    updateMany?: Bank_detailsUpdateManyWithWhereWithoutRiderInput | Bank_detailsUpdateManyWithWhereWithoutRiderInput[]
+    deleteMany?: Bank_detailsScalarWhereInput | Bank_detailsScalarWhereInput[]
+  }
+
+  export type Rider_ratingUpdateManyWithoutRiderNestedInput = {
+    create?: XOR<Rider_ratingCreateWithoutRiderInput, Rider_ratingUncheckedCreateWithoutRiderInput> | Rider_ratingCreateWithoutRiderInput[] | Rider_ratingUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutRiderInput | Rider_ratingCreateOrConnectWithoutRiderInput[]
+    upsert?: Rider_ratingUpsertWithWhereUniqueWithoutRiderInput | Rider_ratingUpsertWithWhereUniqueWithoutRiderInput[]
+    createMany?: Rider_ratingCreateManyRiderInputEnvelope
+    set?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    disconnect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    delete?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    update?: Rider_ratingUpdateWithWhereUniqueWithoutRiderInput | Rider_ratingUpdateWithWhereUniqueWithoutRiderInput[]
+    updateMany?: Rider_ratingUpdateManyWithWhereWithoutRiderInput | Rider_ratingUpdateManyWithWhereWithoutRiderInput[]
+    deleteMany?: Rider_ratingScalarWhereInput | Rider_ratingScalarWhereInput[]
+  }
+
+  export type Rider_credentialsUpdateManyWithoutRiderNestedInput = {
+    create?: XOR<Rider_credentialsCreateWithoutRiderInput, Rider_credentialsUncheckedCreateWithoutRiderInput> | Rider_credentialsCreateWithoutRiderInput[] | Rider_credentialsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_credentialsCreateOrConnectWithoutRiderInput | Rider_credentialsCreateOrConnectWithoutRiderInput[]
+    upsert?: Rider_credentialsUpsertWithWhereUniqueWithoutRiderInput | Rider_credentialsUpsertWithWhereUniqueWithoutRiderInput[]
+    createMany?: Rider_credentialsCreateManyRiderInputEnvelope
+    set?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    disconnect?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    delete?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    connect?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    update?: Rider_credentialsUpdateWithWhereUniqueWithoutRiderInput | Rider_credentialsUpdateWithWhereUniqueWithoutRiderInput[]
+    updateMany?: Rider_credentialsUpdateManyWithWhereWithoutRiderInput | Rider_credentialsUpdateManyWithWhereWithoutRiderInput[]
+    deleteMany?: Rider_credentialsScalarWhereInput | Rider_credentialsScalarWhereInput[]
+  }
+
   export type DeliveryUncheckedUpdateManyWithoutRiderNestedInput = {
     create?: XOR<DeliveryCreateWithoutRiderInput, DeliveryUncheckedCreateWithoutRiderInput> | DeliveryCreateWithoutRiderInput[] | DeliveryUncheckedCreateWithoutRiderInput[]
     connectOrCreate?: DeliveryCreateOrConnectWithoutRiderInput | DeliveryCreateOrConnectWithoutRiderInput[]
@@ -9344,6 +13779,48 @@ export namespace Prisma {
     deleteMany?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
   }
 
+  export type Bank_detailsUncheckedUpdateManyWithoutRiderNestedInput = {
+    create?: XOR<Bank_detailsCreateWithoutRiderInput, Bank_detailsUncheckedCreateWithoutRiderInput> | Bank_detailsCreateWithoutRiderInput[] | Bank_detailsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Bank_detailsCreateOrConnectWithoutRiderInput | Bank_detailsCreateOrConnectWithoutRiderInput[]
+    upsert?: Bank_detailsUpsertWithWhereUniqueWithoutRiderInput | Bank_detailsUpsertWithWhereUniqueWithoutRiderInput[]
+    createMany?: Bank_detailsCreateManyRiderInputEnvelope
+    set?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    disconnect?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    delete?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    connect?: Bank_detailsWhereUniqueInput | Bank_detailsWhereUniqueInput[]
+    update?: Bank_detailsUpdateWithWhereUniqueWithoutRiderInput | Bank_detailsUpdateWithWhereUniqueWithoutRiderInput[]
+    updateMany?: Bank_detailsUpdateManyWithWhereWithoutRiderInput | Bank_detailsUpdateManyWithWhereWithoutRiderInput[]
+    deleteMany?: Bank_detailsScalarWhereInput | Bank_detailsScalarWhereInput[]
+  }
+
+  export type Rider_ratingUncheckedUpdateManyWithoutRiderNestedInput = {
+    create?: XOR<Rider_ratingCreateWithoutRiderInput, Rider_ratingUncheckedCreateWithoutRiderInput> | Rider_ratingCreateWithoutRiderInput[] | Rider_ratingUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_ratingCreateOrConnectWithoutRiderInput | Rider_ratingCreateOrConnectWithoutRiderInput[]
+    upsert?: Rider_ratingUpsertWithWhereUniqueWithoutRiderInput | Rider_ratingUpsertWithWhereUniqueWithoutRiderInput[]
+    createMany?: Rider_ratingCreateManyRiderInputEnvelope
+    set?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    disconnect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    delete?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    connect?: Rider_ratingWhereUniqueInput | Rider_ratingWhereUniqueInput[]
+    update?: Rider_ratingUpdateWithWhereUniqueWithoutRiderInput | Rider_ratingUpdateWithWhereUniqueWithoutRiderInput[]
+    updateMany?: Rider_ratingUpdateManyWithWhereWithoutRiderInput | Rider_ratingUpdateManyWithWhereWithoutRiderInput[]
+    deleteMany?: Rider_ratingScalarWhereInput | Rider_ratingScalarWhereInput[]
+  }
+
+  export type Rider_credentialsUncheckedUpdateManyWithoutRiderNestedInput = {
+    create?: XOR<Rider_credentialsCreateWithoutRiderInput, Rider_credentialsUncheckedCreateWithoutRiderInput> | Rider_credentialsCreateWithoutRiderInput[] | Rider_credentialsUncheckedCreateWithoutRiderInput[]
+    connectOrCreate?: Rider_credentialsCreateOrConnectWithoutRiderInput | Rider_credentialsCreateOrConnectWithoutRiderInput[]
+    upsert?: Rider_credentialsUpsertWithWhereUniqueWithoutRiderInput | Rider_credentialsUpsertWithWhereUniqueWithoutRiderInput[]
+    createMany?: Rider_credentialsCreateManyRiderInputEnvelope
+    set?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    disconnect?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    delete?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    connect?: Rider_credentialsWhereUniqueInput | Rider_credentialsWhereUniqueInput[]
+    update?: Rider_credentialsUpdateWithWhereUniqueWithoutRiderInput | Rider_credentialsUpdateWithWhereUniqueWithoutRiderInput[]
+    updateMany?: Rider_credentialsUpdateManyWithWhereWithoutRiderInput | Rider_credentialsUpdateManyWithWhereWithoutRiderInput[]
+    deleteMany?: Rider_credentialsScalarWhereInput | Rider_credentialsScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutDeliveryInput = {
     create?: XOR<UserCreateWithoutDeliveryInput, UserUncheckedCreateWithoutDeliveryInput>
     connectOrCreate?: UserCreateOrConnectWithoutDeliveryInput
@@ -9370,12 +13847,12 @@ export namespace Prisma {
     connect?: ProposalWhereUniqueInput | ProposalWhereUniqueInput[]
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
-  export type EnumStatusFieldUpdateOperationsInput = {
-    set?: $Enums.Status
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UserUpdateOneRequiredWithoutDeliveryNestedInput = {
@@ -9408,14 +13885,6 @@ export namespace Prisma {
     update?: ProposalUpdateWithWhereUniqueWithoutDeliverInput | ProposalUpdateWithWhereUniqueWithoutDeliverInput[]
     updateMany?: ProposalUpdateManyWithWhereWithoutDeliverInput | ProposalUpdateManyWithWhereWithoutDeliverInput[]
     deleteMany?: ProposalScalarWhereInput | ProposalScalarWhereInput[]
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type ProposalUncheckedUpdateManyWithoutDeliverNestedInput = {
@@ -9458,6 +13927,66 @@ export namespace Prisma {
     upsert?: DeliveryUpsertWithoutProposalInput
     connect?: DeliveryWhereUniqueInput
     update?: XOR<XOR<DeliveryUpdateToOneWithWhereWithoutProposalInput, DeliveryUpdateWithoutProposalInput>, DeliveryUncheckedUpdateWithoutProposalInput>
+  }
+
+  export type RiderCreateNestedOneWithoutBank_detailsInput = {
+    create?: XOR<RiderCreateWithoutBank_detailsInput, RiderUncheckedCreateWithoutBank_detailsInput>
+    connectOrCreate?: RiderCreateOrConnectWithoutBank_detailsInput
+    connect?: RiderWhereUniqueInput
+  }
+
+  export type RiderUpdateOneRequiredWithoutBank_detailsNestedInput = {
+    create?: XOR<RiderCreateWithoutBank_detailsInput, RiderUncheckedCreateWithoutBank_detailsInput>
+    connectOrCreate?: RiderCreateOrConnectWithoutBank_detailsInput
+    upsert?: RiderUpsertWithoutBank_detailsInput
+    connect?: RiderWhereUniqueInput
+    update?: XOR<XOR<RiderUpdateToOneWithWhereWithoutBank_detailsInput, RiderUpdateWithoutBank_detailsInput>, RiderUncheckedUpdateWithoutBank_detailsInput>
+  }
+
+  export type RiderCreateNestedOneWithoutRider_ratingInput = {
+    create?: XOR<RiderCreateWithoutRider_ratingInput, RiderUncheckedCreateWithoutRider_ratingInput>
+    connectOrCreate?: RiderCreateOrConnectWithoutRider_ratingInput
+    connect?: RiderWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutRider_ratingInput = {
+    create?: XOR<UserCreateWithoutRider_ratingInput, UserUncheckedCreateWithoutRider_ratingInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRider_ratingInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type RiderUpdateOneRequiredWithoutRider_ratingNestedInput = {
+    create?: XOR<RiderCreateWithoutRider_ratingInput, RiderUncheckedCreateWithoutRider_ratingInput>
+    connectOrCreate?: RiderCreateOrConnectWithoutRider_ratingInput
+    upsert?: RiderUpsertWithoutRider_ratingInput
+    connect?: RiderWhereUniqueInput
+    update?: XOR<XOR<RiderUpdateToOneWithWhereWithoutRider_ratingInput, RiderUpdateWithoutRider_ratingInput>, RiderUncheckedUpdateWithoutRider_ratingInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutRider_ratingNestedInput = {
+    create?: XOR<UserCreateWithoutRider_ratingInput, UserUncheckedCreateWithoutRider_ratingInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRider_ratingInput
+    upsert?: UserUpsertWithoutRider_ratingInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRider_ratingInput, UserUpdateWithoutRider_ratingInput>, UserUncheckedUpdateWithoutRider_ratingInput>
+  }
+
+  export type RiderCreateNestedOneWithoutRider_credentialsInput = {
+    create?: XOR<RiderCreateWithoutRider_credentialsInput, RiderUncheckedCreateWithoutRider_credentialsInput>
+    connectOrCreate?: RiderCreateOrConnectWithoutRider_credentialsInput
+    connect?: RiderWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type RiderUpdateOneRequiredWithoutRider_credentialsNestedInput = {
+    create?: XOR<RiderCreateWithoutRider_credentialsInput, RiderUncheckedCreateWithoutRider_credentialsInput>
+    connectOrCreate?: RiderCreateOrConnectWithoutRider_credentialsInput
+    upsert?: RiderUpsertWithoutRider_credentialsInput
+    connect?: RiderWhereUniqueInput
+    update?: XOR<XOR<RiderUpdateToOneWithWhereWithoutRider_credentialsInput, RiderUpdateWithoutRider_credentialsInput>, RiderUncheckedUpdateWithoutRider_credentialsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -9570,6 +14099,18 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
+
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
   export type NestedJsonFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -9593,6 +14134,40 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -9602,18 +14177,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedEnumStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9642,23 +14205,58 @@ export namespace Prisma {
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumStatusFilter<$PrismaModel>
-    _max?: NestedEnumStatusFilter<$PrismaModel>
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type DeliveryCreateWithoutUserInput = {
@@ -9669,11 +14267,13 @@ export namespace Prisma {
     estimated_delivery_price: string
     package_image: string
     landmark: string
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     rider?: RiderCreateNestedOneWithoutDeliveryInput
     proposal?: ProposalCreateNestedManyWithoutDeliverInput
   }
@@ -9688,11 +14288,13 @@ export namespace Prisma {
     package_image: string
     landmark: string
     rider_id?: number | null
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     proposal?: ProposalUncheckedCreateNestedManyWithoutDeliverInput
   }
 
@@ -9703,6 +14305,33 @@ export namespace Prisma {
 
   export type DeliveryCreateManyUserInputEnvelope = {
     data: DeliveryCreateManyUserInput | DeliveryCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Rider_ratingCreateWithoutUserInput = {
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rider: RiderCreateNestedOneWithoutRider_ratingInput
+  }
+
+  export type Rider_ratingUncheckedCreateWithoutUserInput = {
+    id?: number
+    rider_id: number
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_ratingCreateOrConnectWithoutUserInput = {
+    where: Rider_ratingWhereUniqueInput
+    create: XOR<Rider_ratingCreateWithoutUserInput, Rider_ratingUncheckedCreateWithoutUserInput>
+  }
+
+  export type Rider_ratingCreateManyUserInputEnvelope = {
+    data: Rider_ratingCreateManyUserInput | Rider_ratingCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -9736,11 +14365,42 @@ export namespace Prisma {
     package_image?: StringFilter<"Delivery"> | string
     landmark?: StringFilter<"Delivery"> | string
     rider_id?: IntNullableFilter<"Delivery"> | number | null
+    delivery_code?: IntNullableFilter<"Delivery"> | number | null
     is_pickedup?: BoolFilter<"Delivery"> | boolean
     is_delivered?: BoolFilter<"Delivery"> | boolean
     status?: EnumStatusFilter<"Delivery"> | $Enums.Status
     createdAt?: DateTimeFilter<"Delivery"> | Date | string
     updatedAt?: DateTimeFilter<"Delivery"> | Date | string
+    sent_proposal_rider_id?: JsonNullableFilter<"Delivery">
+  }
+
+  export type Rider_ratingUpsertWithWhereUniqueWithoutUserInput = {
+    where: Rider_ratingWhereUniqueInput
+    update: XOR<Rider_ratingUpdateWithoutUserInput, Rider_ratingUncheckedUpdateWithoutUserInput>
+    create: XOR<Rider_ratingCreateWithoutUserInput, Rider_ratingUncheckedCreateWithoutUserInput>
+  }
+
+  export type Rider_ratingUpdateWithWhereUniqueWithoutUserInput = {
+    where: Rider_ratingWhereUniqueInput
+    data: XOR<Rider_ratingUpdateWithoutUserInput, Rider_ratingUncheckedUpdateWithoutUserInput>
+  }
+
+  export type Rider_ratingUpdateManyWithWhereWithoutUserInput = {
+    where: Rider_ratingScalarWhereInput
+    data: XOR<Rider_ratingUpdateManyMutationInput, Rider_ratingUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type Rider_ratingScalarWhereInput = {
+    AND?: Rider_ratingScalarWhereInput | Rider_ratingScalarWhereInput[]
+    OR?: Rider_ratingScalarWhereInput[]
+    NOT?: Rider_ratingScalarWhereInput | Rider_ratingScalarWhereInput[]
+    id?: IntFilter<"Rider_rating"> | number
+    rider_id?: IntFilter<"Rider_rating"> | number
+    user_id?: IntFilter<"Rider_rating"> | number
+    rating?: IntFilter<"Rider_rating"> | number
+    review?: StringFilter<"Rider_rating"> | string
+    createdAt?: DateTimeFilter<"Rider_rating"> | Date | string
+    updatedAt?: DateTimeFilter<"Rider_rating"> | Date | string
   }
 
   export type DeliveryCreateWithoutRiderInput = {
@@ -9751,11 +14411,13 @@ export namespace Prisma {
     estimated_delivery_price: string
     package_image: string
     landmark: string
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutDeliveryInput
     proposal?: ProposalCreateNestedManyWithoutDeliverInput
   }
@@ -9770,11 +14432,13 @@ export namespace Prisma {
     estimated_delivery_price: string
     package_image: string
     landmark: string
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     proposal?: ProposalUncheckedCreateNestedManyWithoutDeliverInput
   }
 
@@ -9806,6 +14470,95 @@ export namespace Prisma {
 
   export type ProposalCreateManyRiderInputEnvelope = {
     data: ProposalCreateManyRiderInput | ProposalCreateManyRiderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Bank_detailsCreateWithoutRiderInput = {
+    bank_name: string
+    account_name: string
+    account_number: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Bank_detailsUncheckedCreateWithoutRiderInput = {
+    id?: number
+    bank_name: string
+    account_name: string
+    account_number: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Bank_detailsCreateOrConnectWithoutRiderInput = {
+    where: Bank_detailsWhereUniqueInput
+    create: XOR<Bank_detailsCreateWithoutRiderInput, Bank_detailsUncheckedCreateWithoutRiderInput>
+  }
+
+  export type Bank_detailsCreateManyRiderInputEnvelope = {
+    data: Bank_detailsCreateManyRiderInput | Bank_detailsCreateManyRiderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Rider_ratingCreateWithoutRiderInput = {
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutRider_ratingInput
+  }
+
+  export type Rider_ratingUncheckedCreateWithoutRiderInput = {
+    id?: number
+    user_id: number
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_ratingCreateOrConnectWithoutRiderInput = {
+    where: Rider_ratingWhereUniqueInput
+    create: XOR<Rider_ratingCreateWithoutRiderInput, Rider_ratingUncheckedCreateWithoutRiderInput>
+  }
+
+  export type Rider_ratingCreateManyRiderInputEnvelope = {
+    data: Rider_ratingCreateManyRiderInput | Rider_ratingCreateManyRiderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Rider_credentialsCreateWithoutRiderInput = {
+    nin: string
+    nin_image?: string | null
+    driver_license: string
+    driver_license_image?: string | null
+    plate_number: string
+    vehicle_image?: string | null
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_credentialsUncheckedCreateWithoutRiderInput = {
+    id?: number
+    nin: string
+    nin_image?: string | null
+    driver_license: string
+    driver_license_image?: string | null
+    plate_number: string
+    vehicle_image?: string | null
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_credentialsCreateOrConnectWithoutRiderInput = {
+    where: Rider_credentialsWhereUniqueInput
+    create: XOR<Rider_credentialsCreateWithoutRiderInput, Rider_credentialsUncheckedCreateWithoutRiderInput>
+  }
+
+  export type Rider_credentialsCreateManyRiderInputEnvelope = {
+    data: Rider_credentialsCreateManyRiderInput | Rider_credentialsCreateManyRiderInput[]
     skipDuplicates?: boolean
   }
 
@@ -9851,6 +14604,84 @@ export namespace Prisma {
     status?: EnumStatusFilter<"Proposal"> | $Enums.Status
   }
 
+  export type Bank_detailsUpsertWithWhereUniqueWithoutRiderInput = {
+    where: Bank_detailsWhereUniqueInput
+    update: XOR<Bank_detailsUpdateWithoutRiderInput, Bank_detailsUncheckedUpdateWithoutRiderInput>
+    create: XOR<Bank_detailsCreateWithoutRiderInput, Bank_detailsUncheckedCreateWithoutRiderInput>
+  }
+
+  export type Bank_detailsUpdateWithWhereUniqueWithoutRiderInput = {
+    where: Bank_detailsWhereUniqueInput
+    data: XOR<Bank_detailsUpdateWithoutRiderInput, Bank_detailsUncheckedUpdateWithoutRiderInput>
+  }
+
+  export type Bank_detailsUpdateManyWithWhereWithoutRiderInput = {
+    where: Bank_detailsScalarWhereInput
+    data: XOR<Bank_detailsUpdateManyMutationInput, Bank_detailsUncheckedUpdateManyWithoutRiderInput>
+  }
+
+  export type Bank_detailsScalarWhereInput = {
+    AND?: Bank_detailsScalarWhereInput | Bank_detailsScalarWhereInput[]
+    OR?: Bank_detailsScalarWhereInput[]
+    NOT?: Bank_detailsScalarWhereInput | Bank_detailsScalarWhereInput[]
+    id?: IntFilter<"Bank_details"> | number
+    rider_id?: IntFilter<"Bank_details"> | number
+    bank_name?: StringFilter<"Bank_details"> | string
+    account_name?: StringFilter<"Bank_details"> | string
+    account_number?: StringFilter<"Bank_details"> | string
+    createdAt?: DateTimeFilter<"Bank_details"> | Date | string
+    updatedAt?: DateTimeFilter<"Bank_details"> | Date | string
+  }
+
+  export type Rider_ratingUpsertWithWhereUniqueWithoutRiderInput = {
+    where: Rider_ratingWhereUniqueInput
+    update: XOR<Rider_ratingUpdateWithoutRiderInput, Rider_ratingUncheckedUpdateWithoutRiderInput>
+    create: XOR<Rider_ratingCreateWithoutRiderInput, Rider_ratingUncheckedCreateWithoutRiderInput>
+  }
+
+  export type Rider_ratingUpdateWithWhereUniqueWithoutRiderInput = {
+    where: Rider_ratingWhereUniqueInput
+    data: XOR<Rider_ratingUpdateWithoutRiderInput, Rider_ratingUncheckedUpdateWithoutRiderInput>
+  }
+
+  export type Rider_ratingUpdateManyWithWhereWithoutRiderInput = {
+    where: Rider_ratingScalarWhereInput
+    data: XOR<Rider_ratingUpdateManyMutationInput, Rider_ratingUncheckedUpdateManyWithoutRiderInput>
+  }
+
+  export type Rider_credentialsUpsertWithWhereUniqueWithoutRiderInput = {
+    where: Rider_credentialsWhereUniqueInput
+    update: XOR<Rider_credentialsUpdateWithoutRiderInput, Rider_credentialsUncheckedUpdateWithoutRiderInput>
+    create: XOR<Rider_credentialsCreateWithoutRiderInput, Rider_credentialsUncheckedCreateWithoutRiderInput>
+  }
+
+  export type Rider_credentialsUpdateWithWhereUniqueWithoutRiderInput = {
+    where: Rider_credentialsWhereUniqueInput
+    data: XOR<Rider_credentialsUpdateWithoutRiderInput, Rider_credentialsUncheckedUpdateWithoutRiderInput>
+  }
+
+  export type Rider_credentialsUpdateManyWithWhereWithoutRiderInput = {
+    where: Rider_credentialsScalarWhereInput
+    data: XOR<Rider_credentialsUpdateManyMutationInput, Rider_credentialsUncheckedUpdateManyWithoutRiderInput>
+  }
+
+  export type Rider_credentialsScalarWhereInput = {
+    AND?: Rider_credentialsScalarWhereInput | Rider_credentialsScalarWhereInput[]
+    OR?: Rider_credentialsScalarWhereInput[]
+    NOT?: Rider_credentialsScalarWhereInput | Rider_credentialsScalarWhereInput[]
+    id?: IntFilter<"Rider_credentials"> | number
+    rider_id?: IntFilter<"Rider_credentials"> | number
+    nin?: StringFilter<"Rider_credentials"> | string
+    nin_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    driver_license?: StringFilter<"Rider_credentials"> | string
+    driver_license_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    plate_number?: StringFilter<"Rider_credentials"> | string
+    vehicle_image?: StringNullableFilter<"Rider_credentials"> | string | null
+    status?: EnumStatusFilter<"Rider_credentials"> | $Enums.Status
+    createdAt?: DateTimeFilter<"Rider_credentials"> | Date | string
+    updatedAt?: DateTimeFilter<"Rider_credentials"> | Date | string
+  }
+
   export type UserCreateWithoutDeliveryInput = {
     fullname: string
     username: string
@@ -9861,6 +14692,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    rider_rating?: Rider_ratingCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutDeliveryInput = {
@@ -9874,6 +14706,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    rider_rating?: Rider_ratingUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutDeliveryInput = {
@@ -9891,9 +14724,14 @@ export namespace Prisma {
     profile_image: string
     avg_rating?: number
     password: string
+    status?: $Enums.Status
+    is_verified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     proposal?: ProposalCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsCreateNestedManyWithoutRiderInput
   }
 
   export type RiderUncheckedCreateWithoutDeliveryInput = {
@@ -9907,9 +14745,14 @@ export namespace Prisma {
     profile_image: string
     avg_rating?: number
     password: string
+    status?: $Enums.Status
+    is_verified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     proposal?: ProposalUncheckedCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsUncheckedCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingUncheckedCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsUncheckedCreateNestedManyWithoutRiderInput
   }
 
   export type RiderCreateOrConnectWithoutDeliveryInput = {
@@ -9959,6 +14802,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rider_rating?: Rider_ratingUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDeliveryInput = {
@@ -9972,6 +14816,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rider_rating?: Rider_ratingUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type RiderUpsertWithoutDeliveryInput = {
@@ -9993,11 +14838,16 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     proposal?: ProposalUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUpdateManyWithoutRiderNestedInput
   }
 
   export type RiderUncheckedUpdateWithoutDeliveryInput = {
@@ -10009,11 +14859,16 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     proposal?: ProposalUncheckedUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUncheckedUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUncheckedUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUncheckedUpdateManyWithoutRiderNestedInput
   }
 
   export type ProposalUpsertWithWhereUniqueWithoutDeliverInput = {
@@ -10042,9 +14897,14 @@ export namespace Prisma {
     profile_image: string
     avg_rating?: number
     password: string
+    status?: $Enums.Status
+    is_verified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     delivery?: DeliveryCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsCreateNestedManyWithoutRiderInput
   }
 
   export type RiderUncheckedCreateWithoutProposalInput = {
@@ -10058,9 +14918,14 @@ export namespace Prisma {
     profile_image: string
     avg_rating?: number
     password: string
+    status?: $Enums.Status
+    is_verified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     delivery?: DeliveryUncheckedCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsUncheckedCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingUncheckedCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsUncheckedCreateNestedManyWithoutRiderInput
   }
 
   export type RiderCreateOrConnectWithoutProposalInput = {
@@ -10076,11 +14941,13 @@ export namespace Prisma {
     estimated_delivery_price: string
     package_image: string
     landmark: string
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutDeliveryInput
     rider?: RiderCreateNestedOneWithoutDeliveryInput
   }
@@ -10096,11 +14963,13 @@ export namespace Prisma {
     package_image: string
     landmark: string
     rider_id?: number | null
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type DeliveryCreateOrConnectWithoutProposalInput = {
@@ -10127,11 +14996,16 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     delivery?: DeliveryUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUpdateManyWithoutRiderNestedInput
   }
 
   export type RiderUncheckedUpdateWithoutProposalInput = {
@@ -10143,11 +15017,16 @@ export namespace Prisma {
     operating_areas?: JsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     profile_image?: StringFieldUpdateOperationsInput | string
-    avg_rating?: IntFieldUpdateOperationsInput | number
+    avg_rating?: FloatFieldUpdateOperationsInput | number
     password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     delivery?: DeliveryUncheckedUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUncheckedUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUncheckedUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUncheckedUpdateManyWithoutRiderNestedInput
   }
 
   export type DeliveryUpsertWithoutProposalInput = {
@@ -10169,11 +15048,13 @@ export namespace Prisma {
     estimated_delivery_price?: StringFieldUpdateOperationsInput | string
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutDeliveryNestedInput
     rider?: RiderUpdateOneWithoutDeliveryNestedInput
   }
@@ -10189,11 +15070,377 @@ export namespace Prisma {
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
     rider_id?: NullableIntFieldUpdateOperationsInput | number | null
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type RiderCreateWithoutBank_detailsInput = {
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    operating_areas: JsonNullValueInput | InputJsonValue
+    role?: $Enums.Role
+    profile_image: string
+    avg_rating?: number
+    password: string
+    status?: $Enums.Status
+    is_verified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryCreateNestedManyWithoutRiderInput
+    proposal?: ProposalCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsCreateNestedManyWithoutRiderInput
+  }
+
+  export type RiderUncheckedCreateWithoutBank_detailsInput = {
+    id?: number
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    operating_areas: JsonNullValueInput | InputJsonValue
+    role?: $Enums.Role
+    profile_image: string
+    avg_rating?: number
+    password: string
+    status?: $Enums.Status
+    is_verified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryUncheckedCreateNestedManyWithoutRiderInput
+    proposal?: ProposalUncheckedCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingUncheckedCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsUncheckedCreateNestedManyWithoutRiderInput
+  }
+
+  export type RiderCreateOrConnectWithoutBank_detailsInput = {
+    where: RiderWhereUniqueInput
+    create: XOR<RiderCreateWithoutBank_detailsInput, RiderUncheckedCreateWithoutBank_detailsInput>
+  }
+
+  export type RiderUpsertWithoutBank_detailsInput = {
+    update: XOR<RiderUpdateWithoutBank_detailsInput, RiderUncheckedUpdateWithoutBank_detailsInput>
+    create: XOR<RiderCreateWithoutBank_detailsInput, RiderUncheckedCreateWithoutBank_detailsInput>
+    where?: RiderWhereInput
+  }
+
+  export type RiderUpdateToOneWithWhereWithoutBank_detailsInput = {
+    where?: RiderWhereInput
+    data: XOR<RiderUpdateWithoutBank_detailsInput, RiderUncheckedUpdateWithoutBank_detailsInput>
+  }
+
+  export type RiderUpdateWithoutBank_detailsInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    operating_areas?: JsonNullValueInput | InputJsonValue
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    avg_rating?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUpdateManyWithoutRiderNestedInput
+    proposal?: ProposalUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUpdateManyWithoutRiderNestedInput
+  }
+
+  export type RiderUncheckedUpdateWithoutBank_detailsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    operating_areas?: JsonNullValueInput | InputJsonValue
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    avg_rating?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUncheckedUpdateManyWithoutRiderNestedInput
+    proposal?: ProposalUncheckedUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUncheckedUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUncheckedUpdateManyWithoutRiderNestedInput
+  }
+
+  export type RiderCreateWithoutRider_ratingInput = {
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    operating_areas: JsonNullValueInput | InputJsonValue
+    role?: $Enums.Role
+    profile_image: string
+    avg_rating?: number
+    password: string
+    status?: $Enums.Status
+    is_verified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryCreateNestedManyWithoutRiderInput
+    proposal?: ProposalCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsCreateNestedManyWithoutRiderInput
+  }
+
+  export type RiderUncheckedCreateWithoutRider_ratingInput = {
+    id?: number
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    operating_areas: JsonNullValueInput | InputJsonValue
+    role?: $Enums.Role
+    profile_image: string
+    avg_rating?: number
+    password: string
+    status?: $Enums.Status
+    is_verified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryUncheckedCreateNestedManyWithoutRiderInput
+    proposal?: ProposalUncheckedCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsUncheckedCreateNestedManyWithoutRiderInput
+    rider_credentials?: Rider_credentialsUncheckedCreateNestedManyWithoutRiderInput
+  }
+
+  export type RiderCreateOrConnectWithoutRider_ratingInput = {
+    where: RiderWhereUniqueInput
+    create: XOR<RiderCreateWithoutRider_ratingInput, RiderUncheckedCreateWithoutRider_ratingInput>
+  }
+
+  export type UserCreateWithoutRider_ratingInput = {
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    role?: $Enums.Role
+    profile_image: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRider_ratingInput = {
+    id?: number
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    role?: $Enums.Role
+    profile_image: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRider_ratingInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRider_ratingInput, UserUncheckedCreateWithoutRider_ratingInput>
+  }
+
+  export type RiderUpsertWithoutRider_ratingInput = {
+    update: XOR<RiderUpdateWithoutRider_ratingInput, RiderUncheckedUpdateWithoutRider_ratingInput>
+    create: XOR<RiderCreateWithoutRider_ratingInput, RiderUncheckedCreateWithoutRider_ratingInput>
+    where?: RiderWhereInput
+  }
+
+  export type RiderUpdateToOneWithWhereWithoutRider_ratingInput = {
+    where?: RiderWhereInput
+    data: XOR<RiderUpdateWithoutRider_ratingInput, RiderUncheckedUpdateWithoutRider_ratingInput>
+  }
+
+  export type RiderUpdateWithoutRider_ratingInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    operating_areas?: JsonNullValueInput | InputJsonValue
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    avg_rating?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUpdateManyWithoutRiderNestedInput
+    proposal?: ProposalUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUpdateManyWithoutRiderNestedInput
+  }
+
+  export type RiderUncheckedUpdateWithoutRider_ratingInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    operating_areas?: JsonNullValueInput | InputJsonValue
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    avg_rating?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUncheckedUpdateManyWithoutRiderNestedInput
+    proposal?: ProposalUncheckedUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUncheckedUpdateManyWithoutRiderNestedInput
+    rider_credentials?: Rider_credentialsUncheckedUpdateManyWithoutRiderNestedInput
+  }
+
+  export type UserUpsertWithoutRider_ratingInput = {
+    update: XOR<UserUpdateWithoutRider_ratingInput, UserUncheckedUpdateWithoutRider_ratingInput>
+    create: XOR<UserCreateWithoutRider_ratingInput, UserUncheckedCreateWithoutRider_ratingInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRider_ratingInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRider_ratingInput, UserUncheckedUpdateWithoutRider_ratingInput>
+  }
+
+  export type UserUpdateWithoutRider_ratingInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRider_ratingInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type RiderCreateWithoutRider_credentialsInput = {
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    operating_areas: JsonNullValueInput | InputJsonValue
+    role?: $Enums.Role
+    profile_image: string
+    avg_rating?: number
+    password: string
+    status?: $Enums.Status
+    is_verified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryCreateNestedManyWithoutRiderInput
+    proposal?: ProposalCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingCreateNestedManyWithoutRiderInput
+  }
+
+  export type RiderUncheckedCreateWithoutRider_credentialsInput = {
+    id?: number
+    fullname: string
+    username: string
+    email: string
+    phone_number: string
+    operating_areas: JsonNullValueInput | InputJsonValue
+    role?: $Enums.Role
+    profile_image: string
+    avg_rating?: number
+    password: string
+    status?: $Enums.Status
+    is_verified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    delivery?: DeliveryUncheckedCreateNestedManyWithoutRiderInput
+    proposal?: ProposalUncheckedCreateNestedManyWithoutRiderInput
+    bank_details?: Bank_detailsUncheckedCreateNestedManyWithoutRiderInput
+    rider_rating?: Rider_ratingUncheckedCreateNestedManyWithoutRiderInput
+  }
+
+  export type RiderCreateOrConnectWithoutRider_credentialsInput = {
+    where: RiderWhereUniqueInput
+    create: XOR<RiderCreateWithoutRider_credentialsInput, RiderUncheckedCreateWithoutRider_credentialsInput>
+  }
+
+  export type RiderUpsertWithoutRider_credentialsInput = {
+    update: XOR<RiderUpdateWithoutRider_credentialsInput, RiderUncheckedUpdateWithoutRider_credentialsInput>
+    create: XOR<RiderCreateWithoutRider_credentialsInput, RiderUncheckedCreateWithoutRider_credentialsInput>
+    where?: RiderWhereInput
+  }
+
+  export type RiderUpdateToOneWithWhereWithoutRider_credentialsInput = {
+    where?: RiderWhereInput
+    data: XOR<RiderUpdateWithoutRider_credentialsInput, RiderUncheckedUpdateWithoutRider_credentialsInput>
+  }
+
+  export type RiderUpdateWithoutRider_credentialsInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    operating_areas?: JsonNullValueInput | InputJsonValue
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    avg_rating?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUpdateManyWithoutRiderNestedInput
+    proposal?: ProposalUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUpdateManyWithoutRiderNestedInput
+  }
+
+  export type RiderUncheckedUpdateWithoutRider_credentialsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone_number?: StringFieldUpdateOperationsInput | string
+    operating_areas?: JsonNullValueInput | InputJsonValue
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    profile_image?: StringFieldUpdateOperationsInput | string
+    avg_rating?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delivery?: DeliveryUncheckedUpdateManyWithoutRiderNestedInput
+    proposal?: ProposalUncheckedUpdateManyWithoutRiderNestedInput
+    bank_details?: Bank_detailsUncheckedUpdateManyWithoutRiderNestedInput
+    rider_rating?: Rider_ratingUncheckedUpdateManyWithoutRiderNestedInput
   }
 
   export type DeliveryCreateManyUserInput = {
@@ -10206,9 +15453,20 @@ export namespace Prisma {
     package_image: string
     landmark: string
     rider_id?: number | null
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type Rider_ratingCreateManyUserInput = {
+    id?: number
+    rider_id: number
+    rating: number
+    review: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10221,11 +15479,13 @@ export namespace Prisma {
     estimated_delivery_price?: StringFieldUpdateOperationsInput | string
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     rider?: RiderUpdateOneWithoutDeliveryNestedInput
     proposal?: ProposalUpdateManyWithoutDeliverNestedInput
   }
@@ -10240,11 +15500,13 @@ export namespace Prisma {
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
     rider_id?: NullableIntFieldUpdateOperationsInput | number | null
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     proposal?: ProposalUncheckedUpdateManyWithoutDeliverNestedInput
   }
 
@@ -10258,9 +15520,37 @@ export namespace Prisma {
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
     rider_id?: NullableIntFieldUpdateOperationsInput | number | null
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type Rider_ratingUpdateWithoutUserInput = {
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rider?: RiderUpdateOneRequiredWithoutRider_ratingNestedInput
+  }
+
+  export type Rider_ratingUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_ratingUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rider_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10275,17 +15565,50 @@ export namespace Prisma {
     estimated_delivery_price: string
     package_image: string
     landmark: string
+    delivery_code?: number | null
     is_pickedup?: boolean
     is_delivered?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ProposalCreateManyRiderInput = {
     id?: number
     delivery_id: number
     status?: $Enums.Status
+  }
+
+  export type Bank_detailsCreateManyRiderInput = {
+    id?: number
+    bank_name: string
+    account_name: string
+    account_number: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_ratingCreateManyRiderInput = {
+    id?: number
+    user_id: number
+    rating: number
+    review: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type Rider_credentialsCreateManyRiderInput = {
+    id?: number
+    nin: string
+    nin_image?: string | null
+    driver_license: string
+    driver_license_image?: string | null
+    plate_number: string
+    vehicle_image?: string | null
+    status?: $Enums.Status
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type DeliveryUpdateWithoutRiderInput = {
@@ -10296,11 +15619,13 @@ export namespace Prisma {
     estimated_delivery_price?: StringFieldUpdateOperationsInput | string
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutDeliveryNestedInput
     proposal?: ProposalUpdateManyWithoutDeliverNestedInput
   }
@@ -10315,11 +15640,13 @@ export namespace Prisma {
     estimated_delivery_price?: StringFieldUpdateOperationsInput | string
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
     proposal?: ProposalUncheckedUpdateManyWithoutDeliverNestedInput
   }
 
@@ -10333,11 +15660,13 @@ export namespace Prisma {
     estimated_delivery_price?: StringFieldUpdateOperationsInput | string
     package_image?: StringFieldUpdateOperationsInput | string
     landmark?: StringFieldUpdateOperationsInput | string
+    delivery_code?: NullableIntFieldUpdateOperationsInput | number | null
     is_pickedup?: BoolFieldUpdateOperationsInput | boolean
     is_delivered?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sent_proposal_rider_id?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ProposalUpdateWithoutRiderInput = {
@@ -10355,6 +15684,96 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     delivery_id?: IntFieldUpdateOperationsInput | number
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type Bank_detailsUpdateWithoutRiderInput = {
+    bank_name?: StringFieldUpdateOperationsInput | string
+    account_name?: StringFieldUpdateOperationsInput | string
+    account_number?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Bank_detailsUncheckedUpdateWithoutRiderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
+    account_name?: StringFieldUpdateOperationsInput | string
+    account_number?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Bank_detailsUncheckedUpdateManyWithoutRiderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
+    account_name?: StringFieldUpdateOperationsInput | string
+    account_number?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_ratingUpdateWithoutRiderInput = {
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRider_ratingNestedInput
+  }
+
+  export type Rider_ratingUncheckedUpdateWithoutRiderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_ratingUncheckedUpdateManyWithoutRiderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    review?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_credentialsUpdateWithoutRiderInput = {
+    nin?: StringFieldUpdateOperationsInput | string
+    nin_image?: NullableStringFieldUpdateOperationsInput | string | null
+    driver_license?: StringFieldUpdateOperationsInput | string
+    driver_license_image?: NullableStringFieldUpdateOperationsInput | string | null
+    plate_number?: StringFieldUpdateOperationsInput | string
+    vehicle_image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_credentialsUncheckedUpdateWithoutRiderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nin?: StringFieldUpdateOperationsInput | string
+    nin_image?: NullableStringFieldUpdateOperationsInput | string | null
+    driver_license?: StringFieldUpdateOperationsInput | string
+    driver_license_image?: NullableStringFieldUpdateOperationsInput | string | null
+    plate_number?: StringFieldUpdateOperationsInput | string
+    vehicle_image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Rider_credentialsUncheckedUpdateManyWithoutRiderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nin?: StringFieldUpdateOperationsInput | string
+    nin_image?: NullableStringFieldUpdateOperationsInput | string | null
+    driver_license?: StringFieldUpdateOperationsInput | string
+    driver_license_image?: NullableStringFieldUpdateOperationsInput | string | null
+    plate_number?: StringFieldUpdateOperationsInput | string
+    vehicle_image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProposalCreateManyDeliverInput = {
@@ -10421,6 +15840,18 @@ export namespace Prisma {
      * @deprecated Use Operating_areasDefaultArgs instead
      */
     export type Operating_areasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Operating_areasDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use Bank_detailsDefaultArgs instead
+     */
+    export type Bank_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Bank_detailsDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use Rider_ratingDefaultArgs instead
+     */
+    export type Rider_ratingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Rider_ratingDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use Rider_credentialsDefaultArgs instead
+     */
+    export type Rider_credentialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Rider_credentialsDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

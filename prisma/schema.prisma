@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/models"
+  provider      = "prisma-client-js"
+  output        = "../src/models"
   binaryTargets = ["native", "debian-openssl-1.1.x"]
 }
 
@@ -25,34 +25,40 @@ model Admin {
 }
 
 model User {
-  id            Int        @id @default(autoincrement())
+  id            Int            @id @default(autoincrement())
   fullname      String
-  username      String     @unique
-  email         String     @unique
+  username      String         @unique
+  email         String         @unique
   phone_number  String
-  role          Role       @default(User)
+  role          Role           @default(User)
   profile_image String
   password      String
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   delivery      Delivery[]
+  rider_rating  Rider_rating[]
 }
 
 model Rider {
-  id              Int        @id @default(autoincrement())
-  fullname        String
-  username        String     @unique
-  email           String     @unique
-  phone_number    String
-  operating_areas Json
-  role            Role       @default(Rider)
-  profile_image   String
-  avg_rating      Int        @default(0)
-  password        String
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @updatedAt
-  delivery        Delivery[]
-  proposal        Proposal[]
+  id                Int                 @id @default(autoincrement())
+  fullname          String
+  username          String              @unique
+  email             String              @unique
+  phone_number      String
+  operating_areas   Json
+  role              Role                @default(Rider)
+  profile_image     String
+  avg_rating        Float               @default(0)
+  password          String
+  status            Status              @default(Inactive)
+  is_verified       Boolean             @default(false)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  delivery          Delivery[]
+  proposal          Proposal[]
+  bank_details      Bank_details[]
+  rider_rating      Rider_rating[]
+  rider_credentials Rider_credentials[]
 }
 
 model Delivery {
@@ -68,12 +74,14 @@ model Delivery {
   landmark                 String
   rider                    Rider?     @relation(fields: [rider_id], references: [id], onDelete: Cascade)
   rider_id                 Int?
+  delivery_code            Int?       @unique
   is_pickedup              Boolean    @default(false)
   is_delivered             Boolean    @default(false)
   status                   Status     @default(Available)
   createdAt                DateTime   @default(now())
   updatedAt                DateTime   @updatedAt
   proposal                 Proposal[]
+  sent_proposal_rider_id   Json?
 }
 
 model Proposal {
@@ -93,12 +101,53 @@ model Operating_areas {
   updatedAt DateTime @updatedAt
 }
 
+model Bank_details {
+  id             Int      @id @default(autoincrement())
+  rider          Rider    @relation(fields: [rider_id], references: [id], onDelete: Cascade)
+  rider_id       Int      @unique
+  bank_name      String
+  account_name   String
+  account_number String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Rider_rating {
+  id        Int      @id @default(autoincrement())
+  rider     Rider    @relation(fields: [rider_id], references: [id], onDelete: Cascade)
+  rider_id  Int
+  user      User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id   Int
+  rating    Int
+  review    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Rider_credentials {
+  id                   Int      @id @default(autoincrement())
+  rider                Rider    @relation(fields: [rider_id], references: [id], onDelete: Cascade)
+  rider_id             Int
+  nin                  String
+  nin_image            String?
+  driver_license       String
+  driver_license_image String?
+  plate_number         String
+  vehicle_image        String?
+  status               Status   @default(Pending)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
 enum Status {
   Available
   Pending
   Delivered
   Rejected
   Approved
+  Inactive
+  Active
+  Suspend
 }
 
 enum Role {

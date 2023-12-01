@@ -10,5 +10,4 @@ riderAuthRouter.post('/rider-register', upload.single('profile_image'), register
 riderAuthRouter.post('/rider-login', loginRider);
 // Secure the logout route with authentication middleware
 riderAuthRouter.post('/rider-logout', authenticateJWT, logoutRider);
-
 // export default authRouter;

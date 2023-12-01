@@ -90,6 +90,25 @@ export async function createProposal(request:Request, response:Response) {
             }
         })
         sendProposal(newProposal.deliver.user.email, newProposal)
+        // Fetch the existing proposal_sent array
+        const existingDelivery = await prisma.delivery.findUnique({
+            where: { id: delivery_id },
+            select: { sent_proposal_rider_id: true },
+        });
+
+        // Extract the existing rider IDs or initialize an empty array
+        const existingRiderIds: number[] = (existingDelivery?.sent_proposal_rider_id as number[]) || [];
+
+        // Add the new rider ID to the array
+        const updatedRiderIds = [...existingRiderIds, rider_id];
+
+        // Update the delivery with the updated proposal_sent array
+        const updatedDelivery = await prisma.delivery.update({
+            where: { id: delivery_id },
+            data: {
+                sent_proposal_rider_id: updatedRiderIds,
+            },
+        });
         return response.status(200).json({ message: 'Proposal Request created', data: newProposal });
     } catch (error) {
       console.error(error);

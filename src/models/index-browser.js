@@ -143,6 +143,8 @@ exports.Prisma.RiderScalarFieldEnum = {
   profile_image: 'profile_image',
   avg_rating: 'avg_rating',
   password: 'password',
+  status: 'status',
+  is_verified: 'is_verified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -158,11 +160,13 @@ exports.Prisma.DeliveryScalarFieldEnum = {
   package_image: 'package_image',
   landmark: 'landmark',
   rider_id: 'rider_id',
+  delivery_code: 'delivery_code',
   is_pickedup: 'is_pickedup',
   is_delivered: 'is_delivered',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  sent_proposal_rider_id: 'sent_proposal_rider_id'
 };
 
 exports.Prisma.ProposalScalarFieldEnum = {
@@ -180,12 +184,51 @@ exports.Prisma.Operating_areasScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.Bank_detailsScalarFieldEnum = {
+  id: 'id',
+  rider_id: 'rider_id',
+  bank_name: 'bank_name',
+  account_name: 'account_name',
+  account_number: 'account_number',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Rider_ratingScalarFieldEnum = {
+  id: 'id',
+  rider_id: 'rider_id',
+  user_id: 'user_id',
+  rating: 'rating',
+  review: 'review',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Rider_credentialsScalarFieldEnum = {
+  id: 'id',
+  rider_id: 'rider_id',
+  nin: 'nin',
+  nin_image: 'nin_image',
+  driver_license: 'driver_license',
+  driver_license_image: 'driver_license_image',
+  plate_number: 'plate_number',
+  vehicle_image: 'vehicle_image',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
 exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
@@ -215,7 +258,10 @@ exports.Status = exports.$Enums.Status = {
   Pending: 'Pending',
   Delivered: 'Delivered',
   Rejected: 'Rejected',
-  Approved: 'Approved'
+  Approved: 'Approved',
+  Inactive: 'Inactive',
+  Active: 'Active',
+  Suspend: 'Suspend'
 };
 
 exports.Prisma.ModelName = {
@@ -224,7 +270,10 @@ exports.Prisma.ModelName = {
   Rider: 'Rider',
   Delivery: 'Delivery',
   Proposal: 'Proposal',
-  Operating_areas: 'Operating_areas'
+  Operating_areas: 'Operating_areas',
+  Bank_details: 'Bank_details',
+  Rider_rating: 'Rider_rating',
+  Rider_credentials: 'Rider_credentials'
 };
 
 /**

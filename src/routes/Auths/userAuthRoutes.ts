@@ -11,4 +11,5 @@ userAuthRouter.post('/user-login', loginUser);
 // Secure the logout route with authentication middleware
 userAuthRouter.post('/user-logout', authenticateJWT, logoutUser);
 
+
 // export default authRouter;
