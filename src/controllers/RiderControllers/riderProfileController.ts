@@ -201,73 +201,6 @@ export async function changePassword(request: Request, response: Response) {
     return response.status(500).json({ message: 'Internal Server Error' });
   }
 }
-  
-// export async function completeSetup(request:Request, response: Response) {
-//   const { bank_name, account_name, account_number,nin, driver_license, plate_number } = request.body;
-//   const riderId = request.user.riderId;
-
-//   try {
-//     const validationRules = [
-//       body('nin').notEmpty().withMessage('Bank Name is required'),
-//       body('driver_license').notEmpty().withMessage('Bank Name is required'),
-//       body('plate_number').notEmpty().withMessage('Bank Name is required'),
-//       body('bank_name').notEmpty().withMessage('Bank Name is required'),
-//       body('account_name').notEmpty().withMessage('Account Name is required'),
-//       body('account_number').notEmpty().isLength({ min: 10 }).withMessage('Account number is required and must be at least 10 characters long'),
-//     ];
-    
-//     // Apply validation rules to the request
-//     await Promise.all(validationRules.map(rule => rule.run(request)));
-    
-//     const errors = validationResult(request);
-//     if (!errors.isEmpty()) {
-//       return response.status(400).json({ errors: errors.array() });
-//     }
-
-//     // Check if the email is already registered
-//     const existingRider = await prisma.rider.findUnique({ where: { id:riderId } });
-//     if (!existingRider) {
-//       return response.status(404).json({ message: 'Rider not Found' });
-//     }
-
-
-
-//   //   const existingBankDetails = await prisma.bank_details.findUnique({ where: {rider_id:riderId}})
-//   //   if (existingBankDetails) {
-//   //     return response.status(400).json({message: 'Bank Details Already Exist'})
-//   //   }
-
-//   //   const newDetail = await prisma.bank_details.create({
-//   //     data:{
-//   //       rider_id: riderId,
-//   //       bank_name,
-//   //       account_name,
-//   //       account_number
-//   //     },
-//   //     select:{
-//   //       id:true,
-//   //       rider_id:true,
-//   //       bank_name:true,
-//   //       account_name:true,
-//   //       account_number:true,
-//   //       rider:{
-//   //         select:{
-//   //           id:true,
-//   //           fullname:true,
-//   //           email:true,
-//   //           username:true,
-//   //           phone_number:true,
-//   //         }
-//   //       }
-//   //     }
-//   //   })
-
-//   //   return response.status(200).json({ message: 'Rider account details created', data: newDetail});
-//   } catch (error) {
-//     console.error(error);
-//     return response.status(500).json({ message: 'Internal Server Error' });
-//   }
-// }
 
 export async function completeSetup(request: Request, response: Response) {
   // Extract data from the request
@@ -324,12 +257,33 @@ export async function completeSetup(request: Request, response: Response) {
       }
       // Upload NIN image to Cloudinary
       const ninImageUrl = await uploadImage(request.files['nin_image'][0].path, 'rider_app/images/nin_images');
+      fs.unlink(request.files['nin_image'][0].path, (err) => {
+        if (err) {
+          console.error(`Error deleting NIN file`);
+        } else {
+          console.log(`NIN File deleted`);
+        }
+      });
 
       // Upload Driver License image to Cloudinary
       const driverLicenseImageUrl = await uploadImage(request.files['driver_license_image'][0].path,'rider_app/images/driver_license_images');
+      fs.unlink(request.files['driver_license_image'][0].path, (err) => {
+        if (err) {
+          console.error(`Error deleting driver license file`);
+        } else {
+          console.log(`Driver License File deleted`);
+        }
+      });
 
       // Upload Vehicle image to Cloudinary
       const vehicleImageUrl = await uploadImage(request.files['vehicle_image'][0].path, 'rider_app/images/vehicle_images');
+      fs.unlink(request.files['vehicle_image'][0].path, (err) => {
+        if (err) {
+          console.error(`Error deleting vehicle Image file`);
+        } else {
+          console.log(`Vehicle Image File deleted`);
+        }
+      });
 
       // Save data to the database using Prisma
       const credentials = await prisma.rider_credentials.create({
