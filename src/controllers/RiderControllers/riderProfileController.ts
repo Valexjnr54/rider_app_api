@@ -303,37 +303,36 @@ export async function completeSetup(request: Request, response: Response) {
       return response.status(400).json({message: 'Bank Details Already Exist'})
     }
 
-    // Middleware to handle file uploads
-    riderCredentials(request, response, async (err: any) => {
-      if (err) {
-        console.error('Error uploading files:', err);
-        return response.status(500).json({ message: 'Internal Server Error' });
+    const existingNin = await prisma.rider_credentials.findFirst({ where: {nin:nin}})
+    if (existingNin) {
+      return response.status(400).json({message: 'NIN Already Exist'})
+    }
+
+    const existingDriverLicence = await prisma.rider_credentials.findFirst({ where: {driver_license:driver_license}})
+    if (existingDriverLicence) {
+      return response.status(400).json({message: 'Driver Licence Already Exist'})
+    }
+
+    const existingPlateNumber = await prisma.rider_credentials.findFirst({ where: {plate_number:plate_number}})
+    if (existingPlateNumber) {
+      return response.status(400).json({message: 'Plate Number Already Exist'})
+    }
+
+    try {
+      if (!request.files || !('nin_image' in request.files) || !('driver_license_image' in request.files) || !('vehicle_image' in request.files)) {
+        return response.status(400).json({ message: 'Please provide all required images.' });
       }
+      // Upload NIN image to Cloudinary
+      const ninImageUrl = await uploadImage(request.files['nin_image'][0].path, 'rider_app/images/nin_images');
 
-      try {
-        
-        // Check if files are present in the request
-        const files = request.files as { [fieldname: string]: Express.Multer.File[] };
+      // Upload Driver License image to Cloudinary
+      const driverLicenseImageUrl = await uploadImage(request.files['driver_license_image'][0].path,'rider_app/images/driver_license_images');
 
-        // Check if files are present in the request
-        if (!request.files || !('nin_image' in request.files) || !('driver_license_image' in request.files) || !('vehicle_image' in request.files)) {
-          return response.status(400).json({ message: 'Please provide all required images.' });
-        }
+      // Upload Vehicle image to Cloudinary
+      const vehicleImageUrl = await uploadImage(request.files['vehicle_image'][0].path, 'rider_app/images/vehicle_images');
 
-        // Upload NIN image to Cloudinary
-        const ninImageUrl = await uploadImage(request.files['nin_image'][0].buffer, 'rider_app/images/nin_images');
-
-        // Upload Driver License image to Cloudinary
-        const driverLicenseImageUrl = await uploadImage(
-          request.files['driver_license_image'][0].buffer,
-          'rider_app/images/driver_license_images'
-        );
-
-        // Upload Vehicle image to Cloudinary
-        const vehicleImageUrl = await uploadImage(request.files['vehicle_image'][0].buffer, 'rider_app/images/vehicle_images');
-
-        // Save data to the database using Prisma
-        const credentials = await prisma.rider_credentials.create({
+      // Save data to the database using Prisma
+      const credentials = await prisma.rider_credentials.create({
           data: {
             rider_id: riderId,
             nin,
@@ -371,12 +370,12 @@ export async function completeSetup(request: Request, response: Response) {
           }
         })
 
-        return response.status(200).json({ message: 'Rider account details created', data: newDetail });
-      } catch (error) {
-        console.error('Error completing setup:', error);
-        return response.status(500).json({ message: 'Internal Server Error' });
-      }
-    });
+        return response.status(200).json({ message: 'Rider account details created', bank_detail: newDetail, credentials });
+    } catch (error) {
+      console.error('Error completing setup:', error);
+      return response.status(500).json({ message: 'Internal Server Error' });
+    }
+
   } catch (error) {
     console.error(error);
     return response.status(500).json({ message: 'Internal Server Error' });

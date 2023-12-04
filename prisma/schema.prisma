@@ -128,11 +128,11 @@ model Rider_credentials {
   id                   Int      @id @default(autoincrement())
   rider                Rider    @relation(fields: [rider_id], references: [id], onDelete: Cascade)
   rider_id             Int
-  nin                  String
+  nin                  String   @unique
   nin_image            String?
-  driver_license       String
+  driver_license       String   @unique
   driver_license_image String?
-  plate_number         String
+  plate_number         String   @unique
   vehicle_image        String?
   status               Status   @default(Pending)
   createdAt            DateTime @default(now())

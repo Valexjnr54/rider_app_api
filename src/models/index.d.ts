@@ -11854,21 +11854,21 @@ export namespace Prisma {
 
   export type Rider_credentialsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    nin?: string
+    driver_license?: string
+    plate_number?: string
     AND?: Rider_credentialsWhereInput | Rider_credentialsWhereInput[]
     OR?: Rider_credentialsWhereInput[]
     NOT?: Rider_credentialsWhereInput | Rider_credentialsWhereInput[]
     rider_id?: IntFilter<"Rider_credentials"> | number
-    nin?: StringFilter<"Rider_credentials"> | string
     nin_image?: StringNullableFilter<"Rider_credentials"> | string | null
-    driver_license?: StringFilter<"Rider_credentials"> | string
     driver_license_image?: StringNullableFilter<"Rider_credentials"> | string | null
-    plate_number?: StringFilter<"Rider_credentials"> | string
     vehicle_image?: StringNullableFilter<"Rider_credentials"> | string | null
     status?: EnumStatusFilter<"Rider_credentials"> | $Enums.Status
     createdAt?: DateTimeFilter<"Rider_credentials"> | Date | string
     updatedAt?: DateTimeFilter<"Rider_credentials"> | Date | string
     rider?: XOR<RiderRelationFilter, RiderWhereInput>
-  }, "id">
+  }, "id" | "nin" | "driver_license" | "plate_number">
 
   export type Rider_credentialsOrderByWithAggregationInput = {
     id?: SortOrder
