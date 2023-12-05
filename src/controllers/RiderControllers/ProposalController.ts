@@ -90,6 +90,7 @@ export async function createProposal(request:Request, response:Response) {
                         phone_number:true,
                         profile_image:true,
                         avg_rating:true,
+                        bank_details:true,
                     }
                 }
             }
@@ -156,6 +157,7 @@ export async function createProposal(request:Request, response:Response) {
                         phone_number:true,
                         profile_image:true,
                         avg_rating:true,
+                        bank_details:true,
                     }
                 }
             }
@@ -261,6 +263,7 @@ export async function pendingProposal(request:Request, response:Response) {
                         phone_number:true,
                         profile_image:true,
                         avg_rating:true,
+                        bank_details:true,
                     }
                 }
             }
@@ -335,6 +338,7 @@ export async function approvedProposal(request:Request, response:Response) {
                         phone_number:true,
                         profile_image:true,
                         avg_rating:true,
+                        bank_details:true,
                     }
                 }
             }
@@ -408,6 +412,7 @@ export async function rejectedProposal(request:Request, response:Response) {
                       phone_number:true,
                       profile_image:true,
                       avg_rating:true,
+                      bank_details:true,
                     }
                 }
             }

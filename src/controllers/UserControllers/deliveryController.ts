@@ -122,6 +122,7 @@ export async function createDeliveryRequest(request: Request,response: Response)
             phone_number:true,
             profile_image:true,
             avg_rating:true,
+            bank_details:true,
           }
         }
       },
@@ -207,6 +208,7 @@ export async function viewAllDelivery(request: Request, response: Response) {
             phone_number:true,
             profile_image:true,
             avg_rating:true,
+            bank_details:true,
           }
         }
       },
@@ -275,6 +277,7 @@ export async function viewSingleDelivery(request: Request, response: Response) {
             phone_number:true,
             profile_image:true,
             avg_rating:true,
+            bank_details:true,
           }
         }
       },
@@ -392,6 +395,7 @@ export async function updateDelivery(request:Request, response:Response) {
             phone_number:true,
             profile_image:true,
             avg_rating:true,
+            bank_details:true,
           }
         }
       },

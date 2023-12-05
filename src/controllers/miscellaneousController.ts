@@ -45,6 +45,11 @@ export async function deliveryCode(request: Request, response: Response) {
           delivery_code:true,
           landmark: true,
           package_image: true,
+          is_delivered:true,
+          is_pickedup:true,
+          status:true,
+          sent_proposal_rider_id:true,
+          rider_id:true,
           user:{
             select: {
               id:true,
@@ -64,6 +69,7 @@ export async function deliveryCode(request: Request, response: Response) {
               phone_number:true,
               profile_image:true,
               avg_rating:true,
+              bank_details:true
             }
           }
         },
@@ -100,6 +106,11 @@ export async function confirmDelivery(request:Request, response:Response) {
           delivery_code:true,
           landmark: true,
           package_image: true,
+          is_delivered:true,
+          is_pickedup:true,
+          status:true,
+          sent_proposal_rider_id:true,
+          rider_id:true,
           user:{
             select: {
               id:true,
@@ -119,6 +130,7 @@ export async function confirmDelivery(request:Request, response:Response) {
               phone_number:true,
               profile_image:true,
               avg_rating:true,
+              bank_details:true,
             }
           }
         },
