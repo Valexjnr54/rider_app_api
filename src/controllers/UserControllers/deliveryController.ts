@@ -102,6 +102,7 @@ export async function createDeliveryRequest(request: Request,response: Response)
         is_pickedup:true,
         status:true,
         sent_proposal_rider_id:true,
+        rider_id:true,
         user:{
           select: {
             id:true,
@@ -186,6 +187,7 @@ export async function viewAllDelivery(request: Request, response: Response) {
         is_delivered:true,
         status:true,
         sent_proposal_rider_id:true,
+        rider_id:true,
         user:{
           select: {
             id:true,
@@ -253,6 +255,7 @@ export async function viewSingleDelivery(request: Request, response: Response) {
         is_delivered:true,
         status:true,
         sent_proposal_rider_id:true,
+        rider_id:true,
         user:{
           select: {
             id:true,
@@ -369,6 +372,7 @@ export async function updateDelivery(request:Request, response:Response) {
         is_pickedup:true,
         status:true,
         sent_proposal_rider_id:true,
+        rider_id:true,
         user:{
           select: {
             id:true,

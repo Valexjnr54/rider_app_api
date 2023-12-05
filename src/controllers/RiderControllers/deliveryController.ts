@@ -35,6 +35,7 @@ export async function viewAllDelivery(request: Request, response: Response) {
           is_delivered:true,
           status:true,
           sent_proposal_rider_id:true,
+          rider_id:true,
           user:{
             select: {
               id:true,
@@ -65,7 +66,7 @@ export async function viewAllDelivery(request: Request, response: Response) {
     } catch (error) {
       return response.status(500).json({ message: 'Internal Server Error' });
     }
-  }
+}
   
 export async function viewSingleDelivery(request: Request, response: Response) {
   const rider_id = request.user.riderId;
@@ -102,6 +103,7 @@ export async function viewSingleDelivery(request: Request, response: Response) {
         is_delivered:true,
         status:true,
         sent_proposal_rider_id:true,
+        rider_id:true,
         user:{
           select: {
             id:true,
@@ -186,6 +188,7 @@ export async function pickDelivery(request: Request, response: Response) {
                 is_delivered: true,
                 status:true,
                 sent_proposal_rider_id:true,
+                rider_id:true,
                 user:{
                     select: {
                       id:true,

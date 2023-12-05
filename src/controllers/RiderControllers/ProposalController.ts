@@ -64,6 +64,11 @@ export async function createProposal(request:Request, response:Response) {
                         delivery_location: true,
                         estimated_delivery_price: true,
                         package_image: true,
+                        is_delivered:true,
+                        is_pickedup:true,
+                        status:true,
+                        sent_proposal_rider_id:true,
+                        rider_id:true,
                         user:{
                             select: {
                               id:true,
@@ -126,6 +131,10 @@ export async function createProposal(request:Request, response:Response) {
                         estimated_delivery_price: true,
                         package_image: true,
                         sent_proposal_rider_id:true,
+                        is_delivered:true,
+                        is_pickedup:true,
+                        status:true,
+                        rider_id:true,
                         user:{
                             select: {
                               id:true,
@@ -226,6 +235,11 @@ export async function pendingProposal(request:Request, response:Response) {
                         delivery_location: true,
                         estimated_delivery_price: true,
                         package_image: true,
+                        is_delivered:true,
+                        is_pickedup:true,
+                        status:true,
+                        sent_proposal_rider_id:true,
+                        rider_id:true,
                         user:{
                             select: {
                               id:true,
@@ -295,6 +309,11 @@ export async function approvedProposal(request:Request, response:Response) {
                         delivery_location: true,
                         estimated_delivery_price: true,
                         package_image: true,
+                        is_delivered:true,
+                        is_pickedup:true,
+                        status:true,
+                        sent_proposal_rider_id:true,
+                        rider_id:true,
                         user:{
                             select: {
                               id:true,
@@ -364,6 +383,11 @@ export async function rejectedProposal(request:Request, response:Response) {
                         delivery_location: true,
                         estimated_delivery_price: true,
                         package_image: true,
+                        is_delivered:true,
+                        is_pickedup:true,
+                        status:true,
+                        rider_id:true,
+                        sent_proposal_rider_id:true,
                         user:{
                             select: {
                               id:true,
