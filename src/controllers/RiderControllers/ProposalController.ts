@@ -109,7 +109,49 @@ export async function createProposal(request:Request, response:Response) {
                 sent_proposal_rider_id: updatedRiderIds,
             },
         });
-        return response.status(200).json({ message: 'Proposal Request created', data: newProposal });
+
+        const proposalDetail = await prisma.proposal.findFirst({
+            where:{
+                rider_id,
+                delivery_id
+            },
+            select:{
+                deliver:{
+                    select:{
+                        id:true,
+                        package_name: true,
+                        phone_number: true,
+                        pickup_location: true,
+                        delivery_location: true,
+                        estimated_delivery_price: true,
+                        package_image: true,
+                        sent_proposal_rider_id:true,
+                        user:{
+                            select: {
+                              id:true,
+                              fullname:true,
+                              username:true,
+                              email:true,
+                              phone_number:true,
+                              profile_image:true,
+                            }
+                        }
+                    }
+                },
+                rider:{
+                    select:{
+                        id:true,
+                        fullname:true,
+                        username:true,
+                        email:true,
+                        phone_number:true,
+                        profile_image:true,
+                        avg_rating:true,
+                    }
+                }
+            }
+        })
+        return response.status(200).json({ message: 'Proposal Request created', data:  proposalDetail });
     } catch (error) {
       console.error(error);
       response.status(500).json({ message: 'Internal Server Error' });

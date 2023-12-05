@@ -33,6 +33,8 @@ export async function viewAllDelivery(request: Request, response: Response) {
           package_image: true,
           is_pickedup:true,
           is_delivered:true,
+          status:true,
+          sent_proposal_rider_id:true,
           user:{
             select: {
               id:true,
@@ -98,6 +100,8 @@ export async function viewSingleDelivery(request: Request, response: Response) {
         package_image: true,
         is_pickedup:true,
         is_delivered:true,
+        status:true,
+        sent_proposal_rider_id:true,
         user:{
           select: {
             id:true,
@@ -180,6 +184,8 @@ export async function pickDelivery(request: Request, response: Response) {
                 package_image: true,
                 is_pickedup: true,
                 is_delivered: true,
+                status:true,
+                sent_proposal_rider_id:true,
                 user:{
                     select: {
                       id:true,

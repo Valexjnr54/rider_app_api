@@ -79,6 +79,10 @@ export async function viewAllProposal(request: Request, response: Response) {
                 delivery_location: true,
                 estimated_delivery_price: true,
                 package_image: true,
+                is_delivered:true,
+                is_pickedup:true,
+                status:true,
+                sent_proposal_rider_id:true,
                 user:{
                   select: {
                     id:true,
@@ -153,6 +157,10 @@ export async function acceptRider(request:Request, response:Response) {
               delivery_location: true,
               estimated_delivery_price: true,
               package_image: true,
+              is_delivered:true,
+              is_pickedup:true,
+              sent_proposal_rider_id:true,
+              status:true,
               user:{
                 select: {
                   id:true,
@@ -229,6 +237,10 @@ export async function acceptRider(request:Request, response:Response) {
                         delivery_location: true,
                         estimated_delivery_price: true,
                         package_image: true,
+                        is_delivered:true,
+                        is_pickedup:true,
+                        status:true,
+                        sent_proposal_rider_id:true,
                         user:{
                           select: {
                             id:true,
