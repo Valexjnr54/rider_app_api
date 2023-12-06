@@ -3,7 +3,7 @@ import { Twilio } from 'twilio';
 import path from "path";
 import fs from 'fs';
 
-const twilioClient = new Twilio(process.env.TWILIO_SID || "ACcaf8d5ccd133dd203e440a59b735d9b7", process.env.TWILIO_AUTH_TOKEN || "0323b28a14f7b40e1eeb0706710d0a33");
+const twilioClient = new Twilio(process.env.TWILIO_SID || "AC4ebca28b57ced828480ea43bc5f02eb8", process.env.TWILIO_AUTH_TOKEN || "aa1bebd938373653a9273a1fc6e01dd7");
 
 export async function sendWelcomeSMS(phoneNumber: string, fullname: string, email: string) {
   // Load the SMS template
