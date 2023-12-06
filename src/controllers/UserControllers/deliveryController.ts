@@ -5,7 +5,7 @@ import { body, validationResult } from 'express-validator';
 import uploadImage from '../../utils/cloudinary';
 import fs from 'fs';
 import { sendDeliveryRequest, sendWelcomeEmail } from '../../utils/emailSender';
-import { sendWelcomeSMS } from '../../utils/smsSender';
+import { createDeliverySMS } from '../../utils/sendSMS';
 
 const prisma = new PrismaClient();
 
@@ -142,10 +142,21 @@ export async function createDeliveryRequest(request: Request,response: Response)
         profile_image:true,
         avg_rating:true,
       }
-    })
+    });
+
+    const message = `A Delivery has been placed under your operation area,
+    Detail
+    Package Name: ${package_name}
+    Pickup Location: ${pickup_location}
+    Delivery Location: ${delivery_location}
+
+    Login To view more
+    `
+    
 
     riders.forEach(rider => {
       sendDeliveryRequest(rider.email, rider, newDelivery)
+      createDeliverySMS(rider.phone_number,message)
     });
 
     return response.status(200).json({ message: 'Delivery Request created', data: newDelivery });

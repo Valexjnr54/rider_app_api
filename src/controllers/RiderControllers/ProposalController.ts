@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { PrismaClient } from '../../models';
 import { body, validationResult } from "express-validator";
 import { sendProposal } from '../../utils/emailSender';
+import { sendProposalSMS } from '../../utils/sendSMS';
 
 const prisma = new PrismaClient();
 
@@ -95,7 +96,19 @@ export async function createProposal(request:Request, response:Response) {
                 }
             }
         })
+
+        const rider = await prisma.rider.findUnique({
+            where:{
+                id:rider_id
+            }
+        })
+        const rider_name = rider?.fullname
+
+        const message = `
+        A proposal have been sent you by a rider named ${rider_name}, Login to view more details
+        `
         sendProposal(newProposal.deliver.user.email, newProposal)
+        sendProposalSMS(newProposal.deliver.user.phone_number,message)
         // Fetch the existing proposal_sent array
         const existingDelivery = await prisma.delivery.findUnique({
             where: { id: delivery_id },

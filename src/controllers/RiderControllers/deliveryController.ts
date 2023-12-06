@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '../../models';
 import { body, validationResult } from "express-validator";
+import { sendDeliveryCodeSMS } from '../../utils/sendSMS';
 
 const prisma = new PrismaClient();
 
@@ -191,6 +192,7 @@ export async function pickDelivery(request: Request, response: Response) {
                 status:true,
                 sent_proposal_rider_id:true,
                 rider_id:true,
+                delivery_code:true,
                 user:{
                     select: {
                       id:true,
@@ -203,6 +205,11 @@ export async function pickDelivery(request: Request, response: Response) {
                 }
             }
         })
+        
+        const url = "https://dverse.netlify.app"
+        const message = `A Delivery Package is on its way to you now, please use the delivery code ${updatePickup.delivery_code} to confirm delivery, Click on the link ${url} and type the delivery code to confirm delivery`
+
+        sendDeliveryCodeSMS(updatePickup.phone_number,message)
         return response.status(200).json({ message: "Package Picked", data: updatePickup})
     } catch (error) {
         return response.status(500).json({ message: error})

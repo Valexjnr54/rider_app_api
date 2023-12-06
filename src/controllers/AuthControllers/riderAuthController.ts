@@ -8,7 +8,7 @@ import { body, validationResult } from "express-validator";
 import uploadImage from '../../utils/cloudinary';
 import fs from "fs"
 import { sendWelcomeEmail } from '../../utils/emailSender';
-import { sendWelcomeSMS } from '../../utils/smsSender';
+import { sendWelcomeSMS } from '../../utils/sendSMS';
 import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
@@ -83,8 +83,15 @@ export async function registerRider(request: Request, res: Response) {
     // Send a welcome email with the rider's name and email
     sendWelcomeEmail(email, fullname);
 
+    const message = `Welcome,  ${fullname}
+
+    You're receiving this message because you recently signed up for a account with Riders App.
+    Please Verify your email address.
+    
+    Confirm your email address by clicking the button below. This step adds extra security to your business by verifying you own this email.`
+
     // Send a welcome SMS with the rider's name and email
-    sendWelcomeSMS(phone_number, fullname, email);
+    sendWelcomeSMS(phone_number, message);
 
     // Generate a JWT token for the newly registered rider
     const token = jwt.sign({ riderId: newRider.id, email: newRider.email, fullname: newRider.fullname, phone_number: newRider.phone_number, username: newRider.username, profile_image:newRider.profile_image }, Config.secret);

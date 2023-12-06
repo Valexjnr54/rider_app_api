@@ -6,6 +6,7 @@ import uploadImage from '../../utils/cloudinary';
 import fs from 'fs';
 import { sendApproval, sendReject, sendWelcomeEmail } from '../../utils/emailSender';
 import { sendWelcomeSMS } from '../../utils/smsSender';
+import { acceptProposalSMS } from '../../utils/sendSMS';
 
 const prisma = new PrismaClient();
 
@@ -286,6 +287,22 @@ export async function acceptRider(request:Request, response:Response) {
         } else {
             return response.status(400).json({message: 'Request Failed'})
         }
+
+        const rider = await prisma.rider.findUnique({
+          where:{
+              id:rider_id
+          }
+      })
+      const rider_name = rider?.fullname
+      const rider_phone = rider?.phone_number
+
+      const message = `Dear ${rider_name}, You have been choosen to delivery this package ${updateDeliveryRecord.package_name}. Please Login for more details.`
+
+      if (updateDeliveryRecord.rider?.phone_number) {
+        acceptProposalSMS(updateDeliveryRecord.rider.phone_number, message)
+      } else {
+        console.log("SMS Undefined")
+      }
 
         return response.status(200).json({ message: 'Delivery Request updated', data: updateDeliveryRecord });
     } catch (error) {

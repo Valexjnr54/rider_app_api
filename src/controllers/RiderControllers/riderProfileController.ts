@@ -7,6 +7,7 @@ import uploadImage from '../../utils/cloudinary';
 import fs from "fs";
 import bcrypt from 'bcrypt';
 import { riderCredentials } from '../../middlewares/multerProfileMiddleware';
+import { completeSetupSMS } from '../../utils/sendSMS';
 
 const prisma = new PrismaClient();
 
@@ -323,6 +324,22 @@ export async function completeSetup(request: Request, response: Response) {
             }
           }
         })
+
+        const rider = await prisma.rider.findUnique({
+          where:{
+              id:riderId
+          }
+      })
+      const rider_name = rider?.fullname
+      const rider_phone = rider?.phone_number
+
+      const message = `Dear ${rider_name}, Your credentials have been received and will be checked properly, but for now you will not be able to receive any delivery request until your account is activated, which will take 24-48hrs.`
+
+      if (rider_phone) {
+        completeSetupSMS(rider_phone, message)
+      } else {
+        console.log("SMS Undefined")
+      }
 
         return response.status(200).json({ message: 'Rider account details created', bank_detail: newDetail, credentials });
     } catch (error) {

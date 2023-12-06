@@ -17,6 +17,7 @@ import { router } from './routes/route';
 import { userProfileRouter } from './routes/Users/userProfileRoutes';
 import { riderProfileRouter } from './routes/Riders/riderProfileRoutes';
 import { userRatingRouter } from './routes/Users/userRatingRoute';
+import { adminActivateRouter } from './routes/Admin/activationRoute';
 
 const app = express();
 
@@ -65,6 +66,7 @@ app.use(route+"/rider",riderProfileRouter)
 
 // Admin Routes Starts
 app.use(route+"/admin",adminOperatingRouter)
+app.use(route+"/admin",adminActivateRouter)
 // Admin Routes Starts
 
 app.use(route, router)
