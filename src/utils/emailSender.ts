@@ -6,7 +6,7 @@ import fs from "fs";
 
 const transporter = nodemailer.createTransport({
   host: process.env.Mail_HOST,
-  port: 2525,
+  port: 465,
   auth: {
     user: process.env.Mail_USER,
     pass: process.env.Mail_PASSWORD
