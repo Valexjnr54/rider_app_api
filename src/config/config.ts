@@ -3,7 +3,16 @@ export const Config = {
     corsAllowedOrigin: process.env.CORS_ALLOWED_ORIGIN || '*',
 };
 
-
+export const emailConfig = {
+    host: process.env.EMAIL_HOST || 'box1109.bluehost.com',
+    port: parseInt(process.env.EMAIL_PORT || '465', 10),
+    secure: process.env.EMAIL_SECURE === 'true' || false,
+    auth: {
+      user: process.env.EMAIL_USER || 'info@qmarthub.com',
+      pass: process.env.EMAIL_PASSWORD || 'infoP@55word',
+    },
+  };
+  
 
 
 

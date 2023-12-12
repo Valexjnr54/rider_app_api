@@ -29,7 +29,7 @@ model User {
   fullname      String
   username      String         @unique
   email         String         @unique
-  phone_number  String
+  phone_number  String         @unique
   role          Role           @default(User)
   profile_image String
   password      String
@@ -44,7 +44,7 @@ model Rider {
   fullname          String
   username          String              @unique
   email             String              @unique
-  phone_number      String
+  phone_number      String              @unique
   operating_areas   Json
   role              Role                @default(Rider)
   profile_image     String

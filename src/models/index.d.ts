@@ -11288,11 +11288,11 @@ export namespace Prisma {
     id?: number
     username?: string
     email?: string
+    phone_number?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     fullname?: StringFilter<"User"> | string
-    phone_number?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     profile_image?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
@@ -11300,7 +11300,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     delivery?: DeliveryListRelationFilter
     rider_rating?: Rider_ratingListRelationFilter
-  }, "id" | "username" | "email">
+  }, "id" | "username" | "email" | "phone_number">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -11387,11 +11387,11 @@ export namespace Prisma {
     id?: number
     username?: string
     email?: string
+    phone_number?: string
     AND?: RiderWhereInput | RiderWhereInput[]
     OR?: RiderWhereInput[]
     NOT?: RiderWhereInput | RiderWhereInput[]
     fullname?: StringFilter<"Rider"> | string
-    phone_number?: StringFilter<"Rider"> | string
     operating_areas?: JsonFilter<"Rider">
     role?: EnumRoleFilter<"Rider"> | $Enums.Role
     profile_image?: StringFilter<"Rider"> | string
@@ -11406,7 +11406,7 @@ export namespace Prisma {
     bank_details?: Bank_detailsListRelationFilter
     rider_rating?: Rider_ratingListRelationFilter
     rider_credentials?: Rider_credentialsListRelationFilter
-  }, "id" | "username" | "email">
+  }, "id" | "username" | "email" | "phone_number">
 
   export type RiderOrderByWithAggregationInput = {
     id?: SortOrder
