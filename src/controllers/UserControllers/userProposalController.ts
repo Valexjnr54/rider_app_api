@@ -5,7 +5,6 @@ import { body, validationResult } from 'express-validator';
 import uploadImage from '../../utils/cloudinary';
 import fs from 'fs';
 import { sendApproval, sendReject, sendWelcomeEmail } from '../../utils/emailSender';
-import { sendWelcomeSMS } from '../../utils/smsSender';
 import { acceptProposalSMS } from '../../utils/sendSMS';
 
 const prisma = new PrismaClient();

@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 const termiiApiKey = process.env.TERMII_API_KEY || 'TLQvkk7mJcru5ajmXjD6BuEwrBPead7GNyltdUz9RZHpOEC9zfxlwbA6BqHjpn';
-const termiiEndpoint = process.env.TERMII_ENDPOINT || 'https://termii.com/api/sms/send';
+const termiiEndpoint = process.env.TERMII_ENDPOINT || 'https://api.ng.termii.com/api/sms/send';
 
 export async function  sendWelcomeSMS(phoneNumber: string, message: string): Promise<void>  {
     try {
