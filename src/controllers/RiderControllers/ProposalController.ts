@@ -103,9 +103,10 @@ export async function createProposal(request:Request, response:Response) {
             }
         })
         const rider_name = rider?.fullname
+        const url = "https://deverse.netlify.app/login"
 
         const message = `
-        A proposal have been sent you by a rider named ${rider_name}, Login to view more details
+        A proposal have been sent you by a rider named ${rider_name}, Login to view more details ${url}
         `
         sendProposal(newProposal.deliver.user.email, newProposal)
         sendProposalSMS(newProposal.deliver.user.phone_number,message)

@@ -295,7 +295,9 @@ export async function acceptRider(request:Request, response:Response) {
       const rider_name = rider?.fullname
       const rider_phone = rider?.phone_number
 
-      const message = `Dear ${rider_name}, You have been choosen to delivery this package ${updateDeliveryRecord.package_name}. Please Login for more details.`
+      const url = `https://deverse.netlify.app/rider/${delivery_id}`
+
+      const message = `Dear ${rider_name}, You have been choosen to delivery this package ${updateDeliveryRecord.package_name}. for more details click ${url}.`
 
       if (updateDeliveryRecord.rider?.phone_number) {
         acceptProposalSMS(updateDeliveryRecord.rider.phone_number, message)

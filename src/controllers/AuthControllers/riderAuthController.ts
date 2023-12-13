@@ -128,7 +128,7 @@ export async function loginRider(req: Request, res: Response) {
     const passwordMatch = await bcrypt.compare(password, rider.password);
 
     if (!passwordMatch) {
-      res.status(401).json({ error: 'Invalid email or password' });
+      res.status(400).json({ error: 'Invalid email or password' });
       return;
     }
 

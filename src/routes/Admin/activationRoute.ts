@@ -4,7 +4,7 @@ import { authenticateJWT } from '../../middlewares/authMiddleware/authentication
 import { activateRider } from '../../controllers/AdminControllers/activateController';
 
 export const adminActivateRouter = express.Router();
-adminActivateRouter.put('/activate-rider', authenticateJWT, activateRider);
+adminActivateRouter.get('/activate-rider', authenticateJWT, activateRider);
 
 
 // export default authRouter;
