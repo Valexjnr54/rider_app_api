@@ -206,7 +206,7 @@ export async function pickDelivery(request: Request, response: Response) {
             }
         })
         
-        const url = "https://dverse.netlify.app"
+        const url = "https://dverse.netlify.app/confirm-delivery"
         const message = `A Delivery Package is on its way to you now, please use the delivery code ${updatePickup.delivery_code} to confirm delivery, Click on the link ${url} and type the delivery code to confirm delivery`
 
         sendDeliveryCodeSMS(updatePickup.phone_number,message)
