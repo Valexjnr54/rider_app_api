@@ -14,7 +14,7 @@ import bcrypt from 'bcrypt'
 const prisma = new PrismaClient();
 
 export async function registerUser(request: Request, res: Response) {
-  const { fullname, username, email, phone_number, password, device_token, ip_address, current_position } = request.body;
+  const { fullname, username, email, phone_number, password, device_token, ip_address, latitude, longitude } = request.body;
 
   try {
     const validationRules = [
@@ -96,6 +96,11 @@ export async function registerUser(request: Request, res: Response) {
     //     password: hashedPassword, // Store the salt along with the hash
     //   },
     // });
+
+    const current_position = {
+      latitude: parseFloat(latitude), // Convert to number if needed
+      longitude: parseFloat(longitude), // Convert to number if needed
+    };
 
     const newUserData: any = {
       fullname,
