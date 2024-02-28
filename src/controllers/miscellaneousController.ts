@@ -151,11 +151,11 @@ export async function confirmDelivery(request:Request, response:Response) {
 }
 
 export async function updateIpAddressCurrentPosition(request:Request, response: Response) {
-  const { ip_address, current_position } = request.body;
+  const { device_token, current_position } = request.body;
 
   try {
     const validationRules = [
-      body('ip_address').notEmpty().withMessage('IP Address is required'),
+      body('device_token').notEmpty().withMessage('Device Token is required'),
       body('current_position').notEmpty().withMessage('Current Coordinate is required'),
     ];
     
@@ -168,14 +168,14 @@ export async function updateIpAddressCurrentPosition(request:Request, response: 
     }
 
     // Check if the email is already registered
-    const existingRider = await prisma.rider.findUnique({ where: { ip_address } });
+    const existingRider = await prisma.rider.findUnique({ where: { device_token } });
     if (!existingRider) {
       return response.status(404).json({ message: 'Rider not Found' });
     }
 
     const updateDetail = await prisma.rider.update({
       where:{
-        ip_address
+        device_token
       },
       data:{
         current_position
@@ -188,6 +188,7 @@ export async function updateIpAddressCurrentPosition(request:Request, response: 
         phone_number:true,
         ip_address:true,
         current_position:true,
+        device_token:true,
       }
     })
 
@@ -199,17 +200,17 @@ export async function updateIpAddressCurrentPosition(request:Request, response: 
 }
 
 export async function acceptDelivery(request:Request, response:Response) {
-  const { ip_address,delivery_id } = request.body
+  const { device_token,delivery_id } = request.body
 
   // Check if rider_id is not present or undefined
-  if (!ip_address) {
+  if (!device_token) {
     response.status(403).json({ message: 'Unauthorized User' });
     return;
   }
 
   try {
       // Retrieve the user by rider_id
-      const check_user = await prisma.rider.findUnique({ where: { ip_address } });
+      const check_user = await prisma.rider.findUnique({ where: { device_token } });
       const role = check_user?.role;
       const rider_id = check_user?.id;
   
@@ -297,17 +298,17 @@ export async function acceptDelivery(request:Request, response:Response) {
 }
 
 export async function rejectDelivery(request:Request, response:Response) {
-  const { ip_address,delivery_id } = request.body
+  const { device_token,delivery_id } = request.body
 
   // Check if rider_id is not present or undefined
-  if (!ip_address) {
+  if (!device_token) {
     response.status(403).json({ message: 'Unauthorized User' });
     return;
   }
 
   try {
       // Retrieve the user by rider_id
-      const check_user = await prisma.rider.findUnique({ where: { ip_address } });
+      const check_user = await prisma.rider.findUnique({ where: { device_token } });
       const role = check_user?.role;
       const rider_id = check_user?.id;
   
