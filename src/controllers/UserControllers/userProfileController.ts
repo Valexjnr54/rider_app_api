@@ -83,7 +83,6 @@ export async function profile(request: Request, response: Response) {
             email:true,
             profile_image:true,
             phone_number:true,
-            ip_address:true,
             current_position:true,
             device_token:true
         }

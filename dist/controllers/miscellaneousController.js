@@ -141,10 +141,10 @@ async function confirmDelivery(request, response) {
 }
 exports.confirmDelivery = confirmDelivery;
 async function updateIpAddressCurrentPosition(request, response) {
-    const { ip_address, current_position } = request.body;
+    const { device_token, current_position } = request.body;
     try {
         const validationRules = [
-            (0, express_validator_1.body)('ip_address').notEmpty().withMessage('IP Address is required'),
+            (0, express_validator_1.body)('device_token').notEmpty().withMessage('Device Token is required'),
             (0, express_validator_1.body)('current_position').notEmpty().withMessage('Current Coordinate is required'),
         ];
         // Apply validation rules to the request
@@ -154,13 +154,13 @@ async function updateIpAddressCurrentPosition(request, response) {
             return response.status(400).json({ errors: errors.array() });
         }
         // Check if the email is already registered
-        const existingRider = await prisma.rider.findUnique({ where: { ip_address } });
+        const existingRider = await prisma.rider.findUnique({ where: { device_token } });
         if (!existingRider) {
             return response.status(404).json({ message: 'Rider not Found' });
         }
         const updateDetail = await prisma.rider.update({
             where: {
-                ip_address
+                device_token
             },
             data: {
                 current_position
@@ -171,8 +171,8 @@ async function updateIpAddressCurrentPosition(request, response) {
                 email: true,
                 username: true,
                 phone_number: true,
-                ip_address: true,
                 current_position: true,
+                device_token: true,
             }
         });
         return response.status(200).json({ message: 'Rider Current Position updated', data: updateDetail });
@@ -184,15 +184,15 @@ async function updateIpAddressCurrentPosition(request, response) {
 }
 exports.updateIpAddressCurrentPosition = updateIpAddressCurrentPosition;
 async function acceptDelivery(request, response) {
-    const { ip_address, delivery_id } = request.body;
+    const { device_token, delivery_id } = request.body;
     // Check if rider_id is not present or undefined
-    if (!ip_address) {
+    if (!device_token) {
         response.status(403).json({ message: 'Unauthorized User' });
         return;
     }
     try {
         // Retrieve the user by rider_id
-        const check_user = await prisma.rider.findUnique({ where: { ip_address } });
+        const check_user = await prisma.rider.findUnique({ where: { device_token } });
         const role = check_user?.role;
         const rider_id = check_user?.id;
         // Check if the role is not 'User'
@@ -230,7 +230,6 @@ async function acceptDelivery(request, response) {
                         email: true,
                         phone_number: true,
                         profile_image: true,
-                        ip_address: true,
                         current_position: true,
                         device_token: true,
                     }
@@ -245,7 +244,6 @@ async function acceptDelivery(request, response) {
                         profile_image: true,
                         avg_rating: true,
                         bank_details: true,
-                        ip_address: true,
                         current_position: true,
                         device_token: true,
                     }
@@ -274,15 +272,15 @@ async function acceptDelivery(request, response) {
 }
 exports.acceptDelivery = acceptDelivery;
 async function rejectDelivery(request, response) {
-    const { ip_address, delivery_id } = request.body;
+    const { device_token, delivery_id } = request.body;
     // Check if rider_id is not present or undefined
-    if (!ip_address) {
+    if (!device_token) {
         response.status(403).json({ message: 'Unauthorized User' });
         return;
     }
     try {
         // Retrieve the user by rider_id
-        const check_user = await prisma.rider.findUnique({ where: { ip_address } });
+        const check_user = await prisma.rider.findUnique({ where: { device_token } });
         const role = check_user?.role;
         const rider_id = check_user?.id;
         // Check if the role is not 'User'

@@ -15,7 +15,7 @@ const sendSMS_1 = require("../../utils/sendSMS");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const prisma = new models_1.PrismaClient();
 async function registerRider(request, res) {
-    const { fullname, username, email, phone_number, password, device_token, ip_address, current_position } = request.body;
+    const { fullname, username, email, phone_number, password, device_token, latitude, longitude } = request.body;
     try {
         const validationRules = [
             (0, express_validator_1.body)('fullname').notEmpty().withMessage('Full Name is required'),
@@ -42,10 +42,6 @@ async function registerRider(request, res) {
         const existingUsername = await prisma.rider.findUnique({ where: { username } });
         if (existingUsername) {
             return res.status(400).json({ message: 'Username Already Exist' });
-        }
-        const existingIpAddress = await prisma.rider.findUnique({ where: { ip_address } });
-        if (existingIpAddress) {
-            return res.status(400).json({ message: 'IP Address Already Exist' });
         }
         const existingDeviceToken = await prisma.rider.findUnique({ where: { device_token } });
         if (existingDeviceToken) {
@@ -75,6 +71,10 @@ async function registerRider(request, res) {
         // else {
         //   res.status(400).json({ message: 'No file uploaded' });
         // }
+        const current_position = {
+            latitude: parseFloat(latitude),
+            longitude: parseFloat(longitude), // Convert to number if needed
+        };
         // Create a new Rider in the database
         const newRiderData = {
             fullname,
@@ -84,11 +84,9 @@ async function registerRider(request, res) {
             profile_image: imageUrl,
             password: hashedPassword // Store the salt along with the hash
         };
-        // Conditionally add device_token, ip_address, and current_position
+        // Conditionally add device_token and current_position
         if (device_token !== null)
             newRiderData.device_token = device_token;
-        if (ip_address !== null)
-            newRiderData.ip_address = ip_address;
         if (current_position !== null)
             newRiderData.current_position = current_position;
         const newRider = await prisma.rider.create({

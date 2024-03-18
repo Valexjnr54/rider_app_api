@@ -14,7 +14,7 @@ import bcrypt from 'bcrypt'
 const prisma = new PrismaClient();
 
 export async function registerUser(request: Request, res: Response) {
-  const { fullname, username, email, phone_number, password, device_token, ip_address, latitude, longitude } = request.body;
+  const { fullname, username, email, phone_number, password, device_token, latitude, longitude } = request.body;
 
   try {
     const validationRules = [
@@ -49,10 +49,6 @@ export async function registerUser(request: Request, res: Response) {
       return res.status(400).json({ message: 'Username Already Exist' });
     }
 
-    const existingIpAddress= await prisma.user.findUnique({ where: {  ip_address } });
-    if (existingIpAddress) {
-      return res.status(400).json({ message: 'IP Address Already Exist' });
-    }
     const existingDeviceToken = await prisma.user.findUnique({ where: {  device_token } });
     if (existingDeviceToken) {
       return res.status(400).json({ message: 'Device Token Already Exist' });
@@ -80,22 +76,6 @@ export async function registerUser(request: Request, res: Response) {
         }
       });
     }
-    // else {
-    //   res.status(400).json({ message: 'No file uploaded' });
-    // }
-    
-
-    // Create a new user in the database
-    // const newUser = await prisma.user.create({
-    //   data: {
-    //     fullname,
-    //     username,
-    //     email,
-    //     phone_number,
-    //     profile_image: imageUrl,
-    //     password: hashedPassword, // Store the salt along with the hash
-    //   },
-    // });
 
     const current_position = {
       latitude: parseFloat(latitude), // Convert to number if needed
@@ -112,7 +92,6 @@ export async function registerUser(request: Request, res: Response) {
     }
 
     if (device_token !== null) newUserData.device_token = device_token;
-    if (ip_address !== null) newUserData.ip_address = ip_address;
     if (current_position !== null) newUserData.current_position = current_position;
 
     const newUser = await prisma.user.create({

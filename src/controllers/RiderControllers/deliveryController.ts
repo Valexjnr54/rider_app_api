@@ -271,7 +271,6 @@ export async function acceptDelivery(request:Request, response:Response) {
                 email:true,
                 phone_number:true,
                 profile_image:true,
-                ip_address:true,
                 current_position:true,
                 device_token: true,
               }
@@ -286,7 +285,6 @@ export async function acceptDelivery(request:Request, response:Response) {
                 profile_image:true,
                 avg_rating:true,
                 bank_details:true,
-                ip_address:true,
                 current_position:true,
                 device_token: true,
               }

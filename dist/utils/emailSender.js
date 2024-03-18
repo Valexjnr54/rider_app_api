@@ -9,6 +9,8 @@ const nodemailer_1 = __importDefault(require("nodemailer"));
 const ejs_1 = __importDefault(require("ejs"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config({ path: __dirname + '/../../.env' });
 const transporter = nodemailer_1.default.createTransport({
     host: process.env.MAIL_HOST || "smtp.gmail.com",
     port: 465,

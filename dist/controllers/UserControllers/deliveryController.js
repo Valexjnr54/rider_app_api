@@ -145,7 +145,6 @@ async function createDeliveryRequest(request, response) {
                         bank_details: true,
                         current_position: true,
                         device_token: true,
-                        ip_address: true,
                     }
                 }
             },
@@ -251,6 +250,8 @@ async function viewAllDelivery(request, response) {
                         profile_image: true,
                         avg_rating: true,
                         bank_details: true,
+                        current_position: true,
+                        device_token: true,
                     }
                 }
             },
@@ -316,6 +317,8 @@ async function viewSingleDelivery(request, response) {
                         profile_image: true,
                         avg_rating: true,
                         bank_details: true,
+                        current_position: true,
+                        device_token: true,
                     }
                 }
             },
@@ -425,6 +428,8 @@ async function updateDelivery(request, response) {
                         profile_image: true,
                         avg_rating: true,
                         bank_details: true,
+                        current_position: true,
+                        device_token: true,
                     }
                 }
             },
@@ -534,7 +539,8 @@ async function confirmDelivery(request, response) {
                         phone_number: true,
                         profile_image: true,
                     }
-                }
+                },
+                rider: true
             }
         });
         const riderAccount = await prisma.bank_details.findFirst({

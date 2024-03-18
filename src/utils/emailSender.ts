@@ -3,6 +3,9 @@ import nodemailer, { TransportOptions, SentMessageInfo } from 'nodemailer';
 import ejs from 'ejs';
 import path from 'path';
 import fs from "fs";
+import dotenv from 'dotenv'
+
+dotenv.config({ path:__dirname + '/../../.env' });
 
 const transporter = nodemailer.createTransport({
   host: process.env.MAIL_HOST || "smtp.gmail.com",

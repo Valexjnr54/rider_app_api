@@ -30,7 +30,6 @@ model User {
   username         String         @unique
   email            String         @unique
   phone_number     String         @unique
-  ip_address       String?        @unique
   device_token     String?        @unique
   current_position Json?
   role             Role           @default(User)
@@ -48,7 +47,6 @@ model Rider {
   username          String              @unique
   email             String              @unique
   phone_number      String              @unique
-  ip_address        String?             @unique
   device_token      String?             @unique
   current_position  Json?
   role              Role                @default(Rider)

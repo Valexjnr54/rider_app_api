@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.insertIpAddressCurrentPosition = exports.insertDeviceToken = exports.updateAccountDetails = exports.completeSetup = exports.changePassword = exports.changeProfileImage = exports.profile = exports.updateRider = void 0;
+exports.insertDeviceTokenCurrentPosition = exports.insertDeviceToken = exports.updateAccountDetails = exports.completeSetup = exports.changePassword = exports.changeProfileImage = exports.profile = exports.updateRider = void 0;
 const models_1 = require("../../models");
 const express_validator_1 = require("express-validator");
 const cloudinary_1 = __importDefault(require("../../utils/cloudinary"));
@@ -37,7 +37,6 @@ async function updateRider(request, response) {
                 profile_image: true,
                 phone_number: true,
                 device_token: true,
-                ip_address: true,
                 current_position: true,
                 bank_details: true,
                 rider_credentials: true
@@ -72,7 +71,6 @@ async function profile(request, response) {
                 profile_image: true,
                 phone_number: true,
                 current_position: true,
-                ip_address: true,
                 device_token: true,
                 bank_details: true,
                 rider_credentials: true
@@ -132,7 +130,6 @@ async function changeProfileImage(request, response) {
                 profile_image: true,
                 phone_number: true,
                 device_token: true,
-                ip_address: true,
                 current_position: true,
                 bank_details: true,
                 rider_credentials: true
@@ -187,7 +184,6 @@ async function changePassword(request, response) {
                 email: true,
                 profile_image: true,
                 phone_number: true,
-                ip_address: true,
                 device_token: true,
                 current_position: true,
                 bank_details: true,
@@ -388,7 +384,6 @@ async function updateAccountDetails(request, response) {
                         email: true,
                         username: true,
                         phone_number: true,
-                        ip_address: true,
                         device_token: true,
                         current_position: true,
                         rider_credentials: true
@@ -435,7 +430,6 @@ async function insertDeviceToken(request, response) {
                 email: true,
                 username: true,
                 phone_number: true,
-                ip_address: true,
                 device_token: true,
                 current_position: true
             }
@@ -448,12 +442,12 @@ async function insertDeviceToken(request, response) {
     }
 }
 exports.insertDeviceToken = insertDeviceToken;
-async function insertIpAddressCurrentPosition(request, response) {
-    const { ip_address, current_position } = request.body;
+async function insertDeviceTokenCurrentPosition(request, response) {
+    const { device_token, current_position } = request.body;
     const riderId = request.user.riderId;
     try {
         const validationRules = [
-            (0, express_validator_1.body)('ip_address ').notEmpty().withMessage('IP Address is required'),
+            (0, express_validator_1.body)('device_token ').notEmpty().withMessage('Device Token is required'),
             (0, express_validator_1.body)('current_position ').notEmpty().withMessage('Current Coordinate is required'),
         ];
         // Apply validation rules to the request
@@ -472,7 +466,7 @@ async function insertIpAddressCurrentPosition(request, response) {
                 id: riderId
             },
             data: {
-                ip_address,
+                device_token,
                 current_position
             },
             select: {
@@ -481,7 +475,6 @@ async function insertIpAddressCurrentPosition(request, response) {
                 email: true,
                 username: true,
                 phone_number: true,
-                ip_address: true,
                 device_token: true,
                 current_position: true
             }
@@ -493,4 +486,4 @@ async function insertIpAddressCurrentPosition(request, response) {
         return response.status(500).json({ message: 'Internal Server Error' });
     }
 }
-exports.insertIpAddressCurrentPosition = insertIpAddressCurrentPosition;
+exports.insertDeviceTokenCurrentPosition = insertDeviceTokenCurrentPosition;

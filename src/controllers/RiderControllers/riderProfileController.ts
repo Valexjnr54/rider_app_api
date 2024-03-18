@@ -41,7 +41,6 @@ export async function updateRider(request: Request, response: Response) {
           profile_image:true,
           phone_number:true,
           device_token:true,
-          ip_address:true,
           current_position:true,
           bank_details:true,
           rider_credentials:true
@@ -78,7 +77,6 @@ export async function profile(request: Request, response: Response) {
         profile_image:true,
         phone_number:true,
         current_position:true,
-        ip_address:true,
         device_token:true,
         bank_details:true,
         rider_credentials:true
@@ -141,8 +139,7 @@ export async function changeProfileImage(request: Request, response: Response) {
         email:true,
         profile_image:true,
         phone_number:true,
-        device_token:true, 
-        ip_address:true,
+        device_token:true,
         current_position:true,
         bank_details:true,
         rider_credentials:true
@@ -205,7 +202,6 @@ export async function changePassword(request: Request, response: Response) {
         email:true,
         profile_image:true,
         phone_number:true,
-        ip_address:true,
         device_token:true,
         current_position:true,
         bank_details:true,
@@ -425,7 +421,6 @@ export async function updateAccountDetails(request:Request, response: Response) 
             email:true,
             username:true,
             phone_number:true,
-            ip_address:true,
             device_token:true,
             current_position:true,
             rider_credentials:true
@@ -477,7 +472,6 @@ export async function insertDeviceToken(request:Request, response: Response) {
         email:true,
         username:true,
         phone_number:true,
-        ip_address:true,
         device_token:true,
         current_position:true
       }
@@ -490,13 +484,13 @@ export async function insertDeviceToken(request:Request, response: Response) {
   }
 }
 
-export async function insertIpAddressCurrentPosition(request:Request, response: Response) {
-  const { ip_address, current_position } = request.body;
+export async function insertDeviceTokenCurrentPosition(request:Request, response: Response) {
+  const { device_token, current_position } = request.body;
   const riderId = request.user.riderId;
 
   try {
     const validationRules = [
-      body('ip_address ').notEmpty().withMessage('IP Address is required'),
+      body('device_token ').notEmpty().withMessage('Device Token is required'),
       body('current_position ').notEmpty().withMessage('Current Coordinate is required'),
     ];
     
@@ -519,7 +513,7 @@ export async function insertIpAddressCurrentPosition(request:Request, response: 
         id:riderId
       },
       data:{
-        ip_address,
+        device_token,
         current_position
       },
       select:{
@@ -528,7 +522,6 @@ export async function insertIpAddressCurrentPosition(request:Request, response: 
         email:true,
         username:true,
         phone_number:true,
-        ip_address:true,
         device_token:true,
         current_position:true
       }

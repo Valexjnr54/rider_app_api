@@ -20,11 +20,13 @@ const userProfileRoutes_1 = require("./routes/Users/userProfileRoutes");
 const riderProfileRoutes_1 = require("./routes/Riders/riderProfileRoutes");
 const userRatingRoute_1 = require("./routes/Users/userRatingRoute");
 const activationRoute_1 = require("./routes/Admin/activationRoute");
+const request_ip_1 = __importDefault(require("request-ip"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(body_parser_1.default.urlencoded({
     extended: false,
 }));
+app.use(request_ip_1.default.mw());
 app.use(rateLimitMiddleware_1.default);
 app.use((0, cors_1.default)({ origin: config_1.Config.corsAllowedOrigin }));
 app.use((req, res, next) => {
@@ -33,8 +35,9 @@ app.use((req, res, next) => {
 });
 const route = "/api/v1";
 // Configure your routes here
-app.get('/', (_req, res) => {
-    return res.send('Express Typescript on Vercel');
+app.get('/', (req, res) => {
+    const ipAddress = req.clientIp;
+    return res.send(`Riders App Starts, Your IP address is: ${ipAddress}`);
 });
 // Authentication Routes Starts
 app.use(route + "/auth", userAuthRoutes_1.userAuthRouter);

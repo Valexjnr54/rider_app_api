@@ -15,7 +15,7 @@ const sendSMS_1 = require("../../utils/sendSMS");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const prisma = new models_1.PrismaClient();
 async function registerUser(request, res) {
-    const { fullname, username, email, phone_number, password, device_token, ip_address, current_position } = request.body;
+    const { fullname, username, email, phone_number, password, device_token, latitude, longitude } = request.body;
     try {
         const validationRules = [
             (0, express_validator_1.body)('fullname').notEmpty().withMessage('Full Name is required'),
@@ -43,10 +43,6 @@ async function registerUser(request, res) {
         if (existingUsername) {
             return res.status(400).json({ message: 'Username Already Exist' });
         }
-        const existingIpAddress = await prisma.user.findUnique({ where: { ip_address } });
-        if (existingIpAddress) {
-            return res.status(400).json({ message: 'IP Address Already Exist' });
-        }
         const existingDeviceToken = await prisma.user.findUnique({ where: { device_token } });
         if (existingDeviceToken) {
             return res.status(400).json({ message: 'Device Token Already Exist' });
@@ -72,20 +68,10 @@ async function registerUser(request, res) {
                 }
             });
         }
-        // else {
-        //   res.status(400).json({ message: 'No file uploaded' });
-        // }
-        // Create a new user in the database
-        // const newUser = await prisma.user.create({
-        //   data: {
-        //     fullname,
-        //     username,
-        //     email,
-        //     phone_number,
-        //     profile_image: imageUrl,
-        //     password: hashedPassword, // Store the salt along with the hash
-        //   },
-        // });
+        const current_position = {
+            latitude: parseFloat(latitude),
+            longitude: parseFloat(longitude), // Convert to number if needed
+        };
         const newUserData = {
             fullname,
             username,
@@ -96,8 +82,6 @@ async function registerUser(request, res) {
         };
         if (device_token !== null)
             newUserData.device_token = device_token;
-        if (ip_address !== null)
-            newUserData.ip_address = ip_address;
         if (current_position !== null)
             newUserData.current_position = current_position;
         const newUser = await prisma.user.create({

@@ -14,7 +14,7 @@ import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 export async function registerRider(request: Request, res: Response) {
-  const { fullname, username, email, phone_number, password, device_token, ip_address, latitude, longitude } = request.body;
+  const { fullname, username, email, phone_number, password, device_token, latitude, longitude } = request.body;
 
   try {
     const validationRules = [
@@ -49,10 +49,6 @@ export async function registerRider(request: Request, res: Response) {
       return res.status(400).json({ message: 'Username Already Exist' });
     }
 
-    const existingIpAddress= await prisma.rider.findUnique({ where: {  ip_address } });
-    if (existingIpAddress) {
-      return res.status(400).json({ message: 'IP Address Already Exist' });
-    }
     const existingDeviceToken = await prisma.rider.findUnique({ where: {  device_token } });
     if (existingDeviceToken) {
       return res.status(400).json({ message: 'Device Token Already Exist' });
@@ -99,9 +95,8 @@ export async function registerRider(request: Request, res: Response) {
       password: hashedPassword // Store the salt along with the hash
     };
 
-    // Conditionally add device_token, ip_address, and current_position
+    // Conditionally add device_token and current_position
     if (device_token !== null) newRiderData.device_token = device_token;
-    if (ip_address !== null) newRiderData.ip_address = ip_address;
     if (current_position !== null) newRiderData.current_position = current_position;
 
     const newRider = await prisma.rider.create({

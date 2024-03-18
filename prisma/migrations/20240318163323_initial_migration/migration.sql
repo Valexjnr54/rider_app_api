@@ -26,7 +26,6 @@ CREATE TABLE "User" (
     "username" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "phone_number" TEXT NOT NULL,
-    "ip_address" TEXT,
     "device_token" TEXT,
     "current_position" JSONB,
     "role" "Role" NOT NULL DEFAULT 'User',
@@ -45,7 +44,6 @@ CREATE TABLE "Rider" (
     "username" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "phone_number" TEXT NOT NULL,
-    "ip_address" TEXT,
     "device_token" TEXT,
     "current_position" JSONB,
     "role" "Role" NOT NULL DEFAULT 'Rider',
@@ -153,9 +151,6 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 CREATE UNIQUE INDEX "User_phone_number_key" ON "User"("phone_number");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_ip_address_key" ON "User"("ip_address");
-
--- CreateIndex
 CREATE UNIQUE INDEX "User_device_token_key" ON "User"("device_token");
 
 -- CreateIndex
@@ -166,9 +161,6 @@ CREATE UNIQUE INDEX "Rider_email_key" ON "Rider"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Rider_phone_number_key" ON "Rider"("phone_number");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Rider_ip_address_key" ON "Rider"("ip_address");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Rider_device_token_key" ON "Rider"("device_token");

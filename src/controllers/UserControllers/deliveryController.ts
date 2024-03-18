@@ -163,7 +163,6 @@ export async function createDeliveryRequest(request: Request,response: Response)
             bank_details:true,
             current_position:true,
             device_token: true,
-            ip_address: true,
           }
         }
       },
@@ -290,7 +289,6 @@ export async function viewAllDelivery(request: Request, response: Response) {
             avg_rating:true,
             bank_details:true,
             current_position:true,
-            ip_address:true,
             device_token:true,
           }
         }
@@ -361,7 +359,6 @@ export async function viewSingleDelivery(request: Request, response: Response) {
             avg_rating:true,
             bank_details:true,
             current_position:true,
-            ip_address:true,
             device_token:true,
           }
         }
@@ -481,7 +478,6 @@ export async function updateDelivery(request:Request, response:Response) {
             avg_rating:true,
             bank_details:true,
             current_position:true,
-            ip_address:true,
             device_token:true,
           }
         }

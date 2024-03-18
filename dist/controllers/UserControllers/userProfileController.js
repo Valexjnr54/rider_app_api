@@ -75,7 +75,6 @@ async function profile(request, response) {
                 email: true,
                 profile_image: true,
                 phone_number: true,
-                ip_address: true,
                 current_position: true,
                 device_token: true
             }

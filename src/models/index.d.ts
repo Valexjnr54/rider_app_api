@@ -2557,7 +2557,6 @@ export namespace Prisma {
     username: string | null
     email: string | null
     phone_number: string | null
-    ip_address: string | null
     device_token: string | null
     role: $Enums.Role | null
     profile_image: string | null
@@ -2572,7 +2571,6 @@ export namespace Prisma {
     username: string | null
     email: string | null
     phone_number: string | null
-    ip_address: string | null
     device_token: string | null
     role: $Enums.Role | null
     profile_image: string | null
@@ -2587,7 +2585,6 @@ export namespace Prisma {
     username: number
     email: number
     phone_number: number
-    ip_address: number
     device_token: number
     current_position: number
     role: number
@@ -2613,7 +2610,6 @@ export namespace Prisma {
     username?: true
     email?: true
     phone_number?: true
-    ip_address?: true
     device_token?: true
     role?: true
     profile_image?: true
@@ -2628,7 +2624,6 @@ export namespace Prisma {
     username?: true
     email?: true
     phone_number?: true
-    ip_address?: true
     device_token?: true
     role?: true
     profile_image?: true
@@ -2643,7 +2638,6 @@ export namespace Prisma {
     username?: true
     email?: true
     phone_number?: true
-    ip_address?: true
     device_token?: true
     current_position?: true
     role?: true
@@ -2746,7 +2740,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address: string | null
     device_token: string | null
     current_position: JsonValue | null
     role: $Enums.Role
@@ -2781,7 +2774,6 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone_number?: boolean
-    ip_address?: boolean
     device_token?: boolean
     current_position?: boolean
     role?: boolean
@@ -2800,7 +2792,6 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone_number?: boolean
-    ip_address?: boolean
     device_token?: boolean
     current_position?: boolean
     role?: boolean
@@ -2829,7 +2820,6 @@ export namespace Prisma {
       username: string
       email: string
       phone_number: string
-      ip_address: string | null
       device_token: string | null
       current_position: Prisma.JsonValue | null
       role: $Enums.Role
@@ -3239,7 +3229,6 @@ export namespace Prisma {
     readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly phone_number: FieldRef<"User", 'String'>
-    readonly ip_address: FieldRef<"User", 'String'>
     readonly device_token: FieldRef<"User", 'String'>
     readonly current_position: FieldRef<"User", 'Json'>
     readonly role: FieldRef<"User", 'Role'>
@@ -3644,7 +3633,6 @@ export namespace Prisma {
     username: string | null
     email: string | null
     phone_number: string | null
-    ip_address: string | null
     device_token: string | null
     role: $Enums.Role | null
     profile_image: string | null
@@ -3662,7 +3650,6 @@ export namespace Prisma {
     username: string | null
     email: string | null
     phone_number: string | null
-    ip_address: string | null
     device_token: string | null
     role: $Enums.Role | null
     profile_image: string | null
@@ -3680,7 +3667,6 @@ export namespace Prisma {
     username: number
     email: number
     phone_number: number
-    ip_address: number
     device_token: number
     current_position: number
     role: number
@@ -3711,7 +3697,6 @@ export namespace Prisma {
     username?: true
     email?: true
     phone_number?: true
-    ip_address?: true
     device_token?: true
     role?: true
     profile_image?: true
@@ -3729,7 +3714,6 @@ export namespace Prisma {
     username?: true
     email?: true
     phone_number?: true
-    ip_address?: true
     device_token?: true
     role?: true
     profile_image?: true
@@ -3747,7 +3731,6 @@ export namespace Prisma {
     username?: true
     email?: true
     phone_number?: true
-    ip_address?: true
     device_token?: true
     current_position?: true
     role?: true
@@ -3853,7 +3836,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address: string | null
     device_token: string | null
     current_position: JsonValue | null
     role: $Enums.Role
@@ -3891,7 +3873,6 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone_number?: boolean
-    ip_address?: boolean
     device_token?: boolean
     current_position?: boolean
     role?: boolean
@@ -3915,7 +3896,6 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone_number?: boolean
-    ip_address?: boolean
     device_token?: boolean
     current_position?: boolean
     role?: boolean
@@ -3951,7 +3931,6 @@ export namespace Prisma {
       username: string
       email: string
       phone_number: string
-      ip_address: string | null
       device_token: string | null
       current_position: Prisma.JsonValue | null
       role: $Enums.Role
@@ -4368,7 +4347,6 @@ export namespace Prisma {
     readonly username: FieldRef<"Rider", 'String'>
     readonly email: FieldRef<"Rider", 'String'>
     readonly phone_number: FieldRef<"Rider", 'String'>
-    readonly ip_address: FieldRef<"Rider", 'String'>
     readonly device_token: FieldRef<"Rider", 'String'>
     readonly current_position: FieldRef<"Rider", 'Json'>
     readonly role: FieldRef<"Rider", 'Role'>
@@ -9829,7 +9807,6 @@ export namespace Prisma {
     username: 'username',
     email: 'email',
     phone_number: 'phone_number',
-    ip_address: 'ip_address',
     device_token: 'device_token',
     current_position: 'current_position',
     role: 'role',
@@ -9848,7 +9825,6 @@ export namespace Prisma {
     username: 'username',
     email: 'email',
     phone_number: 'phone_number',
-    ip_address: 'ip_address',
     device_token: 'device_token',
     current_position: 'current_position',
     role: 'role',
@@ -10178,7 +10154,6 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     phone_number?: StringFilter<"User"> | string
-    ip_address?: StringNullableFilter<"User"> | string | null
     device_token?: StringNullableFilter<"User"> | string | null
     current_position?: JsonNullableFilter<"User">
     role?: EnumRoleFilter<"User"> | $Enums.Role
@@ -10196,7 +10171,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrderInput | SortOrder
     device_token?: SortOrderInput | SortOrder
     current_position?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -10213,7 +10187,6 @@ export namespace Prisma {
     username?: string
     email?: string
     phone_number?: string
-    ip_address?: string
     device_token?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -10227,7 +10200,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     delivery?: DeliveryListRelationFilter
     rider_rating?: Rider_ratingListRelationFilter
-  }, "id" | "username" | "email" | "phone_number" | "ip_address" | "device_token">
+  }, "id" | "username" | "email" | "phone_number" | "device_token">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -10235,7 +10208,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrderInput | SortOrder
     device_token?: SortOrderInput | SortOrder
     current_position?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -10259,7 +10231,6 @@ export namespace Prisma {
     username?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     phone_number?: StringWithAggregatesFilter<"User"> | string
-    ip_address?: StringNullableWithAggregatesFilter<"User"> | string | null
     device_token?: StringNullableWithAggregatesFilter<"User"> | string | null
     current_position?: JsonNullableWithAggregatesFilter<"User">
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
@@ -10278,7 +10249,6 @@ export namespace Prisma {
     username?: StringFilter<"Rider"> | string
     email?: StringFilter<"Rider"> | string
     phone_number?: StringFilter<"Rider"> | string
-    ip_address?: StringNullableFilter<"Rider"> | string | null
     device_token?: StringNullableFilter<"Rider"> | string | null
     current_position?: JsonNullableFilter<"Rider">
     role?: EnumRoleFilter<"Rider"> | $Enums.Role
@@ -10301,7 +10271,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrderInput | SortOrder
     device_token?: SortOrderInput | SortOrder
     current_position?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -10323,7 +10292,6 @@ export namespace Prisma {
     username?: string
     email?: string
     phone_number?: string
-    ip_address?: string
     device_token?: string
     AND?: RiderWhereInput | RiderWhereInput[]
     OR?: RiderWhereInput[]
@@ -10342,7 +10310,7 @@ export namespace Prisma {
     bank_details?: Bank_detailsListRelationFilter
     rider_rating?: Rider_ratingListRelationFilter
     rider_credentials?: Rider_credentialsListRelationFilter
-  }, "id" | "username" | "email" | "phone_number" | "ip_address" | "device_token">
+  }, "id" | "username" | "email" | "phone_number" | "device_token">
 
   export type RiderOrderByWithAggregationInput = {
     id?: SortOrder
@@ -10350,7 +10318,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrderInput | SortOrder
     device_token?: SortOrderInput | SortOrder
     current_position?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -10377,7 +10344,6 @@ export namespace Prisma {
     username?: StringWithAggregatesFilter<"Rider"> | string
     email?: StringWithAggregatesFilter<"Rider"> | string
     phone_number?: StringWithAggregatesFilter<"Rider"> | string
-    ip_address?: StringNullableWithAggregatesFilter<"Rider"> | string | null
     device_token?: StringNullableWithAggregatesFilter<"Rider"> | string | null
     current_position?: JsonNullableWithAggregatesFilter<"Rider">
     role?: EnumRoleWithAggregatesFilter<"Rider"> | $Enums.Role
@@ -10874,7 +10840,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -10892,7 +10857,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -10909,7 +10873,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10927,7 +10890,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10945,7 +10907,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -10960,7 +10921,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10976,7 +10936,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10991,7 +10950,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -11014,7 +10972,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -11036,7 +10993,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -11059,7 +11015,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -11082,7 +11037,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -11100,7 +11054,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -11119,7 +11072,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -11759,7 +11711,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrder
     device_token?: SortOrder
     current_position?: SortOrder
     role?: SortOrder
@@ -11779,7 +11730,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrder
     device_token?: SortOrder
     role?: SortOrder
     profile_image?: SortOrder
@@ -11794,7 +11744,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrder
     device_token?: SortOrder
     role?: SortOrder
     profile_image?: SortOrder
@@ -11899,7 +11848,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrder
     device_token?: SortOrder
     current_position?: SortOrder
     role?: SortOrder
@@ -11923,7 +11871,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrder
     device_token?: SortOrder
     role?: SortOrder
     profile_image?: SortOrder
@@ -11941,7 +11888,6 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone_number?: SortOrder
-    ip_address?: SortOrder
     device_token?: SortOrder
     role?: SortOrder
     profile_image?: SortOrder
@@ -13352,7 +13298,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13369,7 +13314,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13390,7 +13334,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13412,7 +13355,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13449,7 +13391,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13466,7 +13407,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13493,7 +13433,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13515,7 +13454,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13536,7 +13474,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13558,7 +13495,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13595,7 +13531,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13617,7 +13552,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13638,7 +13572,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13660,7 +13593,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13686,7 +13618,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13703,7 +13634,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13735,7 +13665,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13757,7 +13686,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13789,7 +13717,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13806,7 +13733,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13822,7 +13748,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13844,7 +13769,6 @@ export namespace Prisma {
     username: string
     email: string
     phone_number: string
-    ip_address?: string | null
     device_token?: string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: $Enums.Role
@@ -13881,7 +13805,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -13903,7 +13826,6 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
-    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
     device_token?: NullableStringFieldUpdateOperationsInput | string | null
     current_position?: NullableJsonNullValueInput | InputJsonValue
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role

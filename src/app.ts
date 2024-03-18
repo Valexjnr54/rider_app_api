@@ -16,6 +16,7 @@ import { userProfileRouter } from './routes/Users/userProfileRoutes';
 import { riderProfileRouter } from './routes/Riders/riderProfileRoutes';
 import { userRatingRouter } from './routes/Users/userRatingRoute';
 import { adminActivateRouter } from './routes/Admin/activationRoute';
+import requestIp from 'request-ip';
 import https from 'https';
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(
     extended: false,
   })
 );
+app.use(requestIp.mw());
 
 app.use(rateLimiter);
 app.use(cors({ origin: Config.corsAllowedOrigin }));
@@ -40,9 +42,10 @@ const route = "/api/v1"
 
 // Configure your routes here
 
-app.get('/', (_req: Request, res: Response) => {
-    return res.send('Express Typescript on Vercel')
-  })
+app.get('/', (req: Request, res: Response) => {
+  const ipAddress = req.clientIp;
+  return res.send(`Riders App Starts, Your IP address is: ${ipAddress}`)
+})
 
 // Authentication Routes Starts
 app.use(route+"/auth",userAuthRouter)

@@ -249,7 +249,6 @@ async function acceptDelivery(request, response) {
                         email: true,
                         phone_number: true,
                         profile_image: true,
-                        ip_address: true,
                         current_position: true,
                         device_token: true,
                     }
@@ -264,7 +263,6 @@ async function acceptDelivery(request, response) {
                         profile_image: true,
                         avg_rating: true,
                         bank_details: true,
-                        ip_address: true,
                         current_position: true,
                         device_token: true,
                     }
